@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://api-v3.igdb.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api" : ""
+    }
+  }
+}
