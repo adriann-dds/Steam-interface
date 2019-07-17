@@ -1,0 +1,6 @@
+<h1>Game list</h1>
+<button (click)="getGame()">Get</button>
+<div *ngFor = "let game of games">
+  <h2>{{games.id}}</h2>
+  <h3>{{games.name}}</h3>
+</div>
