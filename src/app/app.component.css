@@ -1,0 +1,13 @@
+body .container{
+  background-color: lightgray;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0;
+  padding-top: 25px;
+}
+
+h2 {
+  text-align: center;
+}
