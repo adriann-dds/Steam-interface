@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
+import { HttpModule, Http } from '@angular/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,14 @@ import { GameComponent } from './game/game.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule,
+    BrowserModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

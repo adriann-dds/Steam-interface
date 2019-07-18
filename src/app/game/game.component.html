@@ -1,6 +1,11 @@
 <h1>Game list</h1>
 <button (click)="getGame()">Get</button>
 <div *ngFor = "let game of games">
-  <h2>{{games.id}}</h2>
-  <h3>{{games.name}}</h3>
+  <div>ID: {{(game.id)?(game.id):('No ID')}}</div>
+  <img *ngIf='(game.cover)' height="100px" [src]="game.cover"/>
+  <div>Game name: {{(game.name)?(game.name):('No Name')}}</div>
+  <div>Game release date: {{(game.release_dates)?(game.release_dates[0] | date):('No release date')}}</div>
+  <div>Game url: {{(game.url)?(game.url):('No url')}}</div>
+  <div>Game cover: {{(game.cover.url)?(game.cover.url):('No cover')}}</div>
+  <div>Game total_rating: {{(game.total_rating)?(game.total_rating):('No total_rating')}}</div>
 </div>

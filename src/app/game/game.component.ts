@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
+import { Game } from '../game';
 
 @Component({
   selector: 'app-game',
@@ -9,7 +10,8 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, H
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  games: any = [];
+  @Input('GamesInput') games: Game[];
+  //games: any = [];
 
   constructor(private apiService: ApiService) { }
 
@@ -21,5 +23,9 @@ export class GameComponent implements OnInit {
       console.log(data);
       this.games = data;
     });
+  }
+
+  getGameCover(game : Game): string {
+    return ('http:' + game.cover.url);
   }
 }
