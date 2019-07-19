@@ -1,13 +1,21 @@
-h1 {
+h1, h2, div div, .searchBox {
   text-align: center;
 }
 
-div div {
-  text-align: center;
-}
-
-button {
+input, button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1em;
+}
+
+div .searchType {
+  font-size: 0.75em;
+  width: 7em;
+  height: 2em;
+  border-radius: 0.5em;
+}
+
+div:last-child {
+  margin-bottom: 20px;
 }
