@@ -1,23 +1,5 @@
-<h1>Game list</h1>
-
-<button (click)="getGame()">Get</button>
-
-<div>
-    <button  (click)='changeSortType()'>
-        {{sortType}}
-    </button>
-    <button class = "searchType" (click)='changeSortDirection()'>
-        {{sortDirection}}
-    </button>
-</div>
-
-<div class="searchBox">
-    <input [formControl]='searchTerm' type="text" value="" placeholder="Search...">
-    <button (click)="searchGame()">Search</button>
-</div>
-
-<div *ngIf='tableEnabled'>
-        <app-game [GamesInput]='games'></app-game>
+<div class="normalNav">
+  <a routerLink='../browse' routerLinkActive="active">Browse</a>
 </div>
 
 <h2>Actual game list</h2>

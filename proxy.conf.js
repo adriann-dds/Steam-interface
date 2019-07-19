@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
     "/api/proxy": {
-        "target": "https://api-endpoint.igdb.com",
+        "target": "https://api-v3.igdb.com",
         "secure": false,
         "bypass": function (req, res, proxyOptions) {
             if (req.headers.accept.indexOf("html") !== -1) {

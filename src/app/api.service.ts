@@ -54,7 +54,7 @@ export class ApiService {
     return of(gameList);
   }
 
-  //search game by // ID
+  //search game by ID
 
   searchGameByID(searchEntry: string) {
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search='+ searchEntry + '?fields=*&limit=10',
