@@ -1,11 +1,10 @@
 import { Injectable, Inject, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { HttpModule, Http } from '@angular/http';
-import { Game, ICover } from './game';
-import { Observable } from 'rxjs';
+import { Game, ICover, IReleaseDate } from './game';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +55,7 @@ export class ApiService {
 
   //search game by ID
 
-  searchGameByID(searchEntry: string) {
+  searchGameByID(searchEntry: string) : Observable<Game[]> {
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search='+ searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept":"application/json",
