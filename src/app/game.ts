@@ -2,6 +2,7 @@ export interface Game {
     category?: number;
     collection?: number;
     cover?: ICover;
+    screenshot? :ICover;
     created_at?: number;
     esrb?: IESRB;
     genres?: number[];
@@ -23,9 +24,10 @@ export interface IReleaseDate {
 }
 
 export interface ICover {
-    url?: string;
+    url: string;
     height?: number;
     width?: number;
+    cloudinary_id: string;
 }
 
 export interface IESRB {
