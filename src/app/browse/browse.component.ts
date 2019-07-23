@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { Game } from '../game';
 import { FormControl } from '@angular/forms';
-import {Http, Headers, Response} from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 
 @Component({
   selector: 'app-browse',
@@ -29,7 +29,8 @@ export class BrowseComponent implements OnInit {
         this.games = data;
         this.gamesMaster = data;
         })
-    //this.tableEnabled = true;
+
+    this.tableEnabled = true;
   }
 
     //search entry
@@ -42,7 +43,7 @@ export class BrowseComponent implements OnInit {
       this.tableEnabled = false;
       this.games.length = 0;
 
-      if(filterBy) {
+      if(filterBy.length > 0) {
         this.apiService.searchGames(filterBy).subscribe(data => {
           this.games = data;
         });

@@ -1,11 +1,10 @@
 import { Injectable, Inject, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { HttpModule, Http } from '@angular/http';
-import { Game, ICover } from './game';
-import { Observable } from 'rxjs';
+import { Game, ICover, IReleaseDate } from './game';
+import { Observable, of ,forkJoin} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +27,60 @@ export class ApiService {
   //connect to API server
 
   getGame() : Observable<Game[]> {
+    //let gameID: Game[] = [];
+
     console.log('Getting games');
     let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&count?&filter[release_dates.date][gt]=688982179000&order=popularity:desc', { headers: {
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc', { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
     }});
+/*
+    const game = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc', { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+
+    this.getGames().subscribe(data => {
+      gameID = data;
+    })
+
+    const data = this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*&limit=10&order=popularity:desc',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+
+    return forkJoin([game, data]);
+    */
+  }
+/*
+  getGames() : Observable<Game[]> {
+    console.log('Getting gamess');
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc', { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
+*/
+  //  /games/?fields=*&limit=10&count?&filter[release_dates.date][gt]=688982179000&order=popularity:desc
+
+  //get release date
+
+  getDate(gameID: number) {
+    console.log('Getting date');
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/'+ gameID +'?fields=release_dates&limit=1', { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }})
+
+    //return gameID;
   }
 
   //master search method
@@ -54,10 +100,10 @@ export class ApiService {
     return of(gameList);
   }
 
-  //search game by // ID
+  //search game by ID
 
-  searchGameByID(searchEntry: string) {
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search='+ searchEntry + '?fields=*&limit=10',
+  searchGameByID(searchEntry: string) : Observable<Game[]> {
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key

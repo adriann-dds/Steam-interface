@@ -3,20 +3,18 @@ export interface Game {
     collection?: number;
     cover?: ICover;
     screenshot? :ICover;
-    created_at?: number;
     esrb?: IESRB;
     genres?: number[];
     id?: number;
     name?: string;
     summary?: string;
-    themes?: number[];
     url?: string;
-    developers?: number;
-    publishers?: number[];
     release_dates?: IReleaseDate;
+    first_release_date?: number;
     rating?: string;
     total_rating?: string;
     platforms?: number;
+    human?: string;
 }
 
 export interface IReleaseDate {
@@ -53,12 +51,4 @@ export enum EESRB {
     "T",
     "M",
     "AO"
-}
-
-export interface ICompany {
-    id: number;
-    name: string;
-    slug: string;
-    url: string;
-    logo?: ICover;
 }
