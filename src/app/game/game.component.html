@@ -10,7 +10,8 @@
   <!--<img *ngIf='(game.cover)' [src]="getGameCover(game)"/>-->
   <div>Game name: {{(game.name)?(game.name):('No Name')}}</div>
   <!-- <div>Game release date: {{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}} </div> -->
-  <div *ngFor = "let date of dates">Game first release date: {{date.human}} </div>
+  <!-- {{getGameInfo(game.id)}} -->
+  <div *ngFor = "let date of dates">Game release date: {{date.human}} </div>
   <div>Game url: {{(game.url)?(game.url):('No url')}}</div>
   <div>Game rating: {{(game.total_rating)?(game.total_rating):('No rating')}}</div>
 </div>

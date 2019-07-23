@@ -58,18 +58,15 @@ export class ApiService {
   }
   //  /games/?fields=*&limit=10&count?&filter[release_dates.date][gt]=688982179000&order=popularity:desc
 
-  //get release date
+  //get release date by game ID
 
   getDate(gameID: number) {
-    console.log('Getting date');
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/'+ gameID +'?fields=release_dates&limit=1', { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
+    return this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*&limit=1',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
     }})
-
-    //return gameID;
   }
 
   //master search method
@@ -102,7 +99,7 @@ export class ApiService {
   //get all info about a game
 
   getGameInfo(gameID: number) {
-    return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*',
+    return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,

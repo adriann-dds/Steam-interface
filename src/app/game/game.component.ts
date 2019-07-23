@@ -31,10 +31,10 @@ export class GameComponent implements OnInit {
       this.games = game_data;
     });
 
-    this.apiService.getDate(1234).subscribe(data => {
-      console.log(data);
-      this.dates = data;
-    });
+    // this.apiService.getDate(18365).subscribe(data => {
+    //   console.log(data);
+    //   this.dates = data;
+    // });
 
     /*
     forkJoin(this.apiService.getGame(), this.apiService.getDate()).subscribe(data => {
@@ -44,12 +44,19 @@ export class GameComponent implements OnInit {
     */
   }
 
-  getGameInfo(gameID: number) {
-    // this.apiService.getDate(gameID).subscribe(data => {
-    //   console.log(data);
-    //   this.dates = data;
-    // });
-  }
+  // getGameInfo(gameID : number) {
+  //   // this.apiService.getDate(gameID).subscribe(data => {
+  //   //   console.log(data);
+  //   //   this.dates = data;
+  //   // });
+  //
+  //   this.apiService.getGameInfo(gameID).subscribe(data => {
+  //     console.log(data);
+  //     this.dates = data;
+  //   });
+  //
+  //   //return (game.human);
+  // }
 
   /*
   getGame() {
