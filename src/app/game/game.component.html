@@ -6,10 +6,11 @@
 
 <div *ngFor = "let game of games">
   <div>ID: {{(game.id)?(game.id):('No ID')}}</div>
-  <img *ngIf='(game.screenshot)' height="100px" [src]="getGameScreenshot(game)"/>
-  <!--<img *ngIf='(game.cover)' height="100px" [src]="getGameCover(game)"/>-->
+  <img *ngIf='(game.screenshot)' [src]="getGameScreenshot(game)"/>
+  <!--<img *ngIf='(game.cover)' [src]="getGameCover(game)"/>-->
   <div>Game name: {{(game.name)?(game.name):('No Name')}}</div>
   <div>Game release date: {{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}} </div>
+  <div>Game first release date: {{getGameInfo(game.id)}} </div>
   <div>Game url: {{(game.url)?(game.url):('No url')}}</div>
   <div>Game rating: {{(game.total_rating)?(game.total_rating):('No rating')}}</div>
 </div>
