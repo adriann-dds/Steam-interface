@@ -13,6 +13,7 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class GameComponent implements OnInit {
   @Input('GamesInput') games: Game[] = [];
+  @Input('GamesInput') dates: Game[] = [];
 
   constructor(private apiService: ApiService) {
     this.getGame()
@@ -30,13 +31,12 @@ export class GameComponent implements OnInit {
       this.games = game_data;
     });
 
-    // this.apiService.getDate().subscribe(data => {
-    //   console.log(data);
-    //   this.games = data;
-    //   //this.games = data;
-    //});
+    this.apiService.getDate(1234).subscribe(data => {
+      console.log(data);
+      this.dates = data;
+    });
 
-/*
+    /*
     forkJoin(this.apiService.getGame(), this.apiService.getDate()).subscribe(data => {
       console.log(data);
       this.games = data;
@@ -47,10 +47,8 @@ export class GameComponent implements OnInit {
   getGameInfo(gameID: number) {
     // this.apiService.getDate(gameID).subscribe(data => {
     //   console.log(data);
-    //   this.games = data;
-    //   //this.games = data;
-    //});
-    return ;
+    //   this.dates = data;
+    // });
   }
 
   /*

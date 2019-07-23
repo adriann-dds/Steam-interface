@@ -12,7 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ApiService {
   apiURL: string = '/api';
-  user_key: string = '420f6b4e0db93ed2d24248bba461132d';
+  user_key: string = 'a2a89757830b0a81529d99471b62201a'; // 420f6b4e0db93ed2d24248bba461132d
   //data: Game = {}
   //@Input('GamesInput') data: Game = {};
 
@@ -56,17 +56,6 @@ export class ApiService {
     return forkJoin([game, data]);
     */
   }
-/*
-  getGames() : Observable<Game[]> {
-    console.log('Getting gamess');
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc', { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
-*/
   //  /games/?fields=*&limit=10&count?&filter[release_dates.date][gt]=688982179000&order=popularity:desc
 
   //get release date

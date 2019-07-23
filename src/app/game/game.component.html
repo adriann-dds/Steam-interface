@@ -9,8 +9,8 @@
   <img *ngIf='(game.screenshot)' [src]="getGameScreenshot(game)"/>
   <!--<img *ngIf='(game.cover)' [src]="getGameCover(game)"/>-->
   <div>Game name: {{(game.name)?(game.name):('No Name')}}</div>
-  <div>Game release date: {{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}} </div>
-  <div>Game first release date: {{getGameInfo(game.id)}} </div>
+  <!-- <div>Game release date: {{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}} </div> -->
+  <div *ngFor = "let date of dates">Game first release date: {{date.human}} </div>
   <div>Game url: {{(game.url)?(game.url):('No url')}}</div>
   <div>Game rating: {{(game.total_rating)?(game.total_rating):('No rating')}}</div>
 </div>
