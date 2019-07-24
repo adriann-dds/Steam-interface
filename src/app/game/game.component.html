@@ -4,13 +4,15 @@
 
 <h2>Actual game list</h2>
 
-<div *ngFor = "let game of games">
+<div *ngFor = "let game of games; let i = index">
   <div>ID: {{(game.id)?(game.id):('No ID')}}</div>
-  <img *ngIf='(game.screenshot)' [src]="getGameScreenshot(game)"/>
-  <!--<img *ngIf='(game.cover)' [src]="getGameCover(game)"/>-->
   <div>Game name: {{(game.name)?(game.name):('No Name')}}</div>
-  <div>Game release date: {{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}} </div>
-  <div>Game first release date: {{getGameInfo(game.id)}} </div>
+  <div *ngFor = "let date of dates; let j = index">
+      <div *ngIf = "i == j">Game release date: {{date.human}}</div>
+  </div>
   <div>Game url: {{(game.url)?(game.url):('No url')}}</div>
   <div>Game rating: {{(game.total_rating)?(game.total_rating):('No rating')}}</div>
+  <div class = "lastElem" *ngFor = "let screen of screens; let h = index">
+      <img *ngIf = "i == h" [src]="screen.url"/>
+  </div>
 </div>
