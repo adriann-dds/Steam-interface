@@ -35,10 +35,6 @@ export class BrowseComponent implements OnInit {
 
     //search entry
 
-    testButton() {
-      console.log(this.games);
-    }
-
     async searchGame(filterBy: string) {
       this.tableEnabled = false;
       this.games.length = 0;

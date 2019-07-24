@@ -9,6 +9,6 @@ div a {
   color: black;
 }
 
-div:last-child {
+.lastElem {
   margin-bottom: 20px;
 }
