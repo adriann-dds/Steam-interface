@@ -1,13 +1,26 @@
 body .container{
   background-color: lightgray;
+}
+
+mat-toolbar {
+  text-align: center;
+  display: block;
+  font-size: 2em;
+  padding-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+mat-toolbar:first-child {
+  font-size: 3em;
+  display: block;
+  text-align: center;
+  padding: 0.5em 0 1.25em 0;
   margin: 0;
 }
 
-h1 {
-  margin-top: 0;
-  padding-top: 25px;
-}
-
-h2 {
+a {
+  font-size: 1em;
+  display: block;
+  margin: 0 auto 1em auto;
   text-align: center;
 }

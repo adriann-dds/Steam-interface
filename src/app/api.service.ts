@@ -13,9 +13,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ApiService {
   apiURL: string = '/api';
   user_key: string = '823ce2ad9697f981568837ab540b9b5b'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
-
+  
   constructor(
-    private httpClient: HttpClient,
+    private httpClient: HttpClient
   ){ }
 
   //connect to multiple API
@@ -46,16 +46,16 @@ export class ApiService {
 
   //connect to API server
 
-  getGame() : Observable<Game[]> {
-    console.log('Getting games');
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
+  // public getGame() : Observable<Game[]> {
+  //   console.log('Getting games');
+  //   let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+  //
+  //   return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
+  //   { headers: {
+  //     "Accept":"application/json",
+  //     "user-key":this.user_key
+  //   }});
+  // }
 
   //master search method
 
@@ -77,21 +77,70 @@ export class ApiService {
   //search game by ID
 
   searchGameByID(searchEntry: string) : Observable<Game[]> {
+    console.log('Getting games by search entry');
+
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    // let headers1 = this.httpClient.get(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?search=' + searchEntry + '?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // let headers3 = this.httpClient.get(this.apiURL + '/screenshots/?search=' + searchEntry + '?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // return forkJoin([headers1, headers2, headers3]);
+
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept":"application/json",
-        "user-key":this.user_key
+        "user-key":this.user_key,
+        'content-type': 'application/x-www-form-urlencoded'
     }})
   }
 
   //get all info about a game
 
   getGameInfo(gameID: number) {
+    console.log('Getting games by search ID');
+
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    // let headers1 = this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // let headers2 = this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // let headers3 = this.httpClient.get(this.apiURL + '/screenshots/'+ gameID +'?fields=*&limit=10',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
+    //
+    // return forkJoin([headers1, headers2, headers3]);
+
     return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,
-        "X-Requested-With":"origin"
+        'content-type': 'application/x-www-form-urlencoded'
     }})
   }
 }

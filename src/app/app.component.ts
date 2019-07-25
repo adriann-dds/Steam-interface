@@ -8,8 +8,11 @@ import { ApiService } from './api.service';
 })
 export class AppComponent {
   title = 'the game list';
+  subtitle = 'Top 10 popular games';
+
+  public getNewText() {
+    this.subtitle = 'Browsed games';
+  }
 
   constructor() {}
-
-
 }
