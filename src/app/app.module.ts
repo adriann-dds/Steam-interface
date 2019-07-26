@@ -15,12 +15,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CallbackComponent } from './callback/callback.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
-    BrowseComponent
+    BrowseComponent,
+    NavbarComponent,
+    CallbackComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatDividerModule,
     MatCardModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatToolbarModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

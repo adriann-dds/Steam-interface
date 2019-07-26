@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <span><a [routerLink]="['']">Home</a>&nbsp;</span>
+      <span class="example-spacer"></span>
+
+      <div>
+        <span><a [routerLink]="['profile']" *ngIf="isAuthenticated">Profile</a></span>
+
+        <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
+        <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>
