@@ -1,0 +1,20 @@
+mat-toolbar {
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+div span a {
+  padding-right: 1em;
+}
+
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
