@@ -1,12 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<body>
-  <div style="text-align:center">
-    <div class = "container">
-      <h1>
-        Welcome to {{ title }}!
-      </h1>
-      <h2>Click the button to get started!</h2>
-    </div>
+<div ng-app="">
+  <div class = "container">
+    <mat-toolbar color="primary">Welcome to {{ title }}!</mat-toolbar>
+    <mat-toolbar color="warn" ng-hide = "showme">{{ subtitle }}</mat-toolbar>
   </div>
-  <router-outlet></router-outlet>
-</body>
+  <div>
+    <a routerLink='../browse' routerLinkActive="active">
+      <button mat-raised-button color="primary" (click) = "getNewText()">Browse</button>
+    </a>
+  </div>
+</div>
+<router-outlet></router-outlet>

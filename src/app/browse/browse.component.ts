@@ -25,7 +25,7 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.getGame().subscribe(data => {
+    await this.apiService.requestMultipleApi().subscribe(data => {
         this.games = data;
         this.gamesMaster = data;
         })

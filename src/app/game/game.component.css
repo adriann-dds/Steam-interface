@@ -1,14 +1,14 @@
-h2, div div {
+mat-card-title,
+div div,
+div mat-card-content {
   text-align: center;
-}
-
-div a {
   display: block;
-  text-align: center;
-  text-decoration: none;
-  color: black;
 }
 
-.lastElem {
-  margin-bottom: 20px;
+mat-card-content {
+  font-size: 1em;
+}
+
+.firstElem {
+  margin-top: 1em;
 }
