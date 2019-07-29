@@ -1,14 +1,48 @@
-mat-card-title,
-div div,
-div mat-card-content {
+h1 {
   text-align: center;
+}
+
+div {
+  width: 30em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  box-shadow: 1em 1em 0.5em grey;
+}
+
+mat-card {
+  background-color: rgb(245, 245, 245);
+}
+
+mat-card-header {
   display: block;
 }
 
+mat-card-header,
 mat-card-content {
   font-size: 1em;
+  text-align: center;
 }
 
-.firstElem {
-  margin-top: 1em;
+img {
+  height: 7em;
+  width: 7em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0.5em 0.5em 0.25em grey;
+}
+
+mat-card-content a {
+  text-decoration: none;
+  color: black;
+}
+
+mat-card-content a:hover {
+  color: darkgrey;
+}
+
+mat-card-content a:active {
+  color: rgb(100, 100, 100);
 }

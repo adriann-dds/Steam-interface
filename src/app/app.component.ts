@@ -10,8 +10,8 @@ export class AppComponent {
   title = 'the game list';
   subtitle = 'Top 10 popular games';
 
-  public getNewText() {
-    this.subtitle = 'Browsed games';
+  public getNewText(newText: string) {
+    this.subtitle = newText;
   }
 
   constructor() {}

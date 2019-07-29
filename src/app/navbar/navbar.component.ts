@@ -11,6 +11,10 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   profile: any;
 
+  public changeText(newText: string) {
+    getNewText(newText);
+  }
+
   public auth0Client: Auth0Client;
 
   //Constructor to inject the Auth0Client class
