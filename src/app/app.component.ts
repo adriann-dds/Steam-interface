@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the game list';
+  title = 'Welcome to the game list';
   subtitle = 'Top 10 popular games';
 
   public getNewText(newText: string) {

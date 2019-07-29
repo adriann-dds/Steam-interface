@@ -46,16 +46,16 @@ export class ApiService {
 
   //connect to API server
 
-  // public getGame() : Observable<Game[]> {
-  //   console.log('Getting games');
-  //   let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
-  //
-  //   return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
-  //   { headers: {
-  //     "Accept":"application/json",
-  //     "user-key":this.user_key
-  //   }});
-  // }
+  getGame() : Observable<Game[]> {
+    console.log('Getting games');
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
+    { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
 
   //master search method
 
@@ -74,7 +74,7 @@ export class ApiService {
     return of(gameList);
   }
 
-  //search game by ID
+  //search game by search entry
 
   searchGameByID(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');

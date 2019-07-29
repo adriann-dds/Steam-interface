@@ -12,7 +12,7 @@ import { Http, Headers, Response } from '@angular/http';
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
-  games: Game[] = []
+  games: Game[] = [];
   gamesMaster: Game[] = [];
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
@@ -25,7 +25,7 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.requestMultipleApi().subscribe(data => {
+    await this.apiService.getGame().subscribe(data => {
         this.games = data;
         this.gamesMaster = data;
         })
@@ -39,7 +39,7 @@ export class BrowseComponent implements OnInit {
       this.tableEnabled = false;
       this.games.length = 0;
 
-      if(filterBy.length > 0) {
+      if(filterBy) {
         this.apiService.searchGames(filterBy).subscribe(data => {
           this.games = data;
         });

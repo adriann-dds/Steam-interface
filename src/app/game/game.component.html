@@ -6,15 +6,18 @@
       <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
       <mat-card-subtitle>ID: {{(game.id)?(game.id):('No ID')}}</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content *ngFor = "let screen of screens; let h = index">
         <img mat-card-image *ngIf = "i == h" [src]="screen.url"/>
     </mat-card-content>
+
     <mat-card-content *ngFor = "let date of dates; let j = index">
         <mat-card-content *ngIf = "i == j">Game release date: {{date.human}}</mat-card-content>
     </mat-card-content>
-    <!-- <mat-card-content>{{(game.url)?(game.url):('No url')}}</mat-card-content> -->
+
     <mat-card-content><a href="{{game.url}}" *ngIf="game.url">{{game.url}}</a></mat-card-content>
     <mat-card-content><a href="" *ngIf="!game.url">No url</a></mat-card-content>
+
     <mat-card-content *ngIf = "game.total_rating">Game rating: {{game.total_rating | number:'2.1-2'}}%</mat-card-content>
     <mat-card-content *ngIf = "!game.total_rating">Game rating: No rating</mat-card-content>
   </mat-card>

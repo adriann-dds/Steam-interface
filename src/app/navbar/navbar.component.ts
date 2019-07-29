@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   profile: any;
 
   public changeText(newText: string) {
-    getNewText(newText);
+    //getNewText(newText);
   }
 
   public auth0Client: Auth0Client;
