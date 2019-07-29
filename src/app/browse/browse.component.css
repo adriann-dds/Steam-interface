@@ -9,13 +9,23 @@ input, button {
   margin-bottom: 1em;
 }
 
-div .searchType {
-  font-size: 0.75em;
-  width: 7em;
-  height: 2em;
-  border-radius: 0.5em;
+div button:hover {
+  background-color: red;
+  color: black;
+}
+
+div button:active {
+  background-color: rgb(200, 0, 0);
 }
 
 div:last-child {
   margin-bottom: 20px;
+}
+
+div input {
+  font-size: 1em;
+}
+
+div input:hover {
+  background-color: rgb(245, 245, 245);
 }

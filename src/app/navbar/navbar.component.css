@@ -1,7 +1,17 @@
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
 mat-toolbar {
   text-align: center;
   display: block;
   margin-bottom: 0.5em;
+}
+
+div span a {
+  padding-right: 1em;
 }
 
 a {
@@ -9,12 +19,23 @@ a {
   color: white;
 }
 
-div span a {
-  padding-right: 1em;
+mat-toolbar-row a:hover {
+  color: darkgrey;
 }
 
-div {
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
+mat-toolbar-row a:active {
+  color: rgb(100, 100, 100);
+}
+
+mat-toolbar-row > span:first-child {
+  margin-right: 1em;
+}
+
+mat-toolbar-row button:hover {
+  background-color: yellow;
+  color: black;
+}
+
+mat-toolbar-row button:active {
+  background-color: rgb(217, 199, 0);
 }

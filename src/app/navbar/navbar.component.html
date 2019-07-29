@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-      <span><a [routerLink]="['']">Home</a>&nbsp;</span>
+      <span><a [routerLink]="['']">Home</a></span>
+      <span><a [routerLink]="['games']" (click)="changeText('Top 10 popular games')">Game list</a></span>
       <span class="example-spacer"></span>
 
       <div>

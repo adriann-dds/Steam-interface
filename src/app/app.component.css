@@ -24,3 +24,12 @@ a {
   margin: 0 auto 1em auto;
   text-align: center;
 }
+
+div button:hover {
+  background-color: red;
+  color: black;
+}
+
+div button:active {
+  background-color: rgb(200, 0, 0);
+}

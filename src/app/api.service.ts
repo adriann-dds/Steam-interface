@@ -103,9 +103,8 @@ export class ApiService {
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        'content-type': 'application/x-www-form-urlencoded'
+        "Accept": "application/json",
+        "user-key": this.user_key
     }})
   }
 
@@ -140,7 +139,6 @@ export class ApiService {
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,
-        'content-type': 'application/x-www-form-urlencoded'
     }})
   }
 }
