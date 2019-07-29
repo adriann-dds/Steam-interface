@@ -39,7 +39,7 @@ export class BrowseComponent implements OnInit {
       this.tableEnabled = false;
       this.games.length = 0;
 
-      if(filterBy) {
+      if(filterBy.length > 0) {
         this.apiService.searchGames(filterBy).subscribe(data => {
           this.games = data;
         });

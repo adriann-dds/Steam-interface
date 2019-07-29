@@ -2,7 +2,21 @@ h1, h2, div div, .searchBox {
   text-align: center;
 }
 
-input, button {
+.sortTypes {
+  width: 12em;
+}
+
+.sortTypes button:first-child {
+  float: left;
+}
+
+.sortTypes button:last-child {
+  float: right;
+}
+
+.sortTypes,
+button,
+input {
   display: block;
   margin-left: auto;
   margin-right: auto;

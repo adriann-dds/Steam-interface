@@ -139,6 +139,7 @@ export class ApiService {
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,
+        "X-Requested-With":"origin"
     }})
   }
 }
