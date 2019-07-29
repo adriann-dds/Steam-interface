@@ -79,7 +79,7 @@ export class ApiService {
   searchGameByID(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');
 
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     // let headers1 = this.httpClient.get(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
     // { headers: {
@@ -113,7 +113,7 @@ export class ApiService {
   getGameInfo(gameID: number) {
     console.log('Getting games by search ID');
 
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     // let headers1 = this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
     // { headers: {
