@@ -18,6 +18,19 @@ export class ApiService {
     private httpClient: HttpClient
   ){ }
 
+  //connect to API server
+
+  getGame() : Observable<Game[]> {
+    console.log('Getting games -> singular API');
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
+    { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
+
   //connect to multiple API
 
   public requestMultipleApi(): Observable<Game[]> {
@@ -44,19 +57,6 @@ export class ApiService {
     return forkJoin([headers1, headers2, headers3]);
   }
 
-  //connect to API server
-
-  getGame() : Observable<Game[]> {
-    console.log('Getting games -> singular API');
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
-
   //master search method
 
   searchGames(searchEntry: string) {
@@ -79,9 +79,9 @@ export class ApiService {
   searchGameByID(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');
 
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*',
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept": "application/json",
         "user-key": this.user_key
@@ -113,7 +113,7 @@ export class ApiService {
   getGameInfo(gameID: number) {
     console.log('Getting games by search ID');
 
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*',
       {headers: {
