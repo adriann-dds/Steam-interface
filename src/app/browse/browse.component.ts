@@ -22,26 +22,20 @@ export class BrowseComponent implements OnInit {
     .subscribe(searchTerm => this.searchGame(searchTerm));
   }
 
-  ngOnInit(){ }
-
   //get game data from API
 
-  // async ngOnInit(){
-  //   console.log('Test2');
-  //   await this.apiService.getGame().subscribe(data => {
-  //       this.games = data;
-  //       this.gamesMaster = data;
-  //       })
-  //
-  //       console.log(this.games);
-  //
-  //   //this.tableEnabled = true;
-  // }
+  async ngOnInit(){
+    await this.apiService.getGame().subscribe(data => {
+        this.games = data;
+        this.gamesMaster = data;
+        })
+
+    this.tableEnabled = true;
+  }
 
     //search entry
 
     async searchGame(filterBy: string) {
-      console.log('Test1');
       this.tableEnabled = false;
       //this.games.length = 0;
 
