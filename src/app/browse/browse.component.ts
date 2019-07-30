@@ -37,7 +37,7 @@ export class BrowseComponent implements OnInit {
 
     async searchGame(filterBy: string) {
       this.tableEnabled = false;
-      //this.games.length = 0;
+      this.games.length = 0;
 
       if(filterBy.length > 0) {
         this.apiService.searchGames(filterBy).subscribe(data => {
@@ -50,7 +50,6 @@ export class BrowseComponent implements OnInit {
       }
 
       this.tableEnabled = true;
-      //return this.games;
     }
 
     sortType: string = 'Name';
