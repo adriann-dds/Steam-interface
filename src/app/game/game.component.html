@@ -7,9 +7,9 @@
       <mat-card-subtitle>ID: {{(game.id)?(game.id):('No ID')}}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content *ngFor = "let screen of screens; let h = index">
+    <!-- <mat-card-content *ngFor = "let screen of screens; let h = index">
         <img mat-card-image *ngIf = "i == h" [src]="screen.url"/>
-    </mat-card-content>
+    </mat-card-content> -->
 
     <mat-card-content *ngFor = "let date of dates; let j = index">
         <mat-card-content *ngIf = "i == j">Game release date: {{date.human}}</mat-card-content>

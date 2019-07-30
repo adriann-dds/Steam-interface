@@ -12,31 +12,31 @@ import { Http, Headers, Response } from '@angular/http';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  @Input('GamesInput') games: Game;
+  @Input('GamesInput') games: Game[] = [];
   @Input('GamesInput') dates: Game;
   @Input('GamesInput') screens: Game;
 
   constructor(private apiService: ApiService) {
     this.getGame()
   }
-
+  //field
   ngOnInit(){ }
 
   //get game data from API
 
-  getGame() {
-    this.apiService.requestMultipleApi().subscribe(game_data => {
-      console.log(game_data);
-      this.games = game_data[0];
-      this.dates = game_data[1];
-      this.screens = game_data[2];
-    });
-  }
-
   // getGame() {
-  //   this.apiService.getGame().subscribe(game_data => {
+  //   this.apiService.requestMultipleApi().subscribe(game_data => {
   //     console.log(game_data);
-  //     this.games = game_data;
+  //     this.games = game_data[0];
+  //     this.dates = game_data[1];
+  //     this.screens = game_data[2];
   //   });
   // }
+
+  getGame() {
+    this.apiService.getGame().subscribe(game_data => {
+      console.log(game_data);
+      this.games = game_data;
+    });
+  }
 }

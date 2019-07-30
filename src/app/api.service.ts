@@ -21,7 +21,7 @@ export class ApiService {
   //connect to multiple API
 
   public requestMultipleApi(): Observable<Game[]> {
-    console.log('Getting games');
+    console.log('Getting games -> multiple API');
 
     let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
     { headers: {
@@ -47,7 +47,7 @@ export class ApiService {
   //connect to API server
 
   getGame() : Observable<Game[]> {
-    console.log('Getting games');
+    console.log('Getting games -> singular API');
     let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
@@ -79,7 +79,13 @@ export class ApiService {
   searchGameByID(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');
 
-    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*',
+      {headers: {
+        "Accept": "application/json",
+        "user-key": this.user_key
+    }})
 
     // let headers1 = this.httpClient.get(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
     // { headers: {
@@ -100,12 +106,6 @@ export class ApiService {
     // }});
     //
     // return forkJoin([headers1, headers2, headers3]);
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
-      {headers: {
-        "Accept": "application/json",
-        "user-key": this.user_key
-    }})
   }
 
   //get all info about a game
@@ -113,7 +113,14 @@ export class ApiService {
   getGameInfo(gameID: number) {
     console.log('Getting games by search ID');
 
-    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
+
+    return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
 
     // let headers1 = this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
     // { headers: {
@@ -134,12 +141,5 @@ export class ApiService {
     // }});
     //
     // return forkJoin([headers1, headers2, headers3]);
-
-    return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
   }
 }

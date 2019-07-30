@@ -19,25 +19,31 @@ export class BrowseComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
-    .subscribe(searchTerm => this.searchGame(searchTerm))
+    .subscribe(searchTerm => this.searchGame(searchTerm));
   }
+
+  ngOnInit(){ }
 
   //get game data from API
 
-  async ngOnInit(){
-    await this.apiService.getGame().subscribe(data => {
-        this.games = data;
-        this.gamesMaster = data;
-        })
-
-    this.tableEnabled = true;
-  }
+  // async ngOnInit(){
+  //   console.log('Test2');
+  //   await this.apiService.getGame().subscribe(data => {
+  //       this.games = data;
+  //       this.gamesMaster = data;
+  //       })
+  //
+  //       console.log(this.games);
+  //
+  //   //this.tableEnabled = true;
+  // }
 
     //search entry
 
     async searchGame(filterBy: string) {
+      console.log('Test1');
       this.tableEnabled = false;
-      this.games.length = 0;
+      //this.games.length = 0;
 
       if(filterBy.length > 0) {
         this.apiService.searchGames(filterBy).subscribe(data => {
@@ -50,6 +56,7 @@ export class BrowseComponent implements OnInit {
       }
 
       this.tableEnabled = true;
+      //return this.games;
     }
 
     sortType: string = 'Name';
