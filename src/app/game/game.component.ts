@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
   constructor(private apiService: ApiService) {
     this.getGame()
   }
-
+  //field
   ngOnInit(){ }
 
   //get game data from API
@@ -31,5 +31,16 @@ export class GameComponent implements OnInit {
       this.dates = game_data[1];
       this.screens = game_data[2];
     });
+  }
+
+  // getGame() {
+  //   this.apiService.getGame().subscribe(game_data => {
+  //     console.log(game_data);
+  //     this.games = game_data;
+  //   });
+  // }
+
+  getUrl(screen: Game) {
+    return (screen.url);
   }
 }

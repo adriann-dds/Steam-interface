@@ -1,14 +1,19 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="mat-elevation-z6">
   <mat-toolbar-row>
-      <span><a [routerLink]="['']">Home</a></span>
-      <span><a [routerLink]="['games']" (click)="changeText('Top 10 popular games')">Game list</a></span>
-      <span class="example-spacer"></span>
+    <span>
+      <mat-icon>videogame_asset</mat-icon>
+    </span>
+    <span><a [routerLink]="['']">Home</a></span>
+    <span><a [routerLink]="['games']">Game list</a></span>
+    <span><a [routerLink]="['browse']">Browse</a></span>
+    <span class="example-spacer"></span>
 
-      <div>
-        <span><a [routerLink]="['profile']" *ngIf="isAuthenticated">Profile</a></span>
+    <div>
+      <!-- <span><a [routerLink]="['profile']" *ngIf="isAuthenticated">Profile</a></span> -->
+      <span><a [routerLink]="['profile']" *ngIf="isAuthenticated"><img src="{{profile?.picture}}"></a></span>
 
-        <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
-        <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
-      </div>
+      <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
+      <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

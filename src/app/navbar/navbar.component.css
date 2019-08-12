@@ -1,3 +1,13 @@
+.mat-elevation-z6 {
+  position: fixed;
+  margin: 0;
+}
+
+mat-toolbar-row {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 div {
   display: block;
   margin-left: auto;
@@ -10,8 +20,11 @@ mat-toolbar {
   margin-bottom: 0.5em;
 }
 
-div span a {
-  padding-right: 1em;
+div span a img {
+  margin-right: 1em;
+  height: 2em;
+  margin-bottom: -0.75em;
+  border-radius: 50%;
 }
 
 a {
@@ -27,8 +40,12 @@ mat-toolbar-row a:active {
   color: rgb(100, 100, 100);
 }
 
-mat-toolbar-row > span:first-child {
+mat-toolbar-row > span {
   margin-right: 1em;
+}
+
+mat-toolbar-row > span:last-child {
+  margin-right: 0;
 }
 
 mat-toolbar-row button:hover {

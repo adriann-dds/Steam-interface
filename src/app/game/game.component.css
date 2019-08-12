@@ -1,42 +1,73 @@
-h1 {
-  text-align: center;
+div,
+img {
+  display: block;
+
+  margin-right: auto;
+  margin-left: auto;
 }
 
 div {
-  width: 30em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 99.4em;
   margin-bottom: 2em;
-  box-shadow: 1em 1em 0.5em grey;
+}
+
+div div {
+  display: inline-block;
+
+  width: 30em;
+  margin-right: 3em;
+
+  border: 1px solid rgb(60, 60, 60);
 }
 
 mat-card {
-  background-color: rgb(245, 245, 245);
+  position: inherit;
+
+  border-radius: 0;
 }
 
 mat-card-header {
   display: block;
+
+  margin-bottom: 1.5em;
 }
 
-mat-card-header,
-mat-card-content {
+mat-card-content,
+mat-card-header {
   font-size: 1em;
+
   text-align: center;
 }
 
 img {
-  height: 7em;
   width: 7em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0.5em 0.5em 0.25em grey;
+  height: 7em;
+
+  box-shadow: 0.5em 0.5em 0.25em rgb(45, 45, 45);
+}
+
+span {
+  display: inline-block;
+
+  width: 100%;
+}
+
+span mat-card-content {
+  display: inline;
+
+  margin-right: 1em;
+}
+
+span mat-progress-bar {
+  display: inline-block;
+
+  width: 80%;
 }
 
 mat-card-content a {
   text-decoration: none;
-  color: black;
+
+  color: white;
 }
 
 mat-card-content a:hover {

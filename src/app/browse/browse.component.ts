@@ -19,7 +19,7 @@ export class BrowseComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
-    .subscribe(searchTerm => this.searchGame(searchTerm))
+    .subscribe(searchTerm => this.searchGame(searchTerm));
   }
 
   //get game data from API
@@ -39,7 +39,7 @@ export class BrowseComponent implements OnInit {
       this.tableEnabled = false;
       this.games.length = 0;
 
-      if(filterBy) {
+      if(filterBy.length > 0) {
         this.apiService.searchGames(filterBy).subscribe(data => {
           this.games = data;
         });
