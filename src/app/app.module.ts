@@ -18,6 +18,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { ProfileComponent } from './profile/profile.component';
     MatCardModule,
     MatToolbarModule,
     MatChipsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
