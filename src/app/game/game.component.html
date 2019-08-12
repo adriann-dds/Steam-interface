@@ -3,6 +3,7 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
+        <mat-card-subtitle>{{i + 1}}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content *ngFor="let screen of screens; let h = index">

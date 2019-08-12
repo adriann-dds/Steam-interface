@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { AuthService } from 'src/app/auth.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+// import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +21,16 @@ export class NavbarComponent implements OnInit {
 
   //Constructor to inject the Auth0Client class
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,
+  public dialog: MatDialog) { }
+
+  //Open profile details
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogProfileOpen, {
+      width: '35em'
+    });
+  }
 
   //Initialisation component
 
@@ -55,4 +66,15 @@ export class NavbarComponent implements OnInit {
       returnTo: window.location.origin
     });
   }
+}
+
+@Component({
+  templateUrl: '../profile/profile.component.html',
+})
+export class DialogProfileOpen {
+  constructor(public dialogRef: MatDialogRef<DialogProfileOpen>) {}
+
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
 }

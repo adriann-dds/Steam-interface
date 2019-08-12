@@ -9,8 +9,7 @@
     <span class="example-spacer"></span>
 
     <div>
-      <!-- <span><a [routerLink]="['profile']" *ngIf="isAuthenticated">Profile</a></span> -->
-      <span><a [routerLink]="['profile']" *ngIf="isAuthenticated"><img src="{{profile?.picture}}"></a></span>
+      <span><a *ngIf="isAuthenticated" (click)="openDialog()"><img src="{{profile?.picture}}"></a></span>
 
       <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
       <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>

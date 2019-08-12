@@ -21,15 +21,22 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FooterComponent } from './footer/footer.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DialogProfileOpen } from './navbar/navbar.component';
 
 @NgModule({
+  entryComponents: [DialogProfileOpen],
   declarations: [
     AppComponent,
     GameComponent,
     BrowseComponent,
     NavbarComponent,
     CallbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    FooterComponent,
+    DialogProfileOpen
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatToolbarModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule,
+    MatDatepickerModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
