@@ -13,10 +13,6 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   profile: any;
 
-  public changeText(newText: string) {
-    //getNewText(newText);
-  }
-
   public auth0Client: Auth0Client;
 
   //Constructor to inject the Auth0Client class
@@ -27,15 +23,13 @@ export class NavbarComponent implements OnInit {
   //Open profile details
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogProfileOpen, {
-      width: '35em'
-    });
+    const dialogRef = this.dialog.open(DialogProfileOpen);
   }
 
   //Initialisation component
 
   async ngOnInit() {
-    //Get instane of the Auth0 client\
+    //Get instane of the Auth0 client
 
     this.auth0Client = await this.authService.getAuth0Client();
 
@@ -70,11 +64,15 @@ export class NavbarComponent implements OnInit {
 
 @Component({
   templateUrl: '../profile/profile.component.html',
+   styleUrls: ['../profile/profile.component.css']
 })
 export class DialogProfileOpen {
-  constructor(public dialogRef: MatDialogRef<DialogProfileOpen>) {}
+  profile: any;
 
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  constructor(public dialogRef: MatDialogRef<DialogProfileOpen>,
+  public authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.profile.subscribe(profile =>(this.profile = profile));
+  }
 }

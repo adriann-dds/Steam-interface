@@ -1,6 +1,14 @@
 .mat-elevation-z6 {
   position: fixed;
   margin: 0;
+  z-index: 2;
+}
+
+span mat-icon {
+  vertical-align: middle;
+  font-size: 2em;
+  height: 1em;
+  width: 1em;
 }
 
 mat-toolbar-row {
@@ -25,11 +33,18 @@ div span a img {
   height: 2em;
   margin-bottom: -0.75em;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 66.4em) {
+  mat-toolbar-row > span a {
+    display: none;
+  }
 }
 
 mat-toolbar-row a:hover {

@@ -1,21 +1,32 @@
-<div>
+<div class="container">
   <div *ngFor="let game of games; let i = index">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
-        <mat-card-subtitle>{{i + 1}}</mat-card-subtitle>
+        <button mat-mini-fab>{{i + 1}}</button>
+        <div>
+          <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
+        </div>
       </mat-card-header>
 
-      <mat-card-content *ngFor="let screen of screens; let h = index">
-        <img mat-card-image *ngIf="i == h" [src]="getUrl(screen)" />
-      </mat-card-content>
+      <mat-grid-list cols="4" rowHeight="1.5:1">
+        <mat-grid-tile rowspan="2">
+          <mat-card-content *ngFor="let screen of screens; let h = index">
+            <img mat-card-image *ngIf="i == h" [src]="getUrl(screen)" />
+          </mat-card-content>
+        </mat-grid-tile>
 
-      <mat-card-content *ngFor="let date of dates; let j = index">
-        <mat-card-content *ngIf="i == j">Game release date: {{date.human}}</mat-card-content>
-      </mat-card-content>
+        <mat-grid-tile colspan="3">
+          <!-- <mat-card-content>{{game.summary}}</mat-card-content> -->
+          <mat-card-content *ngFor="let date of dates; let j = index">
+            <mat-card-content *ngIf="i == j">{{date.human | slice:0:4}}</mat-card-content>
+          </mat-card-content>
+        </mat-grid-tile>
 
-      <mat-card-content><a href="{{game.url}}" *ngIf="game.url">{{game.url}}</a></mat-card-content>
-      <mat-card-content><a href="" *ngIf="!game.url">No url</a></mat-card-content>
+        <mat-grid-tile colspan="3">
+          <mat-card-content><a href="{{game.url}}" *ngIf="game.url">Game URL</a></mat-card-content>
+          <mat-card-content><a href="" *ngIf="!game.url">No url</a></mat-card-content>
+        </mat-grid-tile>
+      </mat-grid-list>
 
       <span>
         <mat-card-content *ngIf="game.total_rating">{{game.total_rating | number:'2.1-2'}}%</mat-card-content>

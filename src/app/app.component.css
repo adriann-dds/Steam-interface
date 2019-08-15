@@ -3,10 +3,9 @@
 }
 
 mat-toolbar {
-  font-size: 3em;
+  font-size: 2em;
   display: block;
-  text-align: center;
-  padding: 1.75em 0 1.25em 0;
+  padding: 3em 0 2em 0.5em;
 }
 
 a {
@@ -23,4 +22,12 @@ div button:hover {
 
 div button:active {
   background-color: rgb(200, 0, 0);
+}
+
+@media (max-width: 66.4em) {
+  mat-toolbar {
+    font-size: 1.5em;
+    padding: 3em 0 2em 0.5em;
+    text-align: center;
+  }
 }
