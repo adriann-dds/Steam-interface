@@ -1,6 +1,36 @@
 .mat-elevation-z6 {
   position: fixed;
   margin: 0;
+  z-index: 2;
+}
+
+.displNone {
+  display: none;
+}
+
+.profileInfo {
+  width: 20em;
+  height: 5em;
+}
+
+mat-card-content {
+  margin: 0;
+  display: block;
+  margin-right: auto;
+  margin-left: 0.5em;
+}
+
+img {
+  width: 4em;
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
+span mat-icon {
+  vertical-align: middle;
+  font-size: 2em;
+  height: 1em;
+  width: 1em;
 }
 
 mat-toolbar-row {
@@ -18,13 +48,6 @@ mat-toolbar {
   text-align: center;
   display: block;
   margin-bottom: 0.5em;
-}
-
-div span a img {
-  margin-right: 1em;
-  height: 2em;
-  margin-bottom: -0.75em;
-  border-radius: 50%;
 }
 
 a {
@@ -49,10 +72,5 @@ mat-toolbar-row > span:last-child {
 }
 
 mat-toolbar-row button:hover {
-  background-color: yellow;
   color: black;
-}
-
-mat-toolbar-row button:active {
-  background-color: rgb(217, 199, 0);
 }

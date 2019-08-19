@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { AuthService } from 'src/app/auth.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+// import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,20 +13,23 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   profile: any;
 
-  public changeText(newText: string) {
-    //getNewText(newText);
-  }
-
   public auth0Client: Auth0Client;
 
   //Constructor to inject the Auth0Client class
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,
+  public dialog: MatDialog) { }
+
+  //Open profile details
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogProfileOpen);
+  }
 
   //Initialisation component
 
   async ngOnInit() {
-    //Get instane of the Auth0 client\
+    //Get instane of the Auth0 client
 
     this.auth0Client = await this.authService.getAuth0Client();
 
@@ -54,5 +59,20 @@ export class NavbarComponent implements OnInit {
       client_id: this.authService.config.client_id,
       returnTo: window.location.origin
     });
+  }
+}
+
+@Component({
+  templateUrl: '../profile/profile.component.html',
+   styleUrls: ['../profile/profile.component.css']
+})
+export class DialogProfileOpen {
+  profile: any;
+
+  constructor(public dialogRef: MatDialogRef<DialogProfileOpen>,
+  public authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.profile.subscribe(profile =>(this.profile = profile));
   }
 }

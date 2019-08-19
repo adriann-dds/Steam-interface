@@ -1,0 +1,14 @@
+.mat-elevation-z6 {
+  position: fixed;
+  margin: 0;
+  bottom: 0;
+  z-index: 2 !important;
+}
+
+span {
+  font-size: 0.75em;
+  display: block;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}

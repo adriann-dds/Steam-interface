@@ -1,72 +1,141 @@
-div,
-img {
-  display: block;
-
-  margin-right: auto;
-  margin-left: auto;
+.container {
+  margin-bottom: 4em;
 }
 
 div {
-  width: 99.4em;
-  margin-bottom: 2em;
+  text-align: center;
+  display: block;
+  width: 150.5em;
+
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 1;
 }
 
-div div {
-  display: inline-block;
+@media (max-width: 132.6em) {
+  div {
+    width: 90.2em;
+  }
+}
 
-  width: 30em;
-  margin-right: 3em;
+@media (max-width: 100em) {
+  div {
+    width: 60em;
+  }
+}
+
+@media (max-width: 60em) {
+  div {
+    width: 17em !important;
+  }
+
+  mat-card {
+    height: 13em !important;
+  }
+
+  div > div {
+    margin-right: 0 !important;
+  }
+
+  mat-card-header mat-card-title {
+    font-size: 1em !important;
+    text-align: center !important;
+  }
+
+  mat-card-content {
+    font-size: 16px !important;
+    margin: 0 !important;
+  }
+
+  mat-card .summary {
+    text-align: center !important;
+    font-size: 0.75em !important;
+  }
+
+  mat-card mat-chip {
+    font-size: 0.75em;
+    width: 7em !important;
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+div > div {
+  display: inline-flex;
+
+  width: 27.4em;
+  margin-right: 2em;
+  margin-bottom: 2em;
 
   border: 1px solid rgb(60, 60, 60);
 }
 
 mat-card {
   position: inherit;
+  width: 100%;
+  height: 16em;
+  background-color: rgb(66, 66, 66);
 
   border-radius: 0;
 }
 
 mat-card-header {
+  margin-left: 0;
   display: block;
-
-  margin-bottom: 1.5em;
+  margin-bottom: 0.75em;
 }
 
-mat-card-content,
-mat-card-header {
-  font-size: 1em;
-
-  text-align: center;
-}
-
-img {
-  width: 7em;
-  height: 7em;
-
-  box-shadow: 0.5em 0.5em 0.25em rgb(45, 45, 45);
-}
-
-span {
-  display: inline-block;
-
+mat-card-header mat-card-title {
+  text-align: left;
   width: 100%;
 }
 
-span mat-card-content {
-  display: inline;
-
-  margin-right: 1em;
+mat-card-header > div {
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-span mat-progress-bar {
-  display: inline-block;
+mat-card-content {
+  font-size: 1em;
+  margin-bottom: 0;
 
-  width: 80%;
+  text-align: left;
+}
+
+span {
+  font-size: 2em;
+  text-align: left;
+}
+
+mat-card-title {
+  margin: 0 !important;
+}
+
+mat-chip-list mat-chip {
+  width: 6em;
+  text-align: center;
+  display: block;
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+mat-card .summary {
+  text-align: left;
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  display: flex;
+}
+
+mat-card-content button {
+  margin-left: 0.5em;
 }
 
 mat-card-content a {
+  font-size: 1.5em;
   text-decoration: none;
-
+  /* margin-left: 0.5em; */
   color: white;
 }
 

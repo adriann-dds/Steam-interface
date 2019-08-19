@@ -24,7 +24,7 @@ export class ApiService {
     console.log('Getting games -> singular API');
     let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
@@ -36,25 +36,25 @@ export class ApiService {
   public requestMultipleApi(): Observable<Game[]> {
     console.log('Getting games -> multiple API');
 
-    let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=popularity:desc',
+    let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
     }});
 
-    let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?fields=*&limit=10&order=popularity:desc',
+    let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?fields=*&limit=10&order=rating:asc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
     }});
 
-    let headers3 = this.httpClient.get(this.apiURL + '/screenshots/?fields=*&limit=10&order=popularity:desc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
+    // let headers3 = this.httpClient.get(this.apiURL + '/covers/?fields=*&limit=10&order=popularity:desc',
+    // { headers: {
+    //   "Accept":"application/json",
+    //   "user-key":this.user_key
+    // }});
 
-    return forkJoin([headers1, headers2, headers3]);
+    return forkJoin([headers1, headers2]);
   }
 
   //master search method
