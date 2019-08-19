@@ -8,8 +8,20 @@
   display: none;
 }
 
+.profileInfo {
+  width: 20em;
+  height: 5em;
+}
+
+mat-card-content {
+  margin: 0;
+  display: block;
+  margin-right: auto;
+  margin-left: 0.5em;
+}
+
 img {
-  width: 3em;
+  width: 4em;
   margin: 0 !important;
   vertical-align: middle;
 }
@@ -36,14 +48,6 @@ mat-toolbar {
   text-align: center;
   display: block;
   margin-bottom: 0.5em;
-}
-
-div span a img {
-  margin-right: 1em;
-  height: 2em;
-  margin-bottom: -0.75em;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 a {

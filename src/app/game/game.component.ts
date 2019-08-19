@@ -37,7 +37,7 @@ export class GameComponent implements OnInit {
       console.log(game_data);
       this.games = game_data[0];
       this.dates = game_data[1];
-      this.screens = game_data[2];
+      // this.screens = game_data[2];
     });
   }
 
