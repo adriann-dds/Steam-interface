@@ -1,11 +1,11 @@
 .container {
-  text-align: center;
   margin-bottom: 4em;
 }
 
 div {
+  text-align: center;
   display: block;
-  width: 132.5em;
+  width: 150.5em;
 
   margin-right: auto;
   margin-left: auto;
@@ -14,39 +14,63 @@ div {
 
 @media (max-width: 132.6em) {
   div {
-    width: 99.4em;
+    width: 90.2em;
   }
 }
 
 @media (max-width: 100em) {
   div {
-    width: 66.3em;
+    width: 60em;
   }
 }
 
-@media (max-width: 66.4em) {
+@media (max-width: 60em) {
   div {
-    width: 20.1em !important;
+    width: 17em !important;
+  }
+
+  mat-card {
+    height: 10em !important;
   }
 
   div > div {
     margin-right: 0 !important;
   }
 
+  mat-grid-list:nth-child(2) {
+    margin-bottom: 0.75em;
+  }
+
   mat-grid-list mat-grid-tile:not(:first-child) {
     font-size: 1.5em !important;
   }
 
+  mat-card-header button {
+    font-size: 0.5em !important;
+    width: 2em;
+    height: 2em;
+  }
+
   mat-card-header mat-card-title {
-    font-size: 1em;
+    font-size: 0.5em;
+  }
+
+  mat-card-content {
+    font-size: 16px !important;
+    margin: 0 !important;
+  }
+
+  mat-card .summary {
+    font-size: 0.5em !important;
+    margin-left: 1.5em !important;
   }
 }
 
 div > div {
   display: inline-block;
 
-  width: 30em;
-  margin-right: 3em;
+  width: 27em;
+  margin-right: 2em;
   margin-bottom: 2em;
 
   border: 1px solid rgb(60, 60, 60);
@@ -54,12 +78,21 @@ div > div {
 
 mat-card {
   position: inherit;
+  height: 15em;
+  background-color: rgb(66, 66, 66);
 
   border-radius: 0;
 }
 
 mat-card-header {
   margin-bottom: 1.5em;
+  display: block;
+  margin-bottom: 0.75em;
+}
+
+mat-card-header mat-card-title {
+  text-align: left;
+  width: 100%;
 }
 
 mat-card-header > div {
@@ -70,6 +103,7 @@ mat-card-header > div {
 
 mat-card-content {
   font-size: 1em;
+  margin-bottom: 0;
 
   text-align: center;
 }
@@ -81,16 +115,17 @@ img {
   box-shadow: 0.5em 0.5em 0.25em rgb(45, 45, 45);
 }
 
+mat-card mat-grid-list:last-child mat-grid-tile {
+  font-size: 24px;
+}
+
+mat-card mat-grid-list:last-child mat-grid-tile mat-card-content {
+  margin: 0;
+}
+
 mat-grid-list mat-grid-tile:not(:first-child) {
   font-size: 2em;
   margin-left: -0.5em;
-}
-
-mat-card-hearer,
-span {
-  display: inline-block;
-
-  width: 100%;
 }
 
 span mat-card-content {
@@ -100,7 +135,7 @@ span mat-card-content {
 }
 
 mat-card-header button {
-  font-size: 1.5em;
+  font-size: 1em;
   margin-right: 1em;
   background-color: #ac0800;
 }
@@ -109,10 +144,17 @@ mat-card-title {
   margin: 0 !important;
 }
 
-span mat-progress-bar {
-  display: inline-block;
+mat-chip-list mat-chip {
+  width: 6em;
+  text-align: center;
+  display: block;
+  margin-left: 2em;
+}
 
-  width: 80%;
+mat-card .summary {
+  text-align: left;
+  font-size: 0.5em;
+  margin-left: 1.5em;
 }
 
 mat-card-content a {

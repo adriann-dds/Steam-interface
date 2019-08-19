@@ -3,16 +3,30 @@
     <span>
       <mat-icon>videogame_asset</mat-icon>
     </span>
-    <span><a [routerLink]="['']">Home</a></span>
-    <span><a [routerLink]="['games']">Game list</a></span>
-    <span><a [routerLink]="['browse']">Browse</a></span>
+    <!-- <span><a [routerLink]="['']">Home</a></span> -->
+    <span><a [routerLink]="['games']">Home</a></span>
+    <!-- <span><a [routerLink]="['browse']">Browse</a></span> -->
     <span class="example-spacer"></span>
 
     <div>
-      <span><a *ngIf="isAuthenticated" (click)="openDialog()"><img src="{{profile?.picture}}"></a></span>
-
-      <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
-      <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [ngClass]="!isAuthenticated ? 'displNone': ''">
+          <mat-card-content>{{profile?.nickname}}</mat-card-content>
+        </button>
+        <button mat-menu-item [ngClass]="!isAuthenticated ? 'displNone': ''">
+          <mat-card-content>{{profile?.name}}</mat-card-content>
+        </button>
+        <button mat-menu-item [ngClass]="!isAuthenticated ? 'displNone': ''">
+          <img mat-card-image src="{{profile?.picture}}">
+        </button>
+        <button mat-menu-item disabled>
+          <button mat-raised-button color="warn" (click)="login()" *ngIf="!isAuthenticated">Log In</button>
+          <button mat-raised-button color="warn" (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

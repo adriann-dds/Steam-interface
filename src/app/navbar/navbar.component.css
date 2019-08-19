@@ -4,6 +4,16 @@
   z-index: 2;
 }
 
+.displNone {
+  display: none;
+}
+
+img {
+  width: 3em;
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
 span mat-icon {
   vertical-align: middle;
   font-size: 2em;
@@ -41,12 +51,6 @@ a {
   color: white;
 }
 
-@media (max-width: 66.4em) {
-  mat-toolbar-row > span a {
-    display: none;
-  }
-}
-
 mat-toolbar-row a:hover {
   color: darkgrey;
 }
@@ -64,10 +68,5 @@ mat-toolbar-row > span:last-child {
 }
 
 mat-toolbar-row button:hover {
-  background-color: yellow;
   color: black;
-}
-
-mat-toolbar-row button:active {
-  background-color: rgb(217, 199, 0);
 }

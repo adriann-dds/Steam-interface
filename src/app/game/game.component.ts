@@ -15,13 +15,21 @@ export class GameComponent implements OnInit {
   @Input('GamesInput') games: Game;
   @Input('GamesInput') dates: Game;
   @Input('GamesInput') screens: Game;
+  breakpoint: number;
+  cols: number;
 
   constructor(private apiService: ApiService) {
     this.getGame()
   }
   //field
-  ngOnInit(){ }
+  ngOnInit(){
+    this.breakpoint = (window.innerWidth <= 960) ? 1 : 4;
+  }
 
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 960) ? 1 : 4;
+    this.cols = (event.target.innerWidth <= 960) ? 1 : 3;
+  }
   //get game data from API
 
   getGame() {

@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogProfileOpen } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   entryComponents: [DialogProfileOpen],
@@ -59,7 +60,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatProgressBarModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

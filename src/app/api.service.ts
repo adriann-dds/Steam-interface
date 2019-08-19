@@ -48,7 +48,7 @@ export class ApiService {
       "user-key":this.user_key
     }});
 
-    let headers3 = this.httpClient.get(this.apiURL + '/screenshots/?fields=*&limit=10&order=popularity:desc',
+    let headers3 = this.httpClient.get(this.apiURL + '/covers/?fields=*&limit=10&order=popularity:desc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key

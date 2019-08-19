@@ -2,41 +2,48 @@
   <div *ngFor="let game of games; let i = index">
     <mat-card>
       <mat-card-header>
-        <button mat-mini-fab>{{i + 1}}</button>
-        <div>
-          <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
-        </div>
-      </mat-card-header>
+        <mat-grid-list cols="5" rowHeight="1.5:1">
+          <mat-grid-tile colspan="1">
+            <button mat-mini-fab color="warn">{{i + 1}}</button>
+          </mat-grid-tile>
 
+          <mat-grid-tile colspan="4">
+            <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-header>
+      <!-- <mat-grid-list [cols]="breakpoint" rowHeight="1.5:1" (window:resize)="onResize($event)"> -->
       <mat-grid-list cols="4" rowHeight="1.5:1">
-        <mat-grid-tile rowspan="2">
+        <mat-grid-tile rowspan="2" colspan="1">
           <mat-card-content *ngFor="let screen of screens; let h = index">
             <img mat-card-image *ngIf="i == h" [src]="getUrl(screen)" />
           </mat-card-content>
         </mat-grid-tile>
 
-        <mat-grid-tile colspan="3">
-          <!-- <mat-card-content>{{game.summary}}</mat-card-content> -->
+        <mat-grid-tile rowspan="2" colspan="3">
+          <mat-card-content class="summary">{{game.summary | slice:0:190}}...</mat-card-content>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile colspan="1">
+          <mat-card-content><a href="{{game.url}}" *ngIf="game.url">Details</a></mat-card-content>
+          <mat-card-content><a href="" *ngIf="!game.url">No url</a></mat-card-content>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2">
+          <mat-chip-list>
+            <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.total_rating | number:'2.1-2'}}%</mat-chip>
+            <mat-chip *ngIf="!game.total_rating" color="warn" selected>No rating</mat-chip>
+          </mat-chip-list>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
           <mat-card-content *ngFor="let date of dates; let j = index">
             <mat-card-content *ngIf="i == j">{{date.human | slice:0:4}}</mat-card-content>
           </mat-card-content>
         </mat-grid-tile>
-
-        <mat-grid-tile colspan="3">
-          <mat-card-content><a href="{{game.url}}" *ngIf="game.url">Game URL</a></mat-card-content>
-          <mat-card-content><a href="" *ngIf="!game.url">No url</a></mat-card-content>
-        </mat-grid-tile>
       </mat-grid-list>
-
-      <span>
-        <mat-card-content *ngIf="game.total_rating">{{game.total_rating | number:'2.1-2'}}%</mat-card-content>
-        <mat-card-content *ngIf="!game.total_rating">No rating</mat-card-content>
-
-        <mat-progress-bar *ngIf="game.total_rating" [value]="game.total_rating">
-        </mat-progress-bar>
-        <mat-progress-bar *ngIf="!game.total_rating" [value]="0">
-        </mat-progress-bar>
-      </span>
     </mat-card>
   </div>
 </div>
