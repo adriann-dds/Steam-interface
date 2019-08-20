@@ -25,10 +25,9 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.getGame().subscribe(data => {
+    await this.apiService.requestMultipleApi().subscribe(data => {
         this.games = data;
         this.gamesMaster = data;
-        console.log(this.games, "OnInit");
         })
 
     this.tableEnabled = true;
@@ -50,7 +49,6 @@ export class BrowseComponent implements OnInit {
         this.games = this.gamesMaster;
       }
 
-      console.log(this.games, "searchGame");
       this.tableEnabled = true;
     }
 

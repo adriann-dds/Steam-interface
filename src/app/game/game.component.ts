@@ -12,8 +12,8 @@ import { Http, Headers, Response } from '@angular/http';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  @Input('GamesInput') games: Game[] = [];
-  @Input('DatesInput') dates: Game[] = [];
+  @Input('GamesInput') games: Game;
+  @Input('DatesInput') dates: Game;
 
   showSpinner: boolean = true;
 
@@ -30,18 +30,9 @@ export class GameComponent implements OnInit {
       console.log(game_data);
       this.games = game_data[0];
       this.dates = game_data[1];
-      // this.screens = game_data[2];
       this.showSpinner = false;
     });
   }
-
-  // getGame() {
-  //   this.apiService.getGame().subscribe(game_data => {
-  //     console.log(game_data, "getGame");
-  //     this.games = game_data;
-  //     this.showSpinner = false;
-  //   });
-  // }
 
   getUrl(screen: Game) {
     return (screen.url);
