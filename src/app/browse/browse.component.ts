@@ -31,7 +31,7 @@ export class BrowseComponent implements OnInit {
         console.log(this.games, "OnInit");
         })
 
-    this.tableEnabled = false;
+    this.tableEnabled = true;
   }
 
     //search entry
@@ -81,8 +81,9 @@ export class BrowseComponent implements OnInit {
 
     sortByDate(): void {
       this.games.sort((object1: Game, object2: Game) => {
-        let date1 = new Date(object1.release_dates[0].human)
-        let date2 = new Date(object2.release_dates[0].human)
+        let date1 = new Date(object1.human)
+        console.log(object1.human, "Test");
+        let date2 = new Date(object2.human)
         return (date1.getFullYear() - date2.getFullYear());
       });
     }
