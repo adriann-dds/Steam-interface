@@ -19,7 +19,7 @@ export class BrowseComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
-    .subscribe(searchTerm => this.searchGame(searchTerm));
+    .subscribe(searchTerm => this.searchGame(searchTerm))
   }
 
   //get game data from API
@@ -28,9 +28,10 @@ export class BrowseComponent implements OnInit {
     await this.apiService.getGame().subscribe(data => {
         this.games = data;
         this.gamesMaster = data;
+        console.log(this.games, "OnInit");
         })
 
-    this.tableEnabled = true;
+    this.tableEnabled = false;
   }
 
     //search entry
@@ -49,6 +50,7 @@ export class BrowseComponent implements OnInit {
         this.games = this.gamesMaster;
       }
 
+      console.log(this.games, "searchGame");
       this.tableEnabled = true;
     }
 

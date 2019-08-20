@@ -3,8 +3,10 @@
 
   <div *ngFor="let game of games; let i = index">
     <mat-card>
-      <mat-card-header *ngFor="let date of dates; let j = index">
-        <mat-card-title *ngIf="i == j">{{(game.name)?(game.name):('No Name')}} ({{date.human | slice:0:4}})</mat-card-title>
+      <!-- <mat-card-header *ngFor="let date of dates; let j = index"> -->
+      <mat-card-header>
+        <!-- <mat-card-title *ngIf="i == j">{{(game.name)?(game.name):('No Name')}} ({{date.human | slice:0:4}})</mat-card-title> -->
+        <mat-card-title>{{(game.name)?(game.name):('No Name')}}</mat-card-title>
       </mat-card-header>
 
       <mat-chip-list>

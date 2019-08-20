@@ -71,6 +71,7 @@ export class ApiService {
       }
     })
 
+    console.log(gameList, "searchGames");
     return of(gameList);
   }
 
