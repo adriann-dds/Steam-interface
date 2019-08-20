@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogProfileOpen } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   entryComponents: [DialogProfileOpen],
@@ -38,7 +39,8 @@ import { MatMenuModule } from '@angular/material/menu';
     CallbackComponent,
     ProfileComponent,
     FooterComponent,
-    DialogProfileOpen
+    DialogProfileOpen,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

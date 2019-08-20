@@ -1,4 +1,6 @@
 <div class="container">
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+
   <div *ngFor="let game of games; let i = index">
     <mat-card>
       <mat-card-header *ngFor="let date of dates; let j = index">
