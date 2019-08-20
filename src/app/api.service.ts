@@ -22,7 +22,6 @@ export class ApiService {
 
   getGame() : Observable<Game[]> {
     console.log('Getting games -> singular API');
-    let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
     { headers: {
@@ -48,72 +47,67 @@ export class ApiService {
       "user-key":this.user_key
     }});
 
-    // let headers3 = this.httpClient.get(this.apiURL + '/covers/?fields=*&limit=10&order=popularity:desc',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-
     return forkJoin([headers1, headers2]);
   }
 
   //master search method
 
-  searchGames(searchEntry: string) {
+  searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
     let gameList: Game[] = [];
 
-    this.searchGameByID(searchEntry).subscribe(data => {
+    this.searchGameByIDGame(searchEntry).subscribe(data => {
       gameID = data;
 
       if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfo(game.id).toPromise().then(data => gameList.push(data[0])))
+        gameID.forEach (async game => await this.getGameInfoGame(game.id).toPromise().then(data => gameList.push(data[0])))
       }
     })
 
     return of(gameList);
   }
 
+  searchGamesDates(searchEntry: string) {
+    let gameID: Game[] = [];
+    let gameDates: Game[] = [];
+
+    this.searchGameByIDDate(searchEntry).subscribe(data => {
+      gameID = data;
+
+      if (gameID.length > 1) {
+        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[1])))
+      }
+    })
+
+    return of(gameDates);
+  }
+
   //search game by search entry
 
-  searchGameByID(searchEntry: string) : Observable<Game[]> {
+  searchGameByIDGame(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');
-
-    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept": "application/json",
         "user-key": this.user_key
     }})
+  }
 
-    // let headers1 = this.httpClient.get(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?search=' + searchEntry + '?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // let headers3 = this.httpClient.get(this.apiURL + '/screenshots/?search=' + searchEntry + '?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // return forkJoin([headers1, headers2, headers3]);
+  searchGameByIDDate(searchEntry: string) : Observable<Game[]> {
+    console.log('Getting dates by search entry');
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?search=' + searchEntry + '?fields=*&limit=10',
+      {headers: {
+        "Accept": "application/json",
+        "user-key": this.user_key
+    }})
   }
 
   //get all info about a game
 
-  getGameInfo(gameID: number) {
+  getGameInfoGame(gameID: number) {
     console.log('Getting games by search ID');
-
-    //let headers = new HttpHeaders().set('TRN-Api-Key', this.user_key);
 
     return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*',
       {headers: {
@@ -121,25 +115,16 @@ export class ApiService {
         "user-key":this.user_key,
         "X-Requested-With":"origin"
     }})
+  }
 
-    // let headers1 = this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // let headers2 = this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // let headers3 = this.httpClient.get(this.apiURL + '/screenshots/'+ gameID +'?fields=*&limit=10',
-    // { headers: {
-    //   "Accept":"application/json",
-    //   "user-key":this.user_key
-    // }});
-    //
-    // return forkJoin([headers1, headers2, headers3]);
+  getGameInfoDate(gameID: number) {
+    console.log('Getting dates by search ID');
+
+    return this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
   }
 }

@@ -13,6 +13,7 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class BrowseComponent implements OnInit {
   games: Game[] = [];
+  dates: Game[] = [];
   gamesMaster: Game[] = [];
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
@@ -40,10 +41,14 @@ export class BrowseComponent implements OnInit {
       this.games.length = 0;
 
       if(filterBy.length > 0) {
-        this.apiService.searchGames(filterBy).subscribe(data => {
+        this.apiService.searchGamesList(filterBy).subscribe(data => {
           this.games = data;
         });
 
+        this.apiService.searchGamesDates(filterBy).subscribe(data => {
+          this.dates = data;
+        });
+        console.log(this.games, this.dates);
       }
       else {
         this.games = this.gamesMaster;
