@@ -12,7 +12,6 @@ import { Http, Headers, Response } from '@angular/http';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  //@Input('GamesInput') games: Game;
   @Input('GamesInput') games: Game[] = [];
   @Input('GamesInput') dates: Game;
   @Input('GamesInput') screens: Game;
