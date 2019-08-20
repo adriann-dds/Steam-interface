@@ -8,13 +8,12 @@
       </mat-card-header>
 
       <mat-chip-list>
-        <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.rating | number:'2.1-2'}}%</mat-chip>
+        <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.total_rating | number:'2.1-2'}}%</mat-chip>
         <mat-chip *ngIf="!game.total_rating" color="warn" selected>No rating</mat-chip>
       </mat-chip-list>
 
       <mat-card-content *ngIf="game.summary" class="summary">{{game.summary | slice:0:220}}...</mat-card-content>
       <mat-card-content *ngIf="!game.summary" class="summary">No summary available!</mat-card-content>
-      <!-- <mat-card-content><a href="{{game.url}}" *ngIf="game.url">Details</a></mat-card-content> -->
       <mat-card-content><a href="{{game.url}}" *ngIf="game.url"><button mat-raised-button color="warn"><a href="{{game.url}}" *ngIf="game.url">Details</a></button></a></mat-card-content>
 
     </mat-card>

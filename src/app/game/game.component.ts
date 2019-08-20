@@ -13,15 +13,14 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class GameComponent implements OnInit {
   @Input('GamesInput') games: Game;
-  @Input('GamesInput') dates: Game;
-  @Input('GamesInput') screens: Game;
+  @Input('DatesInput') dates: Game;
 
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) {
     this.getGame()
   }
-  //field
+
   ngOnInit(){ }
 
   //get game data from API
@@ -31,17 +30,9 @@ export class GameComponent implements OnInit {
       console.log(game_data);
       this.games = game_data[0];
       this.dates = game_data[1];
-      // this.screens = game_data[2];
       this.showSpinner = false;
     });
   }
-
-  // getGame() {
-  //   this.apiService.getGame().subscribe(game_data => {
-  //     console.log(game_data);
-  //     this.games = game_data;
-  //   });
-  // }
 
   getUrl(screen: Game) {
     return (screen.url);

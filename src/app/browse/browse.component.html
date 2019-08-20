@@ -1,16 +1,16 @@
 <div class="sortTypes">
-    <button mat-raised-button color="primary" (click)='changeSortType()'>
-        {{sortType}}
-    </button>
-    <button mat-raised-button color="primary" (click)='changeSortDirection()'>
-        {{sortDirection}}
-    </button>
+  <button mat-raised-button color="primary" (click)='changeSortType()'>
+    {{sortType}}
+  </button>
+  <button mat-raised-button color="primary" (click)='changeSortDirection()'>
+    {{sortDirection}}
+  </button>
 </div>
 
 <div class="searchBox">
-    <input [formControl]='searchTerm' type="text" value="" placeholder="Search...">
+  <input [formControl]='searchTerm' type="text" value="" placeholder="Search...">
 </div>
 
 <div *ngIf='tableEnabled'>
-        <app-game [GamesInput]='games'></app-game>
+  <app-game [GamesInput]='games' [DatesInput]='dates'></app-game>
 </div>
