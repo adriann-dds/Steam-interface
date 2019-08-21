@@ -13,6 +13,7 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class BrowseComponent implements OnInit {
   games: Game[] = [];
+  dates: Game[] = [];
   gamesMaster: Game[] = [];
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
@@ -40,10 +41,13 @@ export class BrowseComponent implements OnInit {
       this.games.length = 0;
 
       if(filterBy.length > 0) {
-        this.apiService.searchGames(filterBy).subscribe(data => {
+        this.apiService.searchGamesList(filterBy).subscribe(data => {
           this.games = data;
         });
 
+        this.apiService.searchGamesDates(filterBy).subscribe(data => {
+          this.dates = data;
+        });
       }
       else {
         this.games = this.gamesMaster;
@@ -75,14 +79,14 @@ export class BrowseComponent implements OnInit {
       }
 
       this.games.reverse();
+      this.dates.reverse();
     }
 
     sortByDate(): void {
-      this.games.sort((object1: Game, object2: Game) => {
-        let date1 = new Date(object1.human)
-        console.log(object1.human, "Test");
-        let date2 = new Date(object2.human)
-        return (date1.getFullYear() - date2.getFullYear());
+      this.dates.sort((object1: Game, object2: Game) => {
+        if(object1.y > object2.y) { return -1; }
+        if(object1.y < object2.y) { return 1; }
+        return 0;
       });
     }
 

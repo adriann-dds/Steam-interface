@@ -15,6 +15,7 @@ export interface Game {
     total_rating?: string;
     platforms?: number;
     human?: string;
+    y?: number;
 }
 
 export interface IReleaseDate {
