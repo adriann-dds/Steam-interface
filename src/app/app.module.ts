@@ -28,6 +28,18 @@ import { DialogProfileOpen } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductComponent } from './product/product.component';
+import { ProductService } from './services/product.service';
+
+const config = {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+};
 
 @NgModule({
   entryComponents: [DialogProfileOpen],
@@ -40,7 +52,9 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
     ProfileComponent,
     FooterComponent,
     DialogProfileOpen,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CartComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +80,7 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
     MatMenuModule
   ],
   providers: [
+    ProductService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },
     //AppComponent
