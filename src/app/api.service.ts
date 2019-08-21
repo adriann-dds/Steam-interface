@@ -56,7 +56,7 @@ export class ApiService {
     let gameID: Game[] = [];
     let gameList: Game[] = [];
 
-    this.searchGameByIDGame(searchEntry).subscribe(data => {
+    this.searchGameByID(searchEntry).subscribe(data => {
       gameID = data;
 
       if (gameID.length > 1) {
@@ -71,33 +71,23 @@ export class ApiService {
     let gameID: Game[] = [];
     let gameDates: Game[] = [];
 
-    this.searchGameByIDDate(searchEntry).subscribe(data => {
+    this.searchGameByID(searchEntry).subscribe(data => {
       gameID = data;
 
       if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[1])))
+        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[0])))
       }
     })
-
+    
     return of(gameDates);
   }
 
   //search game by search entry
 
-  searchGameByIDGame(searchEntry: string) : Observable<Game[]> {
+  searchGameByID(searchEntry: string) : Observable<Game[]> {
     console.log('Getting games by search entry');
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
-      {headers: {
-        "Accept": "application/json",
-        "user-key": this.user_key
-    }})
-  }
-
-  searchGameByIDDate(searchEntry: string) : Observable<Game[]> {
-    console.log('Getting dates by search entry');
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?search=' + searchEntry + '?fields=*&limit=10',
       {headers: {
         "Accept": "application/json",
         "user-key": this.user_key

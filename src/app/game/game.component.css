@@ -104,11 +104,6 @@ mat-card-content {
   text-align: left;
 }
 
-span {
-  font-size: 2em;
-  text-align: left;
-}
-
 mat-card-title {
   margin: 0 !important;
 }
@@ -135,7 +130,6 @@ mat-card-content button {
 mat-card-content a {
   font-size: 1.5em;
   text-decoration: none;
-  /* margin-left: 0.5em; */
   color: white;
 }
 
