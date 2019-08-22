@@ -1,6 +1,5 @@
-import { Game } from './product.entity';
+import { Game } from '../game';
 
 export class Item {
   games: Game;
-  quantity: number;
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Game } from '../entities/product.entity';
+import { Game } from '../game';
 import { Item } from '../entities/item.entity';
 import { ProductService } from '../services/product.service';
+import { GameComponent } from '../game/game.component';
 
 @Component({
 	templateUrl: 'index.component.html'
@@ -10,21 +11,21 @@ import { ProductService } from '../services/product.service';
 
 export class CartComponent implements OnInit {
   private items: Item[] = [];
-  private total: number = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService
+		// private gameComponent: GameComponent
   ) { }
 
   ngOnInit() {
+		// localStorage.clear();
     this.activatedRoute.params.subscribe(params => {
       var id = params['id'];
 
       if (id) {
         var item: Item = {
-					games: this.productService.find(id),
-					quantity: 1
+					games: this.productService.find(id)
 				};
 
         if (localStorage.getItem('cart') == null) {
@@ -49,7 +50,6 @@ export class CartComponent implements OnInit {
             localStorage.setItem('cart', JSON.stringify(cart));
           } else {
             let item: Item = JSON.parse(cart[index]);
-            item.quantity += 1;
             cart[index] = JSON.stringify(item);
             localStorage.setItem('cart', JSON.stringify(cart));
           }
@@ -62,21 +62,20 @@ export class CartComponent implements OnInit {
   }
 
   loadCart(): void {
-    this.total = 0;
     this.items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
 
     for (var i = 0; i < cart.length; i++) {
       let item = JSON.parse(cart[i]);
       this.items.push({
-        games: item.games,
-        quantity: item.quantity
+        games: item.games
       });
-      this.total += item.games.price * item.quantity;
     }
+
+		console.log(this.items);
   }
 
-  remove(id: string): void {
+  remove(id: number): void {
     let cart: any = JSON.parse(localStorage.getItem('cart'));
     let index: number = -1;
 

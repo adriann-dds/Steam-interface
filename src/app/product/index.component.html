@@ -3,16 +3,15 @@
   <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Price</th>
-    <th>Photo</th>
     <th>Buy</th>
   </tr>
   <tr *ngFor="let game of games">
     <td>{{game.id}}</td>
     <td>{{game.name}}</td>
-    <td>{{game.price}}</td>
     <td>
       <a [routerLink]="['/cart', { id:game.id }]">Buy Now</a>
     </td>
   </tr>
 </table>
+
+<app-game [GamesInput]='games'></app-game>
