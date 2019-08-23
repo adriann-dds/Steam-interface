@@ -30,7 +30,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
-import { ProductService } from './services/product.service';
 
 const config = {
     apiKey: '<your-key>',
@@ -80,7 +79,6 @@ const config = {
     MatMenuModule
   ],
   providers: [
-    ProductService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },
     //AppComponent

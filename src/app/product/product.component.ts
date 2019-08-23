@@ -1,24 +1,18 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Game } from '../game';
-import { ProductService } from '../services/product.service';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { GameComponent } from '../game/game.component';
+import { Game } from '../game';
 
 @Component({
-	templateUrl: 'index.component.html'
+	templateUrl: 'index.component.html',
+	providers:[ GameComponent ]
 })
 
-export class ProductComponent {
+export class ProductComponent implements OnInit {
 
-	@ViewChild(GameComponent, {static: false}) child: GameComponent;
+	constructor(private gameComponent: GameComponent) { }
 
-	constructor() {	}
-
-	games: Game;
-
-	ngAfterViewInit() {
-		this.child.getGame();
-		this.games = this.child.games;
-		console.log(this.games);
-  }
+	ngOnInit() {
+		console.log(this.gameComponent.games);
+	}
 
 }

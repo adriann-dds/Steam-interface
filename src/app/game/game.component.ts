@@ -27,14 +27,31 @@ export class GameComponent implements OnInit {
 
   getGame() {
     this.apiService.requestMultipleApi().subscribe(game_data => {
-      console.log(game_data);
+      console.log(game_data, "Request");
       this.games = game_data[0];
       this.dates = game_data[1];
       this.showSpinner = false;
     });
   }
 
-  getUrl(screen: Game) {
-    return (screen.url);
+  //favorite list functions
+
+  findAll(): Game {
+    return this.games;
+  }
+
+  find(id: number): Game {
+    return this.games[this.getSelectedIndex(id)]
+  }
+
+  private getSelectedIndex(id: number) {
+    console.log(this.games);
+    for (var i = 0; i < 10; i++) {
+      if (this.games[i].id == id) {
+        return i;
+      }
+    }
+
+    return -1;
   }
 }

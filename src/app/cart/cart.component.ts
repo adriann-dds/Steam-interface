@@ -1,31 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game } from '../game';
 import { Item } from '../entities/item.entity';
-import { ProductService } from '../services/product.service';
 import { GameComponent } from '../game/game.component';
+import { ApiService } from '../api.service';
 
 @Component({
-	templateUrl: 'index.component.html'
+	templateUrl: 'index.component.html',
+	providers:[ GameComponent ]
 })
 
+@Injectable({
+  providedIn: 'root'
+})
 export class CartComponent implements OnInit {
   private items: Item[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
-		// private gameComponent: GameComponent
+		private gameComponent: GameComponent
   ) { }
 
   ngOnInit() {
+		console.log(this.items);
 		// localStorage.clear();
     this.activatedRoute.params.subscribe(params => {
       var id = params['id'];
 
       if (id) {
         var item: Item = {
-					games: this.productService.find(id)
+					games: this.gameComponent.find(id)
 				};
 
         if (localStorage.getItem('cart') == null) {
@@ -35,7 +39,7 @@ export class CartComponent implements OnInit {
         } else {
           let cart: any = JSON.parse(localStorage.getItem('cart'));
           let index: number = -1;
-
+					console.log(cart.length);
           for (var i = 0; i < cart.length; i++) {
             let item: Item = JSON.parse(cart[i]);
 
