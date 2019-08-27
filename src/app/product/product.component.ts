@@ -12,7 +12,7 @@ export class ProductComponent implements OnInit {
 	constructor(private gameComponent: GameComponent) { }
 
 	ngOnInit() {
-		console.log(this.gameComponent.games);
+		console.log(this.gameComponent.games, "Product component");
 	}
 
 }

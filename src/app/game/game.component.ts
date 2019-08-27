@@ -41,11 +41,12 @@ export class GameComponent implements OnInit {
   }
 
   find(id: number): Game {
+    console.log(this.games, "Find");
     return this.games[this.getSelectedIndex(id)]
   }
 
   private getSelectedIndex(id: number) {
-    console.log(this.games);
+    console.log(this.games, "Get selected");
     for (var i = 0; i < 10; i++) {
       if (this.games[i].id == id) {
         return i;
