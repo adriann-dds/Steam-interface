@@ -28,6 +28,7 @@ import { DialogProfileOpen } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+<<<<<<< HEAD
 import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
 
@@ -39,6 +40,8 @@ const config = {
     storageBucket: '<your-storage-bucket>',
     messagingSenderId: '<your-messaging-sender-id>'
 };
+=======
+>>>>>>> parent of 0219037... Implemented cart demo
 
 @NgModule({
   entryComponents: [DialogProfileOpen],
@@ -51,9 +54,7 @@ const config = {
     ProfileComponent,
     FooterComponent,
     DialogProfileOpen,
-    LoadingSpinnerComponent,
-    CartComponent,
-    ProductComponent
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
