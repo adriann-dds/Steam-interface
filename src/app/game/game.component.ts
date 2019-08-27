@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
 
   getGame() {
     this.apiService.requestMultipleApi().subscribe(game_data => {
-      console.log(game_data);
+      console.log(game_data, "Request");
       this.games = game_data[0];
       this.dates = game_data[1];
       this.shared = this.games;
