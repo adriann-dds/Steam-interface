@@ -1,18 +1,16 @@
-<h3>Product List</h3>
+<!-- <app-game [GamesInput]='games'></app-game> -->
+<h3>Favorite List</h3>
 <table border="1">
   <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Price</th>
-    <th>Photo</th>
-    <th>Buy</th>
+    <th>Add</th>
   </tr>
   <tr *ngFor="let game of games">
     <td>{{game.id}}</td>
     <td>{{game.name}}</td>
-    <td>{{game.price}}</td>
     <td>
-      <a [routerLink]="['/cart', { id:game.id }]">Buy Now</a>
+      <a [routerLink]="['/cart', { id:game.id }]">Add to favorites</a>
     </td>
   </tr>
 </table>

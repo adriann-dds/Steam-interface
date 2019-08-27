@@ -17,7 +17,7 @@
       <mat-card-content *ngIf="game.summary" class="summary">{{game.summary | slice:0:220}}...</mat-card-content>
       <mat-card-content *ngIf="!game.summary" class="summary">No summary available!</mat-card-content>
       <mat-card-content><a href="{{game.url}}" *ngIf="game.url"><button mat-raised-button color="warn"><a href="{{game.url}}" *ngIf="game.url">Details</a></button></a></mat-card-content>
-
+      <!-- <mat-card-content><a [routerLink]="['/cart', { id:game.id }]">Add to favorites</a></mat-card-content> -->
     </mat-card>
   </div>
 </div>

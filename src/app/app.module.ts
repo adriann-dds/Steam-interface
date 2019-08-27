@@ -32,15 +32,6 @@ import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
 import { ProductService } from './services/product.service';
 
-const config = {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
-};
-
 @NgModule({
   entryComponents: [DialogProfileOpen],
   declarations: [
