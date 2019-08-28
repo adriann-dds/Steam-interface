@@ -7,47 +7,68 @@ import { ApiService } from '../api.service';
 
 @Component({
 	templateUrl: 'index.component.html',
-	// providers:[ GameComponent ]
+	providers:[ ProductComponent ]
 })
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartComponent implements OnInit {
-  private items: Item[] = [];
+  private items: Item[];
+	item: Item;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-		private productComponent: ProductComponent
-		// private productService: ProductService
-  ) { }
+		private productComponent: ProductComponent,
+		private apiService: ApiService
+  ) {	}
 
   ngOnInit() {
-		console.log(this.items);
 		// localStorage.clear();
+		// localStorage.removeItem('currentGame');
+
+		// this.apiService.searchGameByID(id).subscribe(data => {
+		//
+		// })
+
     this.activatedRoute.params.subscribe(params => {
+			console.log(params, "Simple", params['id'], "Element");
       var id = params['id'];
 
       if (id) {
+				//let localGame: Game;
+
+				// this.apiService.getGameInfoGame(id).subscribe(data => {
+		    //   this.localGame = data;
+				// 	console.log(data, "ProductComponent");
+		    // })
+
+				// console.log(this.localGame);
+
         var item: Item = {
-					games: this.productComponent.find(id)
+					games: this.find(id)
 				};
+
+				console.log(this.item);
 
         if (localStorage.getItem('cart') == null) {
           let cart: any = [];
-          cart.push(JSON.stringify(item));
+          cart.push(JSON.stringify(this.item));
           localStorage.setItem('cart', JSON.stringify(cart));
         } else {
           let cart: any = JSON.parse(localStorage.getItem('cart'));
+					console.log(cart, "Cart");
           let index: number = -1;
 					console.log("Length is", cart.length);
           for (var i = 0; i < cart.length; i++) {
             let item: Item = JSON.parse(cart[i]);
 
-            if (item.games.id == id) {
-              index = i;
-              break;
-            }
+						// if (item.games) {
+							if (item.games.id == id) {
+	              index = i;
+	              break;
+	            }
+						// }
           }
 
           if (index == -1) {
@@ -66,6 +87,17 @@ export class CartComponent implements OnInit {
     });
   }
 
+	find(id: number): Game {
+		let localGame: Game;
+
+		this.apiService.getGameInfoGame(id).subscribe(data => {
+      localGame = data;
+			console.log(data, "ProductComponent");
+    })
+
+		return localGame;
+	}
+
   loadCart(): void {
     this.items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
@@ -77,7 +109,7 @@ export class CartComponent implements OnInit {
       });
     }
 
-		console.log(this.items);
+		console.log(this.items, "Final");
   }
 
   remove(id: number): void {

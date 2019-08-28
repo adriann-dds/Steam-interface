@@ -1,50 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../game';
-import { ProductService } from '../services/product.service';
-import { GameComponent } from '../game/game.component';
+// import { ProductService } from '../services/product.service';
+//import { CartComponent } from '../cart/cart.component';
 import { ApiService } from '../api.service';
 
 @Component({
 	templateUrl: 'index.component.html',
-	providers: [ GameComponent ]
+	//providers: [ CartComponent ]
 })
 
  export class ProductComponent implements OnInit {
 
-   private games: Game[];
+   private games: Game[] = [];
 
    constructor(
-		 private productService: ProductService,
-		 private gameComponent: GameComponent,
-		 private apiService: ApiService
-	 ) { }
-
-  //  ngOnInit() {
-	// 	this.games = this.productService.findAll();
-	// 	console.log(this.games, "Initial");
-	//
-  //   this.games = this.gameComponent.getGames();
-	// 	console.log(this.games, "From the component");
-  // }
+		 private apiService: ApiService,
+		 //private cartComponent: CartComponent
+	 ) {
+		 this.games = [
+				 { id: 4444321, name: 'name 1' },
+				 { id: 4444322, name: 'name 2' },
+				 { id: 4444333, name: 'name 3' }
+		 ];
+	 }
 
 	async ngOnInit(){
-    await this.apiService.requestMultipleApi().subscribe(data => {
-        this.games = data[0];
-				console.log(data[0], "From the component");
-        })
+    // await this.apiService.getGame().subscribe(data => {
+    //     //this.games = data;
+		// 		for (var i = 0; i < data.length; i++) {
+		// 			this.games.push(<Game>data[i]);
+		// 		}
+		//
+		// 		console.log(this.games, "From the component");
+		// 	}
+		// );
   }
 
-	find(id: number): Game {
-    return this.games[this.getSelectedIndex(id)]
-  }
+	// addItem(id: number) {
+	// 	this.cartComponent.addItemToCart(id);
+	// }
 
-  private getSelectedIndex(id: number) {
-    for (var i = 0; i < this.games.length; i++) {
-      if (this.games[i].id == id) {
-        return i;
-      }
-    }
+	// find(id: number): Game {
+	// 	let localGame: Game;
+	//
+	// 	this.apiService.getGameInfoGame(id).subscribe(data => {
+  //     localGame = data;
+	// 		console.log(data, "ProductComponent");
+  //   })
+	//
+	// 	return localGame;
+	// }
 
-    return -1;
-  }
+	// find(id: number): Game {
+  //   return this.games[this.getSelectedIndex(id)]
+  // }
+
+  // private getSelectedIndex(id: number) {
+  //   for (var i = 0; i < this.games.length; i++) { //this.games.length
+  //     if (this.games[i].id == id) {
+  //       return i;
+  //     }
+  //   }
+	//
+  //   return -1;
+  // }
 }

@@ -43,7 +43,9 @@ import { ProductComponent } from './product/product.component';
     ProfileComponent,
     FooterComponent,
     DialogProfileOpen,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CartComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
