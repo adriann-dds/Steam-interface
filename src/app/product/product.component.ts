@@ -51,17 +51,17 @@ import { ApiService } from '../api.service';
 	// 	return localGame;
 	// }
 
-	// find(id: number): Game {
-  //   return this.games[this.getSelectedIndex(id)]
-  // }
+	find(id: number): Game {
+    return this.games[this.getSelectedIndex(id)];
+  }
 
-  // private getSelectedIndex(id: number) {
-  //   for (var i = 0; i < this.games.length; i++) { //this.games.length
-  //     if (this.games[i].id == id) {
-  //       return i;
-  //     }
-  //   }
-	//
-  //   return -1;
-  // }
+  private getSelectedIndex(id: number) {
+    for (var i = 0; i < this.games.length; i++) {
+      if (this.games[i].id == id) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
 }
