@@ -1,9 +1,19 @@
-h1, h2, div div, .searchBox {
-  text-align: center;
+.searchBox {
+  width: 140em;
+}
+
+button,
+.searchBox,
+.sortTypes,
+mat-form-field {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sortTypes {
   width: 12em;
+  display: flex;
 }
 
 .sortTypes button:first-child {
@@ -14,12 +24,7 @@ h1, h2, div div, .searchBox {
   float: right;
 }
 
-.sortTypes,
-button,
-input {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.sortTypes {
   margin-bottom: 1em;
 }
 
@@ -36,10 +41,20 @@ div:last-child {
   margin-bottom: 20px;
 }
 
-div input {
-  font-size: 1em;
+@media (max-width: 132.6em) {
+  .searchBox {
+    width: 90.2em;
+  }
 }
 
-div input:hover {
-  background-color: rgb(245, 245, 245);
+@media (max-width: 100em) {
+  .searchBox {
+    width: 60em;
+  }
+}
+
+@media (max-width: 60em) {
+  .searchBox {
+    width: 17em !important;
+  }
 }
