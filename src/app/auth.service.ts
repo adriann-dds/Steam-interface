@@ -27,7 +27,7 @@ export class AuthService {
     if (!this.auth0Client) {
       this.auth0Client = await createAuth0Client(this.config);
 
-      //Curent falue of isAuthenticated
+      //Curent value of isAuthenticated
 
       this.isAuthenticated.next(await this.auth0Client.isAuthenticated());
 

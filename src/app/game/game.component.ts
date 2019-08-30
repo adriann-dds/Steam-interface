@@ -14,27 +14,35 @@ import { Http, Headers, Response } from '@angular/http';
 export class GameComponent implements OnInit {
   @Input('GamesInput') games: Game;
   @Input('DatesInput') dates: Game;
+  shared: Game;
 
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) {
-    this.getGame()
+    // this.getGame()
   }
 
-  ngOnInit(){ }
+  ngOnInit(){
+    this.getGame()
+  }
 
   //get game data from API
 
   getGame() {
     this.apiService.requestMultipleApi().subscribe(game_data => {
-      console.log(game_data);
+      console.log(game_data, "Request");
       this.games = game_data[0];
       this.dates = game_data[1];
+      this.shared = this.games;
       this.showSpinner = false;
     });
   }
 
-  getUrl(screen: Game) {
-    return (screen.url);
+  //get games to favorites component
+
+  getGames() {
+    // this.getGame();
+    console.log(this.shared, "GameComponent");
+    return this.shared;
   }
 }

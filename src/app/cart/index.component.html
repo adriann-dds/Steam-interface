@@ -1,0 +1,24 @@
+<div class="container">
+  <div *ngFor="let item of items">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{(item.games.name)?(item.games.name):('No Name')}}
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-chip-list>
+        <mat-chip *ngIf="item.games.total_rating" color="accent" selected>{{item.games.total_rating | number:'2.1-2'}}%</mat-chip>
+        <mat-chip *ngIf="!item.games.total_rating" color="warn" selected>No rating</mat-chip>
+      </mat-chip-list>
+
+      <mat-card-content *ngIf="item.games.summary" class="summary">{{item.games.summary | slice:0:220}}...</mat-card-content>
+      <mat-card-content *ngIf="!item.games.summary" class="summary">No summary available!</mat-card-content>
+
+      <mat-card-content>
+        <button mat-raised-button color="warn"><a href="{{item.games.url}}" *ngIf="item.games.url">Details</a></button>
+        <button mat-raised-button color="warn"><a (click)="remove(item.games.id)">Remove from favorites</a></button>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

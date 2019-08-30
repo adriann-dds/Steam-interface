@@ -1,7 +1,7 @@
 import { Injectable, Inject, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { HttpModule, Http } from '@angular/http';
-import { Game, ICover, IReleaseDate } from './game';
+import { Game } from './game';
 import { Observable, of ,forkJoin} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -14,9 +14,7 @@ export class ApiService {
   apiURL: string = '/api';
   user_key: string = '50d97a766c459f52dcfba937c7fc7137'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
                                                         // 823ce2ad9697f981568837ab540b9b5b
-  constructor(
-    private httpClient: HttpClient
-  ){ }
+  constructor (private httpClient: HttpClient){ }
 
   //connect to API server
 
@@ -78,7 +76,7 @@ export class ApiService {
         gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[0])))
       }
     })
-    
+
     return of(gameDates);
   }
 
