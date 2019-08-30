@@ -8,7 +8,11 @@
 </div>
 
 <div class="searchBox">
-  <input [formControl]='searchTerm' type="text" value="" placeholder="Search...">
+  <mat-form-field appearance="outline">
+    <mat-label>Database search</mat-label>
+    <input [formControl]='searchTerm' matInput placeholder="Search...">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 </div>
 
 <div *ngIf='tableEnabled'>
