@@ -37,10 +37,6 @@ div button:active {
   background-color: rgb(200, 0, 0);
 }
 
-div:last-child {
-  margin-bottom: 20px;
-}
-
 @media (max-width: 132.6em) {
   .searchBox {
     width: 90.2em;
