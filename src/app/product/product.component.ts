@@ -17,23 +17,23 @@ import { ApiService } from '../api.service';
 		 private apiService: ApiService,
 		 //private cartComponent: CartComponent
 	 ) {
-		 this.games = [
-				 { id: 4444321, name: 'name 1' },
-				 { id: 4444322, name: 'name 2' },
-				 { id: 4444333, name: 'name 3' }
-		 ];
+		 // this.games = [
+			// 	 { id: 4444321, name: 'name 1' },
+			// 	 { id: 4444322, name: 'name 2' },
+			// 	 { id: 4444333, name: 'name 3' }
+		 // ];
 	 }
 
 	async ngOnInit(){
-    // await this.apiService.getGame().subscribe(data => {
-    //     //this.games = data;
-		// 		for (var i = 0; i < data.length; i++) {
-		// 			this.games.push(<Game>data[i]);
-		// 		}
-		//
-		// 		console.log(this.games, "From the component");
-		// 	}
-		// );
+    await this.apiService.getGame().subscribe(data => {
+        //this.games = data;
+				for (var i = 0; i < data.length; i++) {
+					this.games.push(<Game>data[i]);
+				}
+
+				console.log(this.games, "From the component");
+			}
+		);
   }
 
 	// addItem(id: number) {

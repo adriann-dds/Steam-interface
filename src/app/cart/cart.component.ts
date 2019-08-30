@@ -39,7 +39,8 @@ export class CartComponent implements OnInit {
 		});
 
 		if (this.id) {
-			await this.productComponent.find(this.id);
+			await this.find(this.id);
+			// await this.productComponent.find(this.id);
 			console.log("There is an ID");
 		}
 
@@ -56,11 +57,11 @@ export class CartComponent implements OnInit {
 				// await this.find(this.id);
 
         var item: Item = {
-					games: this.productComponent.find(this.id)
-					// games: this.localGame
+					// games: this.productComponent.find(this.id)
+					games: this.localGame[0]
 				};
 
-				console.log(item);
+				// console.log(this.localGame[0]);
 
         if (localStorage.getItem('cart') == null) {
           let cart: any = [];
@@ -74,7 +75,8 @@ export class CartComponent implements OnInit {
 						console.log("Length is", cart.length);
           for (var i = 0; i < cart.length; i++) {
             let item: Item = JSON.parse(cart[i]);
-						console.log(item.games);
+						// console.log(item.games);
+						console.log(item.games[0]);
 
 						// if (item.games) {
 							if (item.games.id == this.id) {
