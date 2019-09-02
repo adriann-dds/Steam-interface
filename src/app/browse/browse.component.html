@@ -1,18 +1,21 @@
-<div class="sortTypes">
-  <button mat-raised-button color="primary" (click)='changeSortType()'>
-    {{sortType}}
-  </button>
-  <button mat-raised-button color="primary" (click)='changeSortDirection()'>
-    {{sortDirection}}
-  </button>
-</div>
-
 <div class="searchBox">
-  <mat-form-field appearance="outline">
-    <mat-label>Database search</mat-label>
-    <input [formControl]='searchTerm' matInput placeholder="Search...">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Database search</mat-label>
+      <input [formControl]='searchTerm' matInput placeholder="Search...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button [matMenuTriggerFor]="menu">Sort</button>
+  <mat-menu #menu="matMenu">
+    <button class="sortTypes" mat-raised-button color="primary" (click)='changeSortType()'>
+      {{sortType}}
+    </button>
+    <button class="sortTypes" mat-raised-button color="primary" (click)='changeSortDirection()'>
+      {{sortDirection}}
+    </button>
+  </mat-menu>
 </div>
 
 <div *ngIf='tableEnabled'>
