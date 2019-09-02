@@ -18,11 +18,12 @@
       <mat-card-content *ngIf="!game.summary" class="summary">No summary available!</mat-card-content>
 
       <mat-card-content>
-        <button mat-raised-button color="primary"><a href="{{game.url}}" *ngIf="game.url">Details</a></button>
+        <button mat-raised-button color="primary">
+          <a [routerLink]="['/details', { id:game.id }]">Details</a>
+        </button>
         <a [routerLink]="['/cart', { id:game.id }]">
           <mat-icon matSuffix color="warn">favorite</mat-icon>
         </a>
-
       </mat-card-content>
     </mat-card>
   </div>

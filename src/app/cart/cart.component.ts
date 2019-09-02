@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
 
   }
 
-	// public localGame: Game;
+	//get info from API
 
 	async find(id: number) {
 		await this.apiService.getGameInfoGame(id).toPromise().then(data => {
@@ -90,6 +90,8 @@ export class CartComponent implements OnInit {
 		console.log(this.items, "Cart content");
 		this.tableEnabled = true;
   }
+
+	//remove element from favorites
 
   remove(id: number): void {
     let cart: any = JSON.parse(localStorage.getItem('cart'));

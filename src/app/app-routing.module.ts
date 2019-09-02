@@ -4,6 +4,7 @@ import { GameComponent } from './game/game.component';
 import { BrowseComponent } from './browse/browse.component';
 import { CallbackComponent } from './callback/callback.component';
 import { CartComponent } from './cart/cart.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'details',
+    component: DetailsComponent
   }
 ];
 

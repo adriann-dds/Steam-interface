@@ -1,0 +1,26 @@
+.container {
+  width: 100em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+mat-card mat-card-title {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+mat-card mat-chip-list mat-chip {
+  width: 6em;
+  height: 2em;
+  font-size: 2em;
+  text-align: center;
+  display: inline-grid;
+  margin: 0 0 1em 1em;
+}
+
+mat-card mat-card-content {
+  margin: 0 0 1em 1em;
+  font-size: 1.5em;
+  text-indent: 2em;
+}

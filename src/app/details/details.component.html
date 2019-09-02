@@ -1,0 +1,19 @@
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+
+<div class="container" *ngIf="!showSpinner">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{(localGame.name)?(localGame.name):('No Name')}}
+        <span *ngIf="localDate">({{(localDate.y)?(localDate.y):('N/A')}})</span>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-chip-list>
+      <mat-chip *ngIf="localGame.total_rating" color="accent" selected>{{localGame.total_rating | number:'2.1-2'}}%</mat-chip>
+      <mat-chip *ngIf="!localGame.total_rating" color="warn" selected>No rating</mat-chip>
+    </mat-chip-list>
+
+    <mat-card-content *ngIf="localGame.summary" class="summary">{{localGame.summary}}</mat-card-content>
+    <mat-card-content *ngIf="!localGame.summary" class="summary">No summary available!</mat-card-content>
+  </mat-card>
+</div>
