@@ -12,12 +12,12 @@ export class AppComponent {
 
   constructor(location: Location, router: Router) {
     router.events.subscribe(data => {
-      switch (location.path()) {
-        case "/games":
+      switch (location.path().slice(0, 5)) {
+        case "/game":
           this.title = "Top 10 games";
           break;
 
-        case "/browse":
+        case "/brow":
           this.title = "Browsed games";
           break;
 
@@ -25,8 +25,12 @@ export class AppComponent {
           this.title = "Favorites";
           break;
 
+        case "/deta":
+          this.title = "Game details";
+          break;
+
         default:
-        this.title = "Favorites";
+        this.title = "Home";
         break;
       }
     });
