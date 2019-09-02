@@ -20,12 +20,6 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthService,
   public dialog: MatDialog) { }
 
-  //Open profile details
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogProfileOpen);
-  }
-
   //Initialisation component
 
   async ngOnInit() {
@@ -59,20 +53,5 @@ export class NavbarComponent implements OnInit {
       client_id: this.authService.config.client_id,
       returnTo: window.location.origin
     });
-  }
-}
-
-@Component({
-  templateUrl: '../profile/profile.component.html',
-   styleUrls: ['../profile/profile.component.css']
-})
-export class DialogProfileOpen {
-  profile: any;
-
-  constructor(public dialogRef: MatDialogRef<DialogProfileOpen>,
-  public authService: AuthService) {}
-
-  ngOnInit() {
-    this.authService.profile.subscribe(profile =>(this.profile = profile));
   }
 }

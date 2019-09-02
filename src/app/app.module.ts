@@ -23,7 +23,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DialogProfileOpen } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
@@ -32,7 +31,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  entryComponents: [DialogProfileOpen],
   declarations: [
     AppComponent,
     GameComponent,
@@ -40,7 +38,6 @@ import { MatInputModule } from '@angular/material/input';
     NavbarComponent,
     CallbackComponent,
     FooterComponent,
-    DialogProfileOpen,
     LoadingSpinnerComponent,
     CartComponent
   ],
