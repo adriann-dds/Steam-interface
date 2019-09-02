@@ -12,6 +12,82 @@ div {
   z-index: 1;
 }
 
+div > div {
+  display: inline-flex;
+  margin: 0 2em 2em 0;
+  width: 27.4em;
+  border: 1px solid rgb(60, 60, 60);
+}
+
+mat-card {
+  position: relative;
+  width: 100%;
+  height: 16em;
+  background-color: rgb(66, 66, 66);
+  border-radius: 0;
+}
+
+mat-card-header {
+  margin-left: 0;
+  display: block;
+  margin-bottom: 0.75em;
+}
+
+mat-card-header mat-card-title {
+  text-align: left;
+  width: 100%;
+}
+
+mat-card-header > div {
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+mat-card-content {
+  font-size: 1em;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+mat-card-title {
+  margin: 0 !important;
+}
+
+mat-chip-list mat-chip {
+  width: 6em;
+  text-align: center;
+  display: block;
+  margin: 0 0 1em 2em;
+}
+
+mat-card .summary {
+  margin: 0 0 1em 1.5em;
+  text-align: left;
+  display: flex;
+}
+
+mat-card-content:last-child {
+  bottom: 1em;
+  position: absolute;
+}
+
+mat-card-content button {
+  margin: 0 0.5em 0 0.5em;
+}
+
+mat-card-content a {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: white;
+}
+
+mat-icon {
+  vertical-align: middle;
+  font-size: 2em;
+  height: 48px;
+}
+
 @media (max-width: 132.6em) {
   div {
     width: 90.2em;
@@ -59,89 +135,4 @@ div {
     margin-left: auto !important;
     margin-right: auto !important;
   }
-}
-
-div > div {
-  display: inline-flex;
-
-  width: 27.4em;
-  margin-right: 2em;
-  margin-bottom: 2em;
-
-  border: 1px solid rgb(60, 60, 60);
-}
-
-mat-card {
-  position: relative;
-  width: 100%;
-  height: 16em;
-  background-color: rgb(66, 66, 66);
-
-  border-radius: 0;
-}
-
-mat-card-header {
-  margin-left: 0;
-  display: block;
-  margin-bottom: 0.75em;
-}
-
-mat-card-header mat-card-title {
-  text-align: left;
-  width: 100%;
-}
-
-mat-card-header > div {
-  margin: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-mat-card-content {
-  font-size: 1em;
-  margin-bottom: 0;
-
-  text-align: left;
-}
-
-mat-card-title {
-  margin: 0 !important;
-}
-
-mat-chip-list mat-chip {
-  width: 6em;
-  text-align: center;
-  display: block;
-  margin-left: 2em;
-  margin-bottom: 1em;
-}
-
-mat-card .summary {
-  text-align: left;
-  margin-left: 1.5em;
-  margin-bottom: 1em;
-  display: flex;
-}
-
-mat-card-content:last-child {
-  bottom: 1em;
-  position: absolute;
-}
-
-mat-card-content button {
-  margin-left: 0.5em;
-}
-
-mat-card-content a {
-  font-size: 1.5em;
-  text-decoration: none;
-  color: white;
-}
-
-mat-card-content a:hover {
-  color: darkgrey;
-}
-
-mat-card-content a:active {
-  color: rgb(100, 100, 100);
 }

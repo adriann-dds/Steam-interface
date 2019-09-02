@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CallbackComponent } from './callback/callback.component';
-import { ProfileComponent } from './profile/profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -29,7 +28,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductComponent } from './product/product.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -41,12 +39,10 @@ import { MatInputModule } from '@angular/material/input';
     BrowseComponent,
     NavbarComponent,
     CallbackComponent,
-    ProfileComponent,
     FooterComponent,
     DialogProfileOpen,
     LoadingSpinnerComponent,
-    CartComponent,
-    ProductComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,9 @@ export class BrowseComponent implements OnInit {
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService
+  ) {
     this.searchTerm.valueChanges
     .subscribe(searchTerm => this.searchGame(searchTerm))
   }
@@ -26,75 +28,75 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.requestMultipleApi().subscribe(data => {
-        this.games = data;
-        this.gamesMaster = data;
-        })
+    await this.apiService.requestMultipleApi().toPromise().then(data => {
+      this.games = data;
+      this.gamesMaster = data;
+    });
 
     this.tableEnabled = true;
   }
 
-    //search entry
+  //search entry
 
-    async searchGame(filterBy: string) {
-      this.tableEnabled = false;
-      this.games.length = 0;
+  async searchGame(filterBy: string) {
+    this.tableEnabled = false;
+    this.games.length = 0;
 
-      if(filterBy.length > 0) {
-        this.apiService.searchGamesList(filterBy).subscribe(data => {
-          this.games = data;
-        });
+    if(filterBy.length > 0) {
+      this.apiService.searchGamesList(filterBy).subscribe(data => {
+        this.games = data;
+      });
 
-        this.apiService.searchGamesDates(filterBy).subscribe(data => {
-          this.dates = data;
-        });
-      }
-      else {
-        this.games = this.gamesMaster;
-      }
-
-      this.tableEnabled = true;
-    }
-
-    sortType: string = 'Name';
-    changeSortType() {
-      if(this.sortType == 'Name') {
-        this.sortType = 'Date';
-        this.sortByDate();
-      }
-      else if(this.sortType == 'Date') {
-        this.sortType = 'Name';
-        this.sortByName();
-      }
-    }
-
-    sortDirection: string = 'Ascending'
-
-    changeSortDirection() {
-      if(this.sortDirection == 'Ascending') {
-        this.sortDirection = 'Descending';
-      }
-      else if(this.sortDirection == 'Descending') {
-        this.sortDirection = 'Ascending';
-      }
-
-      this.games.reverse();
-      this.dates.reverse();
-    }
-
-    sortByDate(): void {
-      this.dates.sort((object1: Game, object2: Game) => {
-        if(object1.y > object2.y) { return -1; }
-        if(object1.y < object2.y) { return 1; }
-        return 0;
+      this.apiService.searchGamesDates(filterBy).subscribe(data => {
+        this.dates = data;
       });
     }
-
-    sortByName(): void {
-      this.games.sort((object1: Game, object2: Game) => {
-        if(object1.name > object2.name) { return -1; }
-        if(object1.name < object2.name) { return 1; }
-        return 0;
-      });
+    else {
+      this.games = this.gamesMaster;
     }
+
+    this.tableEnabled = true;
+  }
+
+  sortType: string = 'Name';
+  changeSortType() {
+    if(this.sortType == 'Name') {
+      this.sortType = 'Date';
+      this.sortByDate();
+    }
+    else if(this.sortType == 'Date') {
+      this.sortType = 'Name';
+      this.sortByName();
+    }
+  }
+
+  sortDirection: string = 'Ascending'
+
+  changeSortDirection() {
+    if(this.sortDirection == 'Ascending') {
+      this.sortDirection = 'Descending';
+    }
+    else if(this.sortDirection == 'Descending') {
+      this.sortDirection = 'Ascending';
+    }
+
+    this.games.reverse();
+    this.dates.reverse();
+  }
+
+  sortByDate(): void {
+    this.dates.sort((object1: Game, object2: Game) => {
+      if(object1.y > object2.y) { return -1; }
+      if(object1.y < object2.y) { return 1; }
+      return 0;
+    });
+  }
+
+  sortByName(): void {
+    this.games.sort((object1: Game, object2: Game) => {
+      if(object1.name > object2.name) { return -1; }
+      if(object1.name < object2.name) { return 1; }
+      return 0;
+    });
+  }
 }
