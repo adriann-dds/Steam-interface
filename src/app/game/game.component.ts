@@ -19,7 +19,6 @@ export class GameComponent implements OnInit {
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) {
-    // this.getGame()
   }
 
   ngOnInit(){
@@ -36,13 +35,5 @@ export class GameComponent implements OnInit {
       this.shared = this.games;
       this.showSpinner = false;
     });
-  }
-
-  //get games to favorites component
-
-  getGames() {
-    // this.getGame();
-    console.log(this.shared, "GameComponent");
-    return this.shared;
   }
 }

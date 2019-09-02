@@ -1,13 +1,10 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game, Item } from '../game';
-import { ProductComponent } from '../product/product.component';
-import { ProductService } from '../services/product.service';
 import { ApiService } from '../api.service';
 
 @Component({
 	templateUrl: 'index.component.html',
-	providers:[ ProductComponent ],
 	styleUrls: ['../game/game.component.css']
 })
 
@@ -22,7 +19,6 @@ export class CartComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-		private productComponent: ProductComponent,
 		private apiService: ApiService
   ) {	}
 

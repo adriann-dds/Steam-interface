@@ -56,11 +56,11 @@ a {
 }
 
 mat-toolbar-row a:hover {
-  color: darkgrey;
+  color: rgb(230, 230, 230);
 }
 
 mat-toolbar-row a:active {
-  color: rgb(100, 100, 100);
+  color: darkgrey;
 }
 
 mat-toolbar-row > span {

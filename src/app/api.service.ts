@@ -30,7 +30,7 @@ export class ApiService {
 
   //connect to multiple API
 
-  public requestMultipleApi(): Observable<Game[]> {
+  requestMultipleApi(): Observable<Game[]> {
     console.log('Getting games -> multiple API');
 
     let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',

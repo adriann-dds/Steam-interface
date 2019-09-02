@@ -16,6 +16,10 @@ div div {
   margin-right: 1em;
 }
 
+div div mat-icon {
+  color: white;
+}
+
 div div,
 div button {
   display: inline-block;

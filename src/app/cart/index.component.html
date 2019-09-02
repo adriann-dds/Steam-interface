@@ -15,8 +15,8 @@
       <mat-card-content *ngIf="!item.games.summary" class="summary">No summary available!</mat-card-content>
 
       <mat-card-content>
-        <button mat-raised-button color="warn"><a href="{{item.games.url}}" *ngIf="item.games.url">Details</a></button>
-        <button mat-raised-button color="warn"><a (click)="remove(item.games.id)">Remove from favorites</a></button>
+        <button mat-raised-button color="primary"><a href="{{item.games.url}}" *ngIf="item.games.url">Details</a></button>
+        <button mat-raised-button color="warn"><a (click)="remove(item.games.id)">Remove</a></button>
       </mat-card-content>
 
     </mat-card>
