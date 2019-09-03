@@ -27,65 +27,83 @@ mat-card {
   border-radius: 0;
 }
 
-mat-card-header {
+mat-card mat-card-header {
   margin-left: 0;
   display: block;
-  margin-bottom: 0.75em;
 }
 
-mat-card-header mat-card-title {
+mat-card mat-card-header mat-card-title {
   text-align: left;
   width: 100%;
 }
 
-mat-card-header > div {
+mat-card mat-card-header > div {
   margin: 0;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-mat-card-content {
+mat-card mat-card-content {
   font-size: 1em;
-  margin-bottom: 0;
-  text-align: left;
+  /* margin-bottom: 0; */
+  /* text-align: left; */
 }
 
-mat-card-title {
-  margin: 0 !important;
+mat-card mat-card-title {
+  margin-bottom: 1em !important;
 }
 
-mat-chip-list mat-chip {
+mat-card mat-chip-list {
+  display: flex;
+}
+
+mat-card mat-chip-list mat-chip {
   width: 6em;
   text-align: center;
   display: block;
-  margin: 0 0 1em 2em;
+  margin: 0 0 0 1em;
 }
 
 mat-card .summary {
-  margin: 0 0 1em 1.5em;
+  margin: 0 0 1em 1em;
+  /* text-indent: 2em; */
   text-align: left;
   display: flex;
 }
 
-mat-card-content:last-child {
-  bottom: 1em;
+mat-card mat-card-content:last-child {
+  width: 90%;
+  bottom: 0;
   position: absolute;
 }
 
-mat-card-content button {
+mat-card mat-card-content button {
   margin: 0 0.5em 0 0.5em;
 }
 
-mat-card-content a {
+mat-card mat-card-content a {
   font-size: 1.5em;
   text-decoration: none;
   color: white;
 }
 
-mat-icon {
-  vertical-align: middle;
+mat-card mat-icon {
+  /* vertical-align: middle; */
+  display: inline;
   font-size: 2em;
-  height: 48px;
+  /* height: 1.25em; */
+}
+
+mat-card mat-grid-tile:first-child span {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+mat-card mat-grid-tile:last-child span {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 132.6em) {
