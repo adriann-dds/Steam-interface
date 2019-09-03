@@ -16,6 +16,7 @@ div div {
   margin-right: 1em;
 }
 
+mat-form-field input,
 div div mat-icon {
   color: white;
 }
