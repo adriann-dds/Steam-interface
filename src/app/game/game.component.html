@@ -9,21 +9,34 @@
         </mat-card-title>
       </mat-card-header>
 
-      <mat-chip-list>
-        <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.total_rating | number:'2.1-2'}}%</mat-chip>
-        <mat-chip *ngIf="!game.total_rating" color="warn" selected>No rating</mat-chip>
-      </mat-chip-list>
-
       <mat-card-content *ngIf="game.summary" class="summary">{{game.summary | slice:0:220}}...</mat-card-content>
       <mat-card-content *ngIf="!game.summary" class="summary">No summary available!</mat-card-content>
 
       <mat-card-content>
-        <button mat-raised-button color="primary">
-          <a [routerLink]="['/details', { id:game.id }]">Details</a>
-        </button>
-        <a [routerLink]="['/cart', { id:game.id }]">
-          <mat-icon matSuffix color="warn">favorite</mat-icon>
-        </a>
+
+        <mat-grid-list cols="2" rowHeight="3:1">
+          <mat-grid-tile>
+            <span>
+              <a [routerLink]="['/cart', { id:game.id }]">
+                <mat-icon matSuffix color="warn">favorite</mat-icon>
+              </a>
+
+              <mat-chip-list>
+                <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.total_rating | number:'2.1-2'}}%</mat-chip>
+                <mat-chip *ngIf="!game.total_rating" color="warn" selected>N/A</mat-chip>
+              </mat-chip-list>
+            </span>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <span>
+              <button mat-raised-button color="primary">
+                <a [routerLink]="['/details', { id:game.id }]">Details</a>
+              </button>
+            </span>
+          </mat-grid-tile>
+        </mat-grid-list>
+
       </mat-card-content>
     </mat-card>
   </div>
