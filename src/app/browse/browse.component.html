@@ -1,27 +1,20 @@
 <div class="searchBox">
   <div>
     <mat-form-field appearance="outline" color="accent">
-      <mat-label>Database search</mat-label>
-      <input [formControl]='searchTerm' matInput placeholder="Search...">
+      <mat-label>Enter a game name...</mat-label>
+      <input [formControl]='searchTerm' matInput placeholder="E.g. Grand Theft Auto">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 
-  <!-- <button mat-raised-button [matMenuTriggerFor]="menu">Sort</button> -->
-
-  <button class="sortTypes" mat-menu-item (click)='changeSortType()'>
-    <mat-icon matSuffix>{{sortType}}</mat-icon>
-  </button>
-  <button class="sortTypes" mat-menu-item (click)='changeSortDirection()'>
-    <mat-icon matSuffix>{{sortDirection}}</mat-icon>
-  </button>
-
-  <!-- <mat-menu #menu="matMenu">
+  <div>
     <button class="sortTypes" mat-menu-item (click)='changeSortType()'>
-      {{sortType}}
+      <mat-icon matSuffix>{{sortType}}</mat-icon>
     </button>
-  </mat-menu> -->
-
+    <button class="sortTypes" mat-menu-item (click)='changeSortDirection()'>
+      <mat-icon matSuffix>{{sortDirection}}</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div *ngIf='tableEnabled'>

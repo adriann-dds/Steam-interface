@@ -11,7 +11,7 @@ mat-form-field {
 }
 
 div div {
-  width: 85%;
+  width: 140em;
   margin-right: 1em;
 }
 
@@ -23,6 +23,11 @@ div div mat-icon {
 div div,
 div button {
   display: inline-block;
+}
+
+div div:last-child {
+  display: inline;
+  margin: 0;
 }
 
 div button {
@@ -39,13 +44,17 @@ mat-icon {
   margin: 0 !important;
 }
 
-.sortTypes:first-child {
-  margin-bottom: 1em;
+.sortTypes {
+  padding: 0 0.5em 0 0.5em;
 }
 
 @media (max-width: 132.6em) {
   .searchBox {
-    width: 90.2em;
+    width: 89em;
+  }
+
+  div div {
+    width: 80em !important;
   }
 }
 
