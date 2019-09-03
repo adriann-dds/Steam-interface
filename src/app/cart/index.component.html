@@ -6,7 +6,9 @@
         </mat-card-title>
       </mat-card-header>
 
-      <mat-card-content *ngIf="item.games.summary" class="summary">{{item.games.summary | slice:0:220}}...</mat-card-content>
+      <mat-card-content *ngIf="item.games.summary" class="summary">
+        {{item.games.summary | slice:0:180}}...
+      </mat-card-content>
       <mat-card-content *ngIf="!item.games.summary" class="summary">No summary available!</mat-card-content>
 
       <mat-card-content>
@@ -14,13 +16,19 @@
         <mat-grid-list cols="2" rowHeight="3:1">
           <mat-grid-tile>
             <span>
-              <a (click)="remove(item.games.id)">
-                <mat-icon matSuffix color="warn">clear</mat-icon>
-              </a>
-
               <mat-chip-list>
-                <mat-chip *ngIf="item.games.total_rating" color="accent" selected>{{item.games.total_rating | number:'2.1-2'}}%</mat-chip>
-                <mat-chip *ngIf="!item.games.total_rating" color="warn" selected>N/A</mat-chip>
+                <mat-chip *ngIf="item.games.total_rating" color="accent" selected>
+                  <a (click)="remove(item.games.id)">
+                    <mat-icon matSuffix color="warn">clear</mat-icon>
+                  </a>
+                  {{item.games.total_rating | number:'2.1-2'}}%
+                </mat-chip>
+                <mat-chip *ngIf="!item.games.total_rating" color="accent" selected>
+                  <a (click)="remove(item.games.id)">
+                    <mat-icon matSuffix color="warn">favorite</mat-icon>
+                  </a>
+                  N/A
+                </mat-chip>
               </mat-chip-list>
             </span>
           </mat-grid-tile>

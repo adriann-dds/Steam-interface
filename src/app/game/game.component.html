@@ -4,12 +4,17 @@
   <div *ngFor="let game of games; let i = index">
     <mat-card>
       <mat-card-header *ngFor="let date of dates; let j = index">
-        <mat-card-title *ngIf="i == j">{{(game.name)?(game.name):('No Name')}}
-          <span *ngIf="date">({{(date.y)?(date.y):('N/A')}})</span>
+        <mat-card-title *ngIf="i == j">
+          {{(game.name)?(game.name):('No Name')}}
         </mat-card-title>
+        <mat-card-subtitle *ngIf="i == j">
+          <span *ngIf="date">{{(date.y)?(date.y):('N/A')}}</span>
+        </mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content *ngIf="game.summary" class="summary">{{game.summary | slice:0:220}}...</mat-card-content>
+      <mat-card-content *ngIf="game.summary" class="summary">
+        {{game.summary | slice:0:180}}...
+      </mat-card-content>
       <mat-card-content *ngIf="!game.summary" class="summary">No summary available!</mat-card-content>
 
       <mat-card-content>
@@ -17,12 +22,13 @@
         <mat-grid-list cols="2" rowHeight="3:1">
           <mat-grid-tile>
             <span>
-              <a [routerLink]="['/cart', { id:game.id }]">
-                <mat-icon matSuffix color="warn">favorite</mat-icon>
-              </a>
-
               <mat-chip-list>
-                <mat-chip *ngIf="game.total_rating" color="accent" selected>{{game.total_rating | number:'2.1-2'}}%</mat-chip>
+                <mat-chip *ngIf="game.total_rating" color="accent" selected>
+                  <a [routerLink]="['/cart', { id:game.id }]">
+                    <mat-icon matSuffix color="warn">favorite_border</mat-icon>
+                  </a>
+                  {{game.total_rating | number:'2.1-2'}}%
+                </mat-chip>
                 <mat-chip *ngIf="!game.total_rating" color="warn" selected>N/A</mat-chip>
               </mat-chip-list>
             </span>
