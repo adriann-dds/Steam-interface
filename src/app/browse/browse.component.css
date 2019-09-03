@@ -1,10 +1,9 @@
 .searchBox {
-  width: 100em;
+  width: 150em;
   margin-bottom: 1em;
 }
 
 .searchBox,
-.sortTypes,
 mat-form-field {
   display: block;
   margin-left: auto;
@@ -12,7 +11,7 @@ mat-form-field {
 }
 
 div div {
-  width: 90%;
+  width: 140em;
   margin-right: 1em;
 }
 
@@ -26,21 +25,36 @@ div button {
   display: inline-block;
 }
 
+div div:last-child {
+  display: inline;
+  margin: 0;
+}
+
 div button {
   vertical-align: super;
+  text-align: center;
+  width: auto;
+}
+
+mat-icon {
+  width: 100%;
+  height: 100%;
+  display: inline;
+  font-size: 2.5em;
+  margin: 0 !important;
 }
 
 .sortTypes {
-  width: 7em;
-}
-
-.sortTypes:first-child {
-  margin-bottom: 1em;
+  padding: 0 0.5em 0 0.5em;
 }
 
 @media (max-width: 132.6em) {
   .searchBox {
-    width: 90.2em;
+    width: 89em;
+  }
+
+  div div {
+    width: 80em !important;
   }
 }
 

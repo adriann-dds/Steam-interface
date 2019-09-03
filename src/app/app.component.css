@@ -3,8 +3,9 @@
 }
 
 mat-toolbar {
-  font-size: 2em;
   display: block;
+  font-size: 2em;
+  margin-bottom: 2em;
   padding: 3em 0 2em 0.5em;
 }
 
