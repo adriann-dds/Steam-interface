@@ -7,15 +7,21 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button [matMenuTriggerFor]="menu">Sort</button>
-  <mat-menu #menu="matMenu">
-    <button class="sortTypes" mat-raised-button color="primary" (click)='changeSortType()'>
+  <!-- <button mat-raised-button [matMenuTriggerFor]="menu">Sort</button> -->
+
+  <button class="sortTypes" mat-menu-item (click)='changeSortType()'>
+    <mat-icon matSuffix>{{sortType}}</mat-icon>
+  </button>
+  <button class="sortTypes" mat-menu-item (click)='changeSortDirection()'>
+    <mat-icon matSuffix>{{sortDirection}}</mat-icon>
+  </button>
+
+  <!-- <mat-menu #menu="matMenu">
+    <button class="sortTypes" mat-menu-item (click)='changeSortType()'>
       {{sortType}}
     </button>
-    <button class="sortTypes" mat-raised-button color="primary" (click)='changeSortDirection()'>
-      {{sortDirection}}
-    </button>
-  </mat-menu>
+  </mat-menu> -->
+
 </div>
 
 <div *ngIf='tableEnabled'>

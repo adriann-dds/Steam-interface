@@ -58,26 +58,26 @@ export class BrowseComponent implements OnInit {
     this.tableEnabled = true;
   }
 
-  sortType: string = 'Name';
+  sortType: string = 'sort_by_alpha';
   changeSortType() {
-    if(this.sortType == 'Name') {
-      this.sortType = 'Date';
+    if(this.sortType == 'sort_by_alpha') {
+      this.sortType = 'date_range';
       this.sortByDate();
     }
-    else if(this.sortType == 'Date') {
-      this.sortType = 'Name';
+    else if(this.sortType == 'date_range') {
+      this.sortType = 'sort_by_alpha';
       this.sortByName();
     }
   }
 
-  sortDirection: string = 'Ascending'
+  sortDirection: string = 'arrow_upward'
 
   changeSortDirection() {
-    if(this.sortDirection == 'Ascending') {
-      this.sortDirection = 'Descending';
+    if(this.sortDirection == 'arrow_upward') {
+      this.sortDirection = 'arrow_downward';
     }
-    else if(this.sortDirection == 'Descending') {
-      this.sortDirection = 'Ascending';
+    else if(this.sortDirection == 'arrow_downward') {
+      this.sortDirection = 'arrow_upward';
     }
 
     this.games.reverse();

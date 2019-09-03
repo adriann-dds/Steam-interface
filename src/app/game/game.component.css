@@ -6,7 +6,6 @@ div {
   text-align: center;
   display: block;
   width: 150.5em;
-
   margin-right: auto;
   margin-left: auto;
   z-index: 1;
@@ -45,11 +44,10 @@ mat-card mat-card-header > div {
 
 mat-card mat-card-content {
   font-size: 1em;
-  /* margin-bottom: 0; */
-  /* text-align: left; */
 }
 
 mat-card mat-card-title {
+  font-size: 1.35em;
   margin-bottom: 1em !important;
 }
 
@@ -66,7 +64,6 @@ mat-card mat-chip-list mat-chip {
 
 mat-card .summary {
   margin: 0 0 1em 1em;
-  /* text-indent: 2em; */
   text-align: left;
   display: flex;
 }
@@ -88,10 +85,8 @@ mat-card mat-card-content a {
 }
 
 mat-card mat-icon {
-  /* vertical-align: middle; */
   display: inline;
   font-size: 2em;
-  /* height: 1.25em; */
 }
 
 mat-card mat-grid-tile:first-child span {
