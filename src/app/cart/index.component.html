@@ -19,7 +19,7 @@
               <mat-chip-list>
                 <mat-chip *ngIf="item.games.total_rating" color="accent" selected>
                   <a (click)="remove(item.games.id)">
-                    <mat-icon matSuffix color="warn">clear</mat-icon>
+                    <mat-icon matSuffix color="warn">favorite</mat-icon>
                   </a>
                   {{item.games.total_rating | number:'2.1-2'}}%
                 </mat-chip>
