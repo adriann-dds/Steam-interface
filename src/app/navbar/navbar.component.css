@@ -55,12 +55,14 @@ a {
   color: white;
 }
 
+div button:hover,
 mat-toolbar-row a:hover {
-  color: rgb(230, 230, 230);
+  color: rgb(230, 230, 230) !important;
 }
 
+div button:active,
 mat-toolbar-row a:active {
-  color: darkgrey;
+  color: darkgrey !important;
 }
 
 mat-toolbar-row > span {

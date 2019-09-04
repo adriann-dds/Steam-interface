@@ -2,12 +2,16 @@
   <div *ngFor="let item of items">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>{{(item.games.name)?(item.games.name):('No Name')}}
+        <mat-card-title>
+          {{(item.games.name)?(item.games.name):('No Name')}}
         </mat-card-title>
+        <mat-card-subtitle>
+          <span>{{(item.games.y)?(item.games.y):('N/A')}}</span>
+        </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content *ngIf="item.games.summary" class="summary">
-        {{item.games.summary | slice:0:180}}...
+        {{item.games.summary | slice:0:180}}&hellip;
       </mat-card-content>
       <mat-card-content *ngIf="!item.games.summary" class="summary">No summary available!</mat-card-content>
 

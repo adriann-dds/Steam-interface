@@ -30,7 +30,7 @@ export class AppComponent {
           break;
 
         default:
-        this.title = "Home";
+        this.title = "Top 10!";
         break;
       }
     });

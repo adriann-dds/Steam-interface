@@ -17,6 +17,7 @@ export class BrowseComponent implements OnInit {
   gamesMaster: Game[] = [];
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
+  // showSpinner: boolean = false;
 
   constructor(
     private apiService: ApiService
@@ -28,7 +29,7 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.requestMultipleApi().toPromise().then(data => {
+    await this.apiService.getGame().toPromise().then(data => {
       this.games = data;
       this.gamesMaster = data;
     });
@@ -43,19 +44,38 @@ export class BrowseComponent implements OnInit {
     this.games.length = 0;
 
     if(filterBy.length > 0) {
-      this.apiService.searchGamesList(filterBy).subscribe(data => {
+      await this.apiService.searchGamesList2(filterBy).toPromise().then(data => {
         this.games = data;
       });
 
-      this.apiService.searchGamesDates(filterBy).subscribe(data => {
+      await this.apiService.searchGamesList1(filterBy).toPromise().then(data => {
         this.dates = data;
       });
+
+      // await this.apiService.searchGamesList(filterBy).subscribe(data => {
+      //   // this.showSpinner = true;
+      //   // console.log(this.showSpinner);
+      //   this.games = data;
+      // });
+
+      console.log(this.games, this.dates);
+
+      // this.apiService.searchGamesDates(filterBy).subscribe(data => {
+      //   this.dates = data;
+      // });
+
+      // this.games.forEach (async game => await this.apiService.getGameInfoDate(game.id).toPromise().then(data => {
+      //   this.dates.push(data[0]);
+      //   console.log(data);
+      // }))
     }
     else {
       this.games = this.gamesMaster;
     }
 
     this.tableEnabled = true;
+    // this.showSpinner = false;
+    // console.log(this.showSpinner);
   }
 
   sortType: string = 'sort_by_alpha';

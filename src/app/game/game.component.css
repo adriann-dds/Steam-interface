@@ -8,7 +8,6 @@ div {
   width: 150.5em;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 div > div {
@@ -23,6 +22,7 @@ mat-card {
   border-radius: 0;
   position: relative;
   background-color: rgb(66, 66, 66);
+  padding: 1.75em 1.5em 1.75em 1.5em;
 }
 
 mat-card mat-card-header {
@@ -50,7 +50,7 @@ mat-card mat-card-content {
 }
 
 mat-card mat-card-title {
-  font-size: 1.35em;
+  font-size: 1.4em;
 }
 
 mat-card mat-card-subtitle {
@@ -69,24 +69,27 @@ mat-card mat-chip-list {
 }
 
 mat-card mat-chip-list mat-chip {
-  width: 9em;
-  height: 3.4em;
+  height: 3em;
+  width: 7.7em;
+  border-radius: 3em;
   display: inline-block;
 }
 
 mat-card mat-chip a {
+  height: 1.6em;
   display: inline;
   margin-right: 0.25em;
+  display: inline-block;
 }
 
 mat-card mat-card-content:last-child {
   width: 90%;
-  bottom: -5.5em;
+  bottom: -5em;
   position: absolute;
 }
 
 mat-card mat-card-content button {
-  padding: 0.5em 1.25em 0.5em 1.25em;
+  padding: 0.3em 1.25em 0.3em 1.25em;
 }
 
 mat-card mat-card-content a {
@@ -96,8 +99,9 @@ mat-card mat-card-content a {
 }
 
 mat-card mat-icon {
-  font-size: 2em;
+  color: black;
   display: inline;
+  font-size: 1.5em;
   vertical-align: middle;
 }
 
@@ -115,7 +119,7 @@ mat-card mat-grid-tile:last-child span {
 
 @media (max-width: 132.6em) {
   div {
-    width: 90.2em;
+    width: 88.6em;
   }
 }
 

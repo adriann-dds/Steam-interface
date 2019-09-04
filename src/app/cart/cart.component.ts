@@ -14,6 +14,7 @@ import { ApiService } from '../api.service';
 export class CartComponent implements OnInit {
   private items: Item[];
 	public localGame: Game;
+	public localData: Game;
 	public id: number;
 	public tableEnabled: boolean = false;
 
@@ -28,13 +29,20 @@ export class CartComponent implements OnInit {
 		});
 
 		if (this.id) {
-			await this.find(this.id);
+			await this.findGame(this.id);
+			await this.findDate(this.id);
 		}
+
+		console.log(this.localGame , this.localData);
 
       if (this.id) {
         var item: Item = {
 					games: this.localGame[0]
 				};
+
+				if (this.localData[0]) {
+					item.games.y = this.localData[0].y;
+				}
 
         if (localStorage.getItem('cart') == null) {
           let cart: any = [];
@@ -70,9 +78,15 @@ export class CartComponent implements OnInit {
 
 	//get info from API
 
-	async find(id: number) {
+	async findGame(id: number) {
 		await this.apiService.getGameInfoGame(id).toPromise().then(data => {
       this.localGame = data;
+    })
+	}
+
+	async findDate(id: number) {
+		await this.apiService.getGameInfoDate(id).toPromise().then(data => {
+      this.localData = data;
     })
 	}
 
