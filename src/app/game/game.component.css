@@ -2,6 +2,11 @@
   margin-bottom: 4em;
 }
 
+.odd,
+.even {
+  display: none;
+}
+
 div {
   z-index: 1;
   display: block;
@@ -51,6 +56,10 @@ mat-card mat-card-content {
 
 mat-card mat-card-title {
   font-size: 1.4em;
+}
+
+mat-card p {
+  margin: 0;
 }
 
 mat-card mat-card-subtitle {

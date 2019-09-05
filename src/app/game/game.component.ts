@@ -12,10 +12,9 @@ import { Http, Headers, Response } from '@angular/http';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  @Input('GamesInput') games: Game;
-  @Input('DatesInput') dates: Game;
-  shared: Game;
+  @Input('GamesInput') games: Game[] = [];
 
+  dates: Game[] = [];
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) {
@@ -28,12 +27,23 @@ export class GameComponent implements OnInit {
   //get game data from API
 
   getGame() {
-    this.apiService.requestMultipleApi().subscribe(game_data => {
+    this.apiService.getGame().subscribe(game_data => {
       console.log(game_data, "Request");
-      this.games = game_data[0];
-      this.dates = game_data[1];
-      this.shared = this.games;
+      this.games = game_data;
       this.showSpinner = false;
+
+
+      for (let i = 0; i < this.games.length; i++) {
+        this.apiService.getGameInfoDate(this.games[i].id).toPromise().then(data => {
+          this.dates.push(data[0]);
+
+          if (this.dates[i]) {
+            this.games[i].y = this.dates[i].y;
+          } else {
+            this.games[i].y = 0;
+          }
+        });
+      }
     });
   }
 }

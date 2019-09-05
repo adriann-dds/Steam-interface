@@ -50,84 +50,39 @@ export class ApiService {
 
   //master search method
 
-  searchGamesList2(searchEntry: string) {
+  searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
     let gameList: Game[] = [];
-    let gameDates: Game[] = [];
+    let dateList: Game[] = [];
 
     this.searchGameByID(searchEntry).subscribe(data => {
       gameID = data;
 
       if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoGame(game.id).toPromise().then(data => {
-          gameList.push(data[0]);
 
-          // this.getGameInfoDate(data[0].id).toPromise().then(gameData => {
-          //   gameList[0].y = gameData[0].y;
-          // });
-        }));
+        for (let i = 0; i < gameID.length; i++) {
+          this.getGameInfoGame(gameID[i].id).toPromise().then(game => {
+            this.getGameInfoDate(gameID[i].id).toPromise().then(data => {
+              gameList.push(game[0]);
+              dateList.push(data[0]);
 
-        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => {
-          gameDates.push(data[0]);
+              // console.log(i, dateList[i].y, dateList[i].id);
 
-        }));
+              // if (dateList[i]) {
+                gameList[i].y = dateList[i].y;
+                console.log(i, dateList[i].id, "Successful");
+              // } else {
+              //   // gameList[i].y = 0;
+              // }
+            });
+          })
+        }
       }
-
-      // if (gameID.length > 1) {
-      //   gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => {
-      //     gameDates.push(data[0]);
-      //
-      //   }));
-      // }
     })
 
-    // for (let i = 0; i < 10; i++) {
-    //   // if(gameList[i] && gameDates[i].y) {
-    //   console.log(gameDates[i].y);
-    //     gameList[i].y = gameDates[i].y;
-    //   // }
-    // }
-
-    console.log(gameDates);
+    console.log(gameList, dateList);
 
     return of(gameList);
-  }
-
-  searchGamesList1(searchEntry: string) {
-    let gameID: Game[] = [];
-    let gameList: Game[] = [];
-    let gameDates: Game[] = [];
-
-    this.searchGameByID(searchEntry).subscribe(data => {
-      gameID = data;
-
-      if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => {
-          gameDates.push(data[0]);
-
-        }));
-      }
-
-    })
-
-    console.log(gameDates);
-
-    return of(gameDates);
-  }
-
-  searchGamesDates(searchEntry: string) {
-    let gameID: Game[] = [];
-    let gameDates: Game[] = [];
-
-    this.searchGameByID(searchEntry).subscribe(data => {
-      gameID = data;
-      console.log(gameID);
-      if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[0])))
-      }
-    })
-
-    return of(gameDates);
   }
 
   //search game by search entry
