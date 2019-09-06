@@ -57,33 +57,26 @@ export class ApiService {
   searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
 
-    this.searchGameByID(searchEntry).subscribe(data => {
+    this.searchGameByID(searchEntry).subscribe(async data => {
       gameID = data;
 
       if (gameID.length > 1) {
-        this.getGameData(gameID);
+        for (let i = 0; i < gameID.length; i++) {
+          await this.getGameInfoGame(gameID[i].id).toPromise().then(game => {
+            this.getGameInfoDate(gameID[i].id).toPromise().then(data => {
+              this.gameList.push(game[0]);
+              this.dateList.push(data[0]);
+
+              if (this.dateList[i]) {
+                this.gameList[i].y = this.dateList[i].y;
+              }
+            });
+          })
+        }
       }
     })
 
-
     return of(this.gameList);
-  }
-
-  async getGameData(games: Game[]) {
-    for (let i = 0; i < games.length; i++) {
-      await this.getGameInfoGame(games[i].id).toPromise().then(async game => {
-        await this.getGameInfoDate(games[i].id).toPromise().then(data => {
-          this.gameList.push(game[0]);
-          this.dateList.push(data[0]);
-
-          if (data[0]) {
-            this.gameList[i].y = this.dateList[i].y;
-          }
-        });
-      })
-    }
-
-    console.log(this.gameList, this.dateList);
   }
 
   //search game by search entry
