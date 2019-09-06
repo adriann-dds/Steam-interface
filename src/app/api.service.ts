@@ -13,7 +13,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ApiService {
   apiURL: string = '/api';
   user_key: string = '50d97a766c459f52dcfba937c7fc7137'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
-                                                        // 823ce2ad9697f981568837ab540b9b5b
+  // 823ce2ad9697f981568837ab540b9b5b
+
+  gameList: Game[] = [];
+  dateList: Game[] = [];
+
   constructor (private httpClient: HttpClient){ }
 
   //connect to API server
@@ -52,37 +56,34 @@ export class ApiService {
 
   searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
-    let gameList: Game[] = [];
-    let dateList: Game[] = [];
 
     this.searchGameByID(searchEntry).subscribe(data => {
       gameID = data;
 
       if (gameID.length > 1) {
-
-        for (let i = 0; i < gameID.length; i++) {
-          this.getGameInfoGame(gameID[i].id).toPromise().then(game => {
-            this.getGameInfoDate(gameID[i].id).toPromise().then(data => {
-              gameList.push(game[0]);
-              dateList.push(data[0]);
-
-              // console.log(i, dateList[i].y, dateList[i].id);
-
-              // if (dateList[i]) {
-                gameList[i].y = dateList[i].y;
-                console.log(i, dateList[i].id, "Successful");
-              // } else {
-              //   // gameList[i].y = 0;
-              // }
-            });
-          })
-        }
+        this.getGameData(gameID);
       }
     })
 
-    console.log(gameList, dateList);
 
-    return of(gameList);
+    return of(this.gameList);
+  }
+
+  async getGameData(games: Game[]) {
+    for (let i = 0; i < games.length; i++) {
+      await this.getGameInfoGame(games[i].id).toPromise().then(async game => {
+        await this.getGameInfoDate(games[i].id).toPromise().then(data => {
+          this.gameList.push(game[0]);
+          this.dateList.push(data[0]);
+
+          if (data[0]) {
+            this.gameList[i].y = this.dateList[i].y;
+          }
+        });
+      })
+    }
+
+    console.log(this.gameList, this.dateList);
   }
 
   //search game by search entry

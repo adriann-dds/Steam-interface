@@ -17,8 +17,7 @@ export class GameComponent implements OnInit {
   dates: Game[] = [];
   showSpinner: boolean = true;
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(){
     this.getGame()
@@ -39,8 +38,6 @@ export class GameComponent implements OnInit {
 
           if (this.dates[i]) {
             this.games[i].y = this.dates[i].y;
-          } else {
-            this.games[i].y = 0;
           }
         });
       }
