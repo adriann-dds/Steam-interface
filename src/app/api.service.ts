@@ -114,4 +114,26 @@ export class ApiService {
         "X-Requested-With":"origin"
     }})
   }
+
+  getGameInfoWebsite(gameID: number) {
+    console.log('Getting websites by search ID');
+
+    return this.httpClient.get(this.apiURL + '/websites/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoVideo(gameID: number) {
+    console.log('Getting video by search ID');
+
+    return this.httpClient.get(this.apiURL + '/game_videos/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
 }

@@ -12,6 +12,7 @@ export interface Game {
     platforms?: number;
     human?: string;
     y?: number;
+    video_id?: string;
 }
 
 export class Item {

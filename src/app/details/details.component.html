@@ -3,9 +3,14 @@
 <div class="container" *ngIf="!showSpinner">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{(localGame.name)?(localGame.name):('No Name')}}
-        <span *ngIf="localDate">({{(localDate.y)?(localDate.y):('N/A')}})</span>
+      <mat-card-title>
+        <p>{{(localGame.name)?(localGame.name):('No Name')}}</p>
       </mat-card-title>
+      <mat-card-subtitle>
+        <span>
+          <p>{{(localDate)?(localDate.y):('N/A')}}</p>
+        </span>
+      </mat-card-subtitle>
     </mat-card-header>
 
     <mat-chip-list>
@@ -15,5 +20,12 @@
 
     <mat-card-content *ngIf="localGame.summary" class="summary">{{localGame.summary}}</mat-card-content>
     <mat-card-content *ngIf="!localGame.summary" class="summary">No summary available!</mat-card-content>
+
+    <mat-card-content><a href="{{localWebsite.url}}" target="_blank">Steam Page</a></mat-card-content>
+
+    <mat-card-content *ngIf="localVideo">
+      <h1>{{localVideo.name}}</h1>
+      <iframe [src]='returnVideoUrl()'></iframe>
+    </mat-card-content>
   </mat-card>
 </div>
