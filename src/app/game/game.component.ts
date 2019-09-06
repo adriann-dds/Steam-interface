@@ -26,14 +26,14 @@ export class GameComponent implements OnInit {
   //get game data from API
 
   getGame() {
-    this.apiService.getGame().subscribe(game_data => {
+    this.apiService.getGame().subscribe(async game_data => {
       console.log(game_data, "Request");
       this.games = game_data;
       this.showSpinner = false;
 
 
       for (let i = 0; i < this.games.length; i++) {
-        this.apiService.getGameInfoDate(this.games[i].id).toPromise().then(data => {
+        await this.apiService.getGameInfoDate(this.games[i].id).toPromise().then(data => {
           this.dates.push(data[0]);
 
           if (this.dates[i]) {
