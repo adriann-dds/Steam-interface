@@ -12,8 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ApiService {
   apiURL: string = '/api';
-  user_key: string = '50d97a766c459f52dcfba937c7fc7137'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
-  // 823ce2ad9697f981568837ab540b9b5b
+  user_key: string = 'd0fb97d526bdb53aff6805eb806f795f'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
+  // 823ce2ad9697f981568837ab540b9b5b 50d97a766c459f52dcfba937c7fc7137
 
   gameList: Game[] = [];
   dateList: Game[] = [];
@@ -30,26 +30,6 @@ export class ApiService {
       "Accept":"application/json",
       "user-key":this.user_key
     }});
-  }
-
-  //connect to multiple API
-
-  requestMultipleApi(): Observable<Game[]> {
-    console.log('Getting games -> multiple API');
-
-    let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-
-    let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?fields=*&limit=10&order=rating:asc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-
-    return forkJoin([headers1, headers2]);
   }
 
   //master search method
@@ -130,6 +110,28 @@ export class ApiService {
     console.log('Getting video by search ID');
 
     return this.httpClient.get(this.apiURL + '/game_videos/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoPlatform(gameID: number) {
+    console.log('Getting platforms by search ID');
+
+    return this.httpClient.get(this.apiURL + '/platforms/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoScreenshots(gameID: number) {
+    console.log('Getting screenshots by search ID');
+
+    return this.httpClient.get(this.apiURL + '/screenshots/'+ gameID +'?fields=*',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,

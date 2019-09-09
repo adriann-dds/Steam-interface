@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
 
 		if (this.id) {
 			await this.findGame(this.id);
-			await this.findDate(this.id);
+			// console.log(this.localGame.release_dates);
 		}
 
 		console.log(this.localGame , this.localData);
@@ -79,14 +79,14 @@ export class CartComponent implements OnInit {
 	//get info from API
 
 	async findGame(id: number) {
-		await this.apiService.getGameInfoGame(id).toPromise().then(data => {
+		await this.apiService.getGameInfoGame(id).toPromise().then(async data => {
       this.localGame = data;
-    })
-	}
 
-	async findDate(id: number) {
-		await this.apiService.getGameInfoDate(id).toPromise().then(data => {
-      this.localData = data;
+			// console.log(this.localGame.release_dates);
+
+			await this.apiService.getGameInfoDate(id).toPromise().then(data => {
+	      this.localData = data;
+	    })
     })
 	}
 

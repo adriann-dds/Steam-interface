@@ -19,6 +19,8 @@ export class DetailsComponent implements OnInit {
   public localDate: Game;
   public localWebsite: Game;
   public localVideo: Game;
+  public localPlatform: Game[] = [];
+  public localScreenshots: Game[] = [];
   public id: number;
 
   constructor(
@@ -42,23 +44,40 @@ export class DetailsComponent implements OnInit {
 	async find(id: number) {
 		await this.apiService.getGameInfoGame(id).toPromise().then(async data => {
       this.localGame = data[0];
-
-      await this.apiService.getGameInfoDate(id).toPromise().then(async data => {
-        this.localDate = data[0];
-
-        await this.apiService.getGameInfoWebsite(id).toPromise().then(async data => {
-          this.localWebsite = data[0];
-
-          await this.apiService.getGameInfoVideo(id).toPromise().then(data => {
-            this.localVideo = data[0];
-
-          })
-        })
-      })
-
-      console.log(this.localGame, this.localDate, this.localWebsite, this.localVideo);
-      this.showSpinner = false;
     })
+
+    await this.apiService.getGameInfoDate(this.localGame.release_dates[0]).toPromise().then(async data => {
+      this.localDate = data[0];
+    })
+
+    await this.apiService.getGameInfoWebsite(id).toPromise().then(async data => {
+      this.localWebsite = data[0];
+    })
+
+    if (this.localGame.videos) {
+      await this.apiService.getGameInfoVideo(this.localGame.videos[0]).toPromise().then(async data => {
+        this.localVideo = data[0];
+      })
+    }
+
+    if (this.localGame.platforms) {
+      for (var i = 0; i < this.localGame.platforms.length; i++) {
+        await this.apiService.getGameInfoPlatform(this.localGame.platforms[i]).toPromise().then(data => {
+          this.localPlatform.push(data[0]);
+        })
+      }
+    }
+
+    if (this.localGame.screenshots) {
+      for (var i = 0; i < this.localGame.screenshots.length; i++) {
+        await this.apiService.getGameInfoScreenshots(this.localGame.screenshots[i]).toPromise().then(async data => {
+          this.localScreenshots.push(data[0]);
+        })
+      }
+    }
+
+    console.log(this.localGame, this.localDate, this.localWebsite, this.localVideo, this.localScreenshots, this.localPlatform);
+    this.showSpinner = false;
 	}
 
   returnVideoUrl() {

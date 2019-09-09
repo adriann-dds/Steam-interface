@@ -6,13 +6,17 @@ export interface Game {
     name?: string;
     summary?: string;
     url?: string;
-    first_release_date?: number;
+    release_dates?: number[];
     rating?: string;
     total_rating?: string;
-    platforms?: number;
+    platforms?: number[];
     human?: string;
     y?: number;
     video_id?: string;
+    completely?: number;
+    videos?: number;
+    screenshots?: number[];
+    storyline?: string;
 }
 
 export class Item {

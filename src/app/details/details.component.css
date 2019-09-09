@@ -1,11 +1,12 @@
 .container {
-  width: 100em;
+  width: 90em;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 mat-card {
+  margin-bottom: 8em;
   padding: 2em 2.5em 2em 2.5em;
 }
 
@@ -28,29 +29,73 @@ mat-card mat-card-subtitle {
   margin-bottom: 1.5em;
 }
 
+mat-card mat-card-subtitle span {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
 mat-card mat-card-content {
   margin-left: 0 !important;
+  margin-bottom: 2em;
+}
+
+mat-card h1 {
+  margin-bottom: 0.5em !important;
+  font-size: 3em;
+}
+
+mat-card mat-chip-list {
+  display: flex;
 }
 
 mat-card mat-chip-list mat-chip {
-  width: 6em;
-  height: 2em;
-  font-size: 2em;
-  margin: 0 0 1em 0;
-  text-align: center;
-  display: inline-grid;
+  height: 3.2em;
+  width: 8.7em;
+  border-radius: 3em;
+  display: inline-block;
 }
 
-mat-card .summary {
-  margin: 0 0 1em 1em;
-  font-size: 1.5em;
-  text-indent: 2em;
-}
-
-mat-card mat-card-content a {
+mat-card mat-chip a {
+  height: 1.6em;
+  margin-right: 0.25em;
+  display: inline-block;
   text-decoration: none;
-  font-size: 3em;
+}
+
+mat-card mat-icon {
+  color: black !important;
+  display: inline;
+  font-size: 2.4em;
+  vertical-align: middle;
+}
+
+mat-card mat-grid-list mat-card-content {
+  margin-right: 1em;
+  width: 100%;
+}
+
+mat-card iframe {
+  height: 20.5em;
+  width: 100%;
+  border: 0;
+}
+
+mat-card mat-card-content span img {
+  width: 5em;
+  height: 5em;
+  margin-right: 0.3em;
+}
+
+mat-card .summary span {
+  opacity: 0.8;
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+mat-card .gamePage a {
   color: white;
+  font-size: 3em;
+  text-decoration: none;
 }
 
 mat-card mat-card-content a:hover {
@@ -61,7 +106,6 @@ mat-card mat-card-content a:active {
   color: darkgrey !important;
 }
 
-mat-card iframe {
-  height: 20em;
-  width: 40em;
+mat-card mat-card-content span {
+  font-size: 2em;
 }

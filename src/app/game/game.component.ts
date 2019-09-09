@@ -33,7 +33,7 @@ export class GameComponent implements OnInit {
 
 
       for (let i = 0; i < this.games.length; i++) {
-        await this.apiService.getGameInfoDate(this.games[i].id).toPromise().then(data => {
+        await this.apiService.getGameInfoDate(this.games[i].release_dates[0]).toPromise().then(data => {
           this.dates.push(data[0]);
 
           if (this.dates[i]) {
