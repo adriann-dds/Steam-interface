@@ -12,8 +12,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ApiService {
   apiURL: string = '/api';
-  user_key: string = '50d97a766c459f52dcfba937c7fc7137'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
-                                                        // 823ce2ad9697f981568837ab540b9b5b
+  user_key: string = 'd0fb97d526bdb53aff6805eb806f795f'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
+  // 823ce2ad9697f981568837ab540b9b5b 50d97a766c459f52dcfba937c7fc7137
+
+  gameList: Game[] = [];
+  dateList: Game[] = [];
+
   constructor (private httpClient: HttpClient){ }
 
   //connect to API server
@@ -28,56 +32,31 @@ export class ApiService {
     }});
   }
 
-  //connect to multiple API
-
-  requestMultipleApi(): Observable<Game[]> {
-    console.log('Getting games -> multiple API');
-
-    let headers1 = this.httpClient.get(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-
-    let headers2 = this.httpClient.get(this.apiURL + '/release_dates/?fields=*&limit=10&order=rating:asc',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-
-    return forkJoin([headers1, headers2]);
-  }
-
   //master search method
 
   searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
-    let gameList: Game[] = [];
 
-    this.searchGameByID(searchEntry).subscribe(data => {
+    this.searchGameByID(searchEntry).subscribe(async data => {
       gameID = data;
 
       if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoGame(game.id).toPromise().then(data => gameList.push(data[0])))
+        for (let i = 0; i < gameID.length; i++) {
+          await this.getGameInfoGame(gameID[i].id).toPromise().then(game => {
+            this.getGameInfoDate(gameID[i].id).toPromise().then(data => {
+              this.gameList.push(game[0]);
+              this.dateList.push(data[0]);
+
+              if (this.dateList[i]) {
+                this.gameList[i].y = this.dateList[i].y;
+              }
+            });
+          })
+        }
       }
     })
 
-    return of(gameList);
-  }
-
-  searchGamesDates(searchEntry: string) {
-    let gameID: Game[] = [];
-    let gameDates: Game[] = [];
-
-    this.searchGameByID(searchEntry).subscribe(data => {
-      gameID = data;
-
-      if (gameID.length > 1) {
-        gameID.forEach (async game => await this.getGameInfoDate(game.id).toPromise().then(data => gameDates.push(data[0])))
-      }
-    })
-
-    return of(gameDates);
+    return of(this.gameList);
   }
 
   //search game by search entry
@@ -109,6 +88,50 @@ export class ApiService {
     console.log('Getting dates by search ID');
 
     return this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoWebsite(gameID: number) {
+    console.log('Getting websites by search ID');
+
+    return this.httpClient.get(this.apiURL + '/websites/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoVideo(gameID: number) {
+    console.log('Getting video by search ID');
+
+    return this.httpClient.get(this.apiURL + '/game_videos/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoPlatform(gameID: number) {
+    console.log('Getting platforms by search ID');
+
+    return this.httpClient.get(this.apiURL + '/platforms/'+ gameID +'?fields=*',
+      {headers: {
+        "Accept":"application/json",
+        "user-key":this.user_key,
+        "X-Requested-With":"origin"
+    }})
+  }
+
+  getGameInfoScreenshots(gameID: number) {
+    console.log('Getting screenshots by search ID');
+
+    return this.httpClient.get(this.apiURL + '/screenshots/'+ gameID +'?fields=*',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,

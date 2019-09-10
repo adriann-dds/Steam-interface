@@ -28,7 +28,7 @@ export class BrowseComponent implements OnInit {
   //get game data from API
 
   async ngOnInit(){
-    await this.apiService.requestMultipleApi().toPromise().then(data => {
+    await this.apiService.getGame().toPromise().then(data => {
       this.games = data;
       this.gamesMaster = data;
     });
@@ -43,12 +43,8 @@ export class BrowseComponent implements OnInit {
     this.games.length = 0;
 
     if(filterBy.length > 0) {
-      this.apiService.searchGamesList(filterBy).subscribe(data => {
+      await this.apiService.searchGamesList(filterBy).toPromise().then(data => {
         this.games = data;
-      });
-
-      this.apiService.searchGamesDates(filterBy).subscribe(data => {
-        this.dates = data;
       });
     }
     else {
@@ -81,11 +77,10 @@ export class BrowseComponent implements OnInit {
     }
 
     this.games.reverse();
-    this.dates.reverse();
   }
 
   sortByDate(): void {
-    this.dates.sort((object1: Game, object2: Game) => {
+    this.games.sort((object1: Game, object2: Game) => {
       if(object1.y > object2.y) { return -1; }
       if(object1.y < object2.y) { return 1; }
       return 0;

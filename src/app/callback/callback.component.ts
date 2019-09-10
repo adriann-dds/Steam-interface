@@ -3,9 +3,7 @@ import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-callback',
-  templateUrl: './callback.component.html',
-  styleUrls: ['./callback.component.css']
+  selector: 'app-callback'
 })
 export class CallbackComponent implements OnInit {
 

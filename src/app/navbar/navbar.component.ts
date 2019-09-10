@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { AuthService } from 'src/app/auth.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-// import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-navbar',

@@ -2,38 +2,43 @@
   margin-bottom: 4em;
 }
 
+.odd,
+.even {
+  display: none;
+}
+
 div {
-  text-align: center;
+  z-index: 1;
   display: block;
   width: 150.5em;
-  margin-right: auto;
   margin-left: auto;
-  z-index: 1;
+  margin-right: auto;
 }
 
 div > div {
-  display: inline-flex;
-  margin: 0 2em 2em 0;
   width: 27.4em;
+  margin: 0 2em 2em 0;
+  display: inline-flex;
   border: 1px solid rgb(60, 60, 60);
 }
 
 mat-card {
-  position: relative;
   width: 100%;
-  height: 16em;
-  background-color: rgb(66, 66, 66);
   border-radius: 0;
+  position: relative;
+  background-color: rgb(66, 66, 66);
+  padding: 1.75em 1.5em 1.75em 1.5em;
 }
 
 mat-card mat-card-header {
-  margin-left: 0;
   display: block;
+  margin-left: -16px;
 }
 
+mat-card mat-card-header mat-card-subtitle,
 mat-card mat-card-header mat-card-title {
-  text-align: left;
   width: 100%;
+  text-align: left;
 }
 
 mat-card mat-card-header > div {
@@ -43,12 +48,29 @@ mat-card mat-card-header > div {
 }
 
 mat-card mat-card-content {
+  height: 10em;
   font-size: 1em;
+  margin-left: 0;
+  line-height: 1.5;
 }
 
 mat-card mat-card-title {
-  font-size: 1.35em;
-  margin-bottom: 1em !important;
+  font-size: 1.4em;
+}
+
+mat-card p {
+  margin: 0;
+}
+
+mat-card mat-card-subtitle {
+  font-size: 1em;
+  margin-bottom: 1.5em;
+}
+
+mat-card .summary {
+  display: flex;
+  text-align: left;
+  margin: 0 0 1em 0;
 }
 
 mat-card mat-chip-list {
@@ -56,37 +78,40 @@ mat-card mat-chip-list {
 }
 
 mat-card mat-chip-list mat-chip {
-  width: 6em;
-  text-align: center;
-  display: block;
-  margin: 0 0 0 1em;
+  height: 3em;
+  width: 7.7em;
+  border-radius: 3em;
+  display: inline-block;
 }
 
-mat-card .summary {
-  margin: 0 0 1em 1em;
-  text-align: left;
-  display: flex;
+mat-card mat-chip a {
+  height: 1.6em;
+  display: inline;
+  margin-right: 0.25em;
+  display: inline-block;
 }
 
 mat-card mat-card-content:last-child {
   width: 90%;
-  bottom: 0;
+  bottom: -5em;
   position: absolute;
 }
 
 mat-card mat-card-content button {
-  margin: 0 0.5em 0 0.5em;
+  padding: 0.3em 1.25em 0.3em 1.25em;
 }
 
 mat-card mat-card-content a {
-  font-size: 1.5em;
-  text-decoration: none;
   color: white;
+  font-size: 1.25em;
+  text-decoration: none;
 }
 
 mat-card mat-icon {
+  color: black;
   display: inline;
-  font-size: 2em;
+  font-size: 1.5em;
+  vertical-align: middle;
 }
 
 mat-card mat-grid-tile:first-child span {
@@ -103,7 +128,7 @@ mat-card mat-grid-tile:last-child span {
 
 @media (max-width: 132.6em) {
   div {
-    width: 90.2em;
+    width: 88.6em;
   }
 }
 
@@ -132,19 +157,19 @@ mat-card mat-grid-tile:last-child span {
   }
 
   mat-card-content {
-    font-size: 16px !important;
     margin: 0 !important;
+    font-size: 16px !important;
   }
 
   mat-card .summary {
-    text-align: center !important;
     font-size: 0.75em !important;
+    text-align: center !important;
   }
 
   mat-card mat-chip {
+    display: block;
     font-size: 0.75em;
     width: 7em !important;
-    display: block;
     margin-left: auto !important;
     margin-right: auto !important;
   }

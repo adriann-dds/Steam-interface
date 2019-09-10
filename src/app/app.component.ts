@@ -14,7 +14,7 @@ export class AppComponent {
     router.events.subscribe(data => {
       switch (location.path().slice(0, 5)) {
         case "/game":
-          this.title = "Top 10 Games";
+          this.title = "Top 10";
           break;
 
         case "/brow":
@@ -30,7 +30,7 @@ export class AppComponent {
           break;
 
         default:
-        this.title = "Home";
+        this.title = "Top 10!";
         break;
       }
     });

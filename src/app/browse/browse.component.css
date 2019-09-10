@@ -1,5 +1,5 @@
 .searchBox {
-  width: 150em;
+  width: 148em;
   margin-bottom: 1em;
 }
 
@@ -10,8 +10,12 @@ mat-form-field {
   margin-right: auto;
 }
 
+mat-label {
+  top: 1.75em !important;
+}
+
 div div {
-  width: 140em;
+  width: 136em;
   margin-right: 1em;
 }
 
@@ -26,14 +30,27 @@ div button {
 }
 
 div div:last-child {
-  display: inline;
   margin: 0;
+  display: inline;
 }
 
 div button {
-  vertical-align: super;
+  width: 4.3em;
+  height: 4.3em;
   text-align: center;
-  width: auto;
+  border-radius: 0.4em;
+  vertical-align: super;
+  border: 1px solid rgb(139, 139, 139);
+}
+
+div button:hover {
+  border-width: 2px;
+  border-color: rgb(255, 255, 255);
+}
+
+div button:focus {
+  border-width: 2px;
+  border-color: rgb(105, 240, 174);
 }
 
 mat-icon {
@@ -45,7 +62,11 @@ mat-icon {
 }
 
 .sortTypes {
-  padding: 0 0.5em 0 0.5em;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
+.sortTypes:first-child {
+  margin-right: 1em;
 }
 
 @media (max-width: 132.6em) {
@@ -54,13 +75,17 @@ mat-icon {
   }
 
   div div {
-    width: 80em !important;
+    width: 77.5em !important;
   }
 }
 
 @media (max-width: 100em) {
   .searchBox {
     width: 60em;
+  }
+
+  div div {
+    width: 48.5em !important;
   }
 }
 
