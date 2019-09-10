@@ -36,17 +36,17 @@
     </mat-card-content>
 
     <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile>
-        <mat-card-content *ngIf="localVideo">
+      <mat-grid-tile *ngIf="localVideo">
+        <mat-card-content>
           <iframe [src]='returnVideoUrl()'></iframe>
         </mat-card-content>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-card-content *ngIf="localScreenshots">
-          <span *ngFor="let screen of localScreenshots">
+          <div *ngFor="let screen of localScreenshots">
             <img [src]='screen.url'>
-          </span>
+          </div>
         </mat-card-content>
       </mat-grid-tile>
     </mat-grid-list>
@@ -63,7 +63,7 @@
     </mat-card-content>
 
     <mat-card-content class="gamePage">
-      <a href="{{localWebsite.url}}" target="_blank">Steam Page</a>
+      <a href="{{localWebsite.url}}" target="_blank">Game Page</a>
     </mat-card-content>
   </mat-card>
 </div>

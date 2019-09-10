@@ -50,9 +50,11 @@ export class DetailsComponent implements OnInit {
       this.localDate = data[0];
     })
 
-    await this.apiService.getGameInfoWebsite(id).toPromise().then(async data => {
-      this.localWebsite = data[0];
-    })
+    if (this.localGame.websites) {
+      await this.apiService.getGameInfoWebsite(this.localGame.websites[0]).toPromise().then(async data => {
+        this.localWebsite = data[0];
+      })
+    }
 
     if (this.localGame.videos) {
       await this.apiService.getGameInfoVideo(this.localGame.videos[0]).toPromise().then(async data => {

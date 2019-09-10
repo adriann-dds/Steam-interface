@@ -17,6 +17,7 @@ export interface Game {
     videos?: number;
     screenshots?: number[];
     storyline?: string;
+    websites?: number[];
 }
 
 export class Item {
