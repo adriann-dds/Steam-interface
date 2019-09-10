@@ -35,16 +35,10 @@ mat-card mat-card-header {
   margin-left: -16px;
 }
 
-mat-card mat-card-header mat-card-subtitle,
-mat-card mat-card-header mat-card-title {
+mat-card mat-card-header mat-card-title,
+mat-card mat-card-header mat-card-subtitle {
   width: 100%;
   text-align: left;
-}
-
-mat-card mat-card-header > div {
-  margin: 0;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 mat-card mat-card-content {
@@ -65,6 +59,11 @@ mat-card p {
 mat-card mat-card-subtitle {
   font-size: 1em;
   margin-bottom: 1.5em;
+}
+
+mat-card mat-card-subtitle span {
+  margin-right: 0.5em;
+  display: inline-block;
 }
 
 mat-card .summary {
