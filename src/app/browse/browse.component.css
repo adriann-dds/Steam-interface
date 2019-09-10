@@ -1,9 +1,12 @@
 .searchBox {
-  width: 148em;
-  margin-bottom: 1em;
+  z-index: 1;
+  width: 100%;
+  /* width: 148em; */
+  position: fixed;
+  text-align: center;
+  margin: -8em 0 0 -1em;
 }
 
-.searchBox,
 mat-form-field {
   display: block;
   margin-left: auto;
@@ -70,27 +73,16 @@ mat-icon {
 }
 
 @media (max-width: 132.6em) {
-  .searchBox {
-    width: 89em;
-  }
-
   div div {
     width: 77.5em !important;
   }
 }
 
 @media (max-width: 100em) {
-  .searchBox {
-    width: 60em;
-  }
-
   div div {
     width: 48.5em !important;
   }
 }
 
 @media (max-width: 60em) {
-  .searchBox {
-    width: 17em !important;
-  }
 }
