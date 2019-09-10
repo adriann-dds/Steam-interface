@@ -5,7 +5,8 @@
     <mat-toolbar *ngIf="!title" color="primary">{{ title }}</mat-toolbar>
 
     <router-outlet></router-outlet>
-    <app-game *ngIf="title == 'Top 10!'"></app-game>
+    <!-- <app-game *ngIf="title == 'Top 10!'"></app-game> -->
+    <app-loading-spinner></app-loading-spinner>
     <app-footer></app-footer>
   </div>
 </div>
