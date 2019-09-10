@@ -18,6 +18,7 @@ export interface Game {
     screenshots?: number[];
     storyline?: string;
     websites?: number[];
+    abbreviation?: string;
 }
 
 export class Item {

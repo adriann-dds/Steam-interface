@@ -15,6 +15,7 @@ export class GameComponent implements OnInit {
   @Input('GamesInput') games: Game[] = [];
 
   dates: Game[] = [];
+  platforms: Game[] = [];
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) { }
@@ -38,6 +39,14 @@ export class GameComponent implements OnInit {
 
           if (this.dates[i]) {
             this.games[i].y = this.dates[i].y;
+          }
+        });
+
+        await this.apiService.getGameInfoPlatform(this.games[i].platforms[0]).toPromise().then(data => {
+          this.platforms.push(data[0]);
+
+          if (this.platforms[i]) {
+            this.games[i].abbreviation = this.platforms[i].abbreviation;
           }
         });
       }

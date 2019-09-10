@@ -2,11 +2,6 @@
   margin-bottom: 4em;
 }
 
-.odd,
-.even {
-  display: none;
-}
-
 div {
   z-index: 1;
   display: block;
@@ -35,16 +30,10 @@ mat-card mat-card-header {
   margin-left: -16px;
 }
 
-mat-card mat-card-header mat-card-subtitle,
-mat-card mat-card-header mat-card-title {
+mat-card mat-card-header mat-card-title,
+mat-card mat-card-header mat-card-subtitle {
   width: 100%;
   text-align: left;
-}
-
-mat-card mat-card-header > div {
-  margin: 0;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 mat-card mat-card-content {
@@ -67,6 +56,11 @@ mat-card mat-card-subtitle {
   margin-bottom: 1.5em;
 }
 
+mat-card mat-card-subtitle span {
+  margin-right: 0.5em;
+  display: inline-block;
+}
+
 mat-card .summary {
   display: flex;
   text-align: left;
@@ -78,10 +72,10 @@ mat-card mat-chip-list {
 }
 
 mat-card mat-chip-list mat-chip {
-  height: 3em;
   width: 7.7em;
+  height: 3.2em;
+  display: inherit;
   border-radius: 3em;
-  display: inline-block;
 }
 
 mat-card mat-chip a {

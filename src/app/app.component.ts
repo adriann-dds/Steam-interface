@@ -18,7 +18,7 @@ export class AppComponent {
           break;
 
         case "/brow":
-          this.title = "Games";
+          this.title = "";
           break;
 
         case "/cart":
