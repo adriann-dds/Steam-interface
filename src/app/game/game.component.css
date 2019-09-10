@@ -2,11 +2,6 @@
   margin-bottom: 4em;
 }
 
-.odd,
-.even {
-  display: none;
-}
-
 div {
   z-index: 1;
   display: block;
