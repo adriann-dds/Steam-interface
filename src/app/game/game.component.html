@@ -8,7 +8,7 @@
           <p>{{(game.name)?(game.name):('No Name')}}</p>
         </mat-card-title>
         <mat-card-subtitle>
-          <span>
+          <span *ngIf="game.abbreviation">
             {{game.abbreviation}}
           </span>
           <span>
