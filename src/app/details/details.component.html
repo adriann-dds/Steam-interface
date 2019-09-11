@@ -1,56 +1,50 @@
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 
-<div class="container" *ngIf="!showSpinner">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        <p>{{(localGame.name)?(localGame.name):('No Name')}}</p>
-      </mat-card-title>
-      <mat-card-subtitle>
-        <span *ngFor="let platform of localPlatform">
-          {{platform.abbreviation}}
-        </span>
-        <span>
-          <p>{{(localDate)?(localDate.y):('N/A')}}</p>
-        </span>
-      </mat-card-subtitle>
-    </mat-card-header>
+<mat-card class="header" *ngIf="!showSpinner">
+  <mat-card-content>
+    <span>{{(localGame.name)?(localGame.name):('No Name')}},</span>
+    <span *ngFor="let platform of localPlatform">{{platform.abbreviation}}</span>
+    <span>{{(localDate)?(localDate.y):('N/A')}}</span>
 
-    <mat-card-content>
-      <span>
-        <mat-chip-list>
-          <mat-chip *ngIf="localGame.total_rating" color="accent" selected>
-            <a [routerLink]="['/cart', { id:localGame.id }]">
-              <mat-icon matSuffix color="warn">favorite_border</mat-icon>
-            </a>
-            {{localGame.total_rating | number:'2.1-2'}}%
-          </mat-chip>
-          <mat-chip *ngIf="!localGame.total_rating" color="accent" selected>
-            <a [routerLink]="['/cart', { id:localGame.id }]">
-              <mat-icon matSuffix color="warn">favorite_border</mat-icon>
-            </a>
-            N/A
-          </mat-chip>
-        </mat-chip-list>
-      </span>
-    </mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngIf="localGame.total_rating" color="accent" selected>
+        <a [routerLink]="['/cart', { id:localGame.id }]">
+          <mat-icon matSuffix color="warn">favorite_border</mat-icon>
+        </a>
+        {{localGame.total_rating | number:'2.1-2'}}%
+      </mat-chip>
+      <mat-chip *ngIf="!localGame.total_rating" color="accent" selected>
+        <a [routerLink]="['/cart', { id:localGame.id }]">
+          <mat-icon matSuffix color="warn">favorite_border</mat-icon>
+        </a>
+        N/A
+      </mat-chip>
+    </mat-chip-list>
 
-    <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile *ngIf="localVideo">
-        <mat-card-content>
-          <iframe [src]='returnVideoUrl()'></iframe>
-        </mat-card-content>
-      </mat-grid-tile>
+    <button mat-raised-button color="warn" *ngIf="localWebsite">
+      <a href="{{localWebsite.url}}" target="_blank">Game Page</a>
+    </button>
+  </mat-card-content>
+</mat-card>
 
-      <mat-grid-tile>
-        <mat-card-content *ngIf="localScreenshots">
-          <div *ngFor="let screen of localScreenshots">
-            <img [src]='screen.url'>
-          </div>
-        </mat-card-content>
-      </mat-grid-tile>
-    </mat-grid-list>
+<div class="container">
+  <mat-grid-list cols="2" rowHeight="1.5:1" *ngIf="!showSpinner">
+    <mat-grid-tile *ngIf="localVideo">
+      <mat-card-content class="videoContent">
+        <iframe [src]='returnVideoUrl()'></iframe>
+      </mat-card-content>
+    </mat-grid-tile>
 
+    <mat-grid-tile>
+      <mat-card-content *ngIf="localScreenshots">
+        <div *ngFor="let screen of localScreenshots">
+          <img [src]='screen.url'>
+        </div>
+      </mat-card-content>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-card *ngIf="!showSpinner">
     <mat-card-content *ngIf="localGame.summary" class="summary">
       <h1>Summary</h1>
       <span>{{localGame.summary}}</span>
@@ -62,8 +56,8 @@
       <span>{{localGame.storyline}}</span>
     </mat-card-content>
 
-    <mat-card-content class="gamePage">
+    <!-- <mat-card-content class="gamePage" *ngIf="localWebsite">
       <a href="{{localWebsite.url}}" target="_blank">Game Page</a>
-    </mat-card-content>
+    </mat-card-content> -->
   </mat-card>
 </div>

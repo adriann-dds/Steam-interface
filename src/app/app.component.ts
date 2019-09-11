@@ -26,7 +26,7 @@ export class AppComponent {
           break;
 
         case "/deta":
-          this.title = "Game Details";
+          this.title = "";
           break;
 
         default:
