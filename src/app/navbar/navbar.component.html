@@ -3,9 +3,15 @@
     <span>
       <mat-icon>videogame_asset</mat-icon>
     </span>
-    <span><a [routerLink]="['games']">Top 10</a></span>
-    <span><a [routerLink]="['browse']">Games</a></span>
-    <span><a [routerLink]="['cart']">Favorites</a></span>
+    <span [className]="navLocation == '/game' ? 'borderClass' : ''">
+      <a [routerLink]="['games']">Top 10</a>
+    </span>
+    <span [className]="navLocation == '/brow' ? 'borderClass' : ''">
+      <a [routerLink]="['browse']">Games</a>
+    </span>
+    <span [className]="navLocation == '/cart' ? 'borderClass' : ''">
+      <a [routerLink]="['cart']">Favorites</a>
+    </span>
     <span class="example-spacer"></span>
 
     <div>

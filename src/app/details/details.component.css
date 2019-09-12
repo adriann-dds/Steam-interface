@@ -10,7 +10,7 @@ app-loading-spinner {
   position: fixed;
   box-shadow: unset;
   background: transparent;
-  margin: -9em 0 1em 16px;
+  margin: -7em 0 1em 16px;
 }
 
 .header mat-card-content {
@@ -68,7 +68,6 @@ app-loading-spinner {
 
 mat-grid-list mat-card-content {
   width: 100%;
-  margin: 0 1em 0 0;
 }
 
 iframe {
@@ -89,19 +88,27 @@ iframe {
 }
 
 mat-grid-list {
-  margin-bottom: 1em;
+  margin-top: -2em;
+}
+
+mat-grid-list div:first-child {
+  margin-bottom: 2em;
 }
 
 mat-grid-list div {
-  width: 11em;
-  height: 11em;
-  margin-right: 0.3em;
+  width: 13.5em;
+  height: 13.5em;
+  margin-right: 2em;
   display: inline-block;
 }
 
 mat-grid-list div img {
   width: inherit;
   height: inherit;
+}
+
+mat-grid-list mat-grid-tile:last-child mat-card-content {
+  margin: -5px 0 0 2em;
 }
 
 mat-card {
@@ -119,7 +126,7 @@ mat-card mat-card-content {
 }
 
 mat-card h1 {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: normal;
   margin-bottom: 0.5em !important;
 }

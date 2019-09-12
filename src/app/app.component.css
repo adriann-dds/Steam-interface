@@ -20,13 +20,13 @@ mat-toolbar {
 a {
   font-size: 1em;
   display: block;
-  margin: 1em auto 1em auto;
   text-align: center;
+  margin: 1em auto 1em auto;
 }
 
 div button:hover {
-  background-color: red;
   color: black;
+  background-color: red;
 }
 
 div button:active {

@@ -73,12 +73,12 @@ mat-card .summary {
 }
 
 mat-card mat-chip-list {
-  display: flex;
+  display: block;
 }
 
 mat-card mat-chip-list mat-chip {
   width: 7.7em;
-  height: 3.2em;
+  height: 3.25em;
   display: inherit;
   border-radius: 3em;
 }

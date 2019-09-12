@@ -12,10 +12,10 @@ import { ApiService } from '../api.service';
   providedIn: 'root'
 })
 export class CartComponent implements OnInit {
-  private items: Item[];
+	public id: number;
+	private items: Item[];
 	public localGame: Game;
 	public localData: Game;
-	public id: number;
 	public tableEnabled: boolean = false;
 
   constructor(

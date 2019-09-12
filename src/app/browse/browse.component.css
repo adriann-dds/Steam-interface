@@ -1,7 +1,6 @@
 .searchBox {
   z-index: 1;
   width: 100%;
-  /* width: 148em; */
   position: fixed;
   text-align: center;
   margin: -8em 0 0 -1em;
@@ -43,16 +42,18 @@ div button {
   text-align: center;
   border-radius: 0.4em;
   vertical-align: super;
-  border: 1px solid rgb(139, 139, 139);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 div button:hover {
   border-width: 2px;
+  background: unset;
   border-color: rgb(255, 255, 255);
 }
 
 div button:focus {
   border-width: 2px;
+  background: unset;
   border-color: rgb(105, 240, 174);
 }
 
