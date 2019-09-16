@@ -108,7 +108,7 @@ mat-grid-list div img {
 }
 
 mat-grid-list mat-grid-tile:last-child mat-card-content {
-  margin: -5px 0 0 2em;
+  margin: -10px 0 0 2em;
 }
 
 mat-card {

@@ -73,65 +73,10 @@ export class ApiService {
 
   //get all info about a game
 
-  getGameInfoGame(gameID: number) {
-    console.log('Getting games by search ID');
+  getGameInfo(endpoint: string, gameID: number) {
+    console.log('Getting game data by search ID');
 
-    return this.httpClient.get(this.apiURL + '/games/'+ gameID +'?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
-  }
-
-  getGameInfoDate(gameID: number) {
-    console.log('Getting dates by search ID');
-
-    return this.httpClient.get(this.apiURL + '/release_dates/'+ gameID +'?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
-  }
-
-  getGameInfoWebsite(gameID: number) {
-    console.log('Getting websites by search ID');
-
-    return this.httpClient.get(this.apiURL + '/websites/'+ gameID +'?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
-  }
-
-  getGameInfoVideo(gameID: number) {
-    console.log('Getting video by search ID');
-
-    return this.httpClient.get(this.apiURL + '/game_videos/'+ gameID +'?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
-  }
-
-  getGameInfoPlatform(gameID: number) {
-    console.log('Getting platforms by search ID');
-
-    return this.httpClient.get(this.apiURL + '/platforms/'+ gameID +'?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
-  }
-
-  getGameInfoScreenshots(gameID: number) {
-    console.log('Getting screenshots by search ID');
-
-    return this.httpClient.get(this.apiURL + '/screenshots/'+ gameID +'?fields=*',
+    return this.httpClient.get(this.apiURL + '/' + endpoint + '/' + gameID + '?fields=*',
       {headers: {
         "Accept":"application/json",
         "user-key":this.user_key,

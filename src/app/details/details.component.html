@@ -31,7 +31,7 @@
   <mat-grid-list cols="2" rowHeight="1.5:1" *ngIf="!showSpinner">
     <mat-grid-tile *ngIf="localVideo">
       <mat-card-content class="videoContent">
-        <iframe [src]='returnVideoUrl()'></iframe>
+        <iframe [src]='returnVideoUrl()' allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
       </mat-card-content>
     </mat-grid-tile>
 
