@@ -37,23 +37,6 @@ export class DetailsComponent implements OnInit {
 		if (this.id) {
 			await this.find(this.id);
 		}
-
-    // document.addEventListener("wheel", function(e) {
-    //   e.preventDefault();
-    // }, {
-    //   capture: true,
-    //   passive: true
-    // });
-
-    // document.ontouchmove = function(event) {
-    //   event.preventDefault();
-    // }
-
-    // addEventListener(document, "touchstart", function(e) {
-    //   console.log(e.defaultPrevented); //false
-    //   e.preventDefault; //does nothing -> listener is passive
-    //   console.log(e.defaultPrevented); //still false
-    // }, Modernizr.passiveeventlisteners ? {passive: true} :false);
   }
 
   //get info from API

@@ -79,12 +79,12 @@ export class CartComponent implements OnInit {
 	//get info from API
 
 	async findGame(id: number) {
-		await this.apiService.getGameInfoGame(id).toPromise().then(async data => {
+		await this.apiService.getGameInfo('games', id).toPromise().then(async data => {
       this.localGame = data;
 
 			// console.log(this.localGame.release_dates);
 
-			await this.apiService.getGameInfoDate(id).toPromise().then(data => {
+			await this.apiService.getGameInfo('release_dates', id).toPromise().then(data => {
 	      this.localData = data;
 	    })
     })

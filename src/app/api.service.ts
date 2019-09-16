@@ -42,8 +42,8 @@ export class ApiService {
 
       if (gameID.length > 1) {
         for (let i = 0; i < gameID.length; i++) {
-          await this.getGameInfoGame(gameID[i].id).toPromise().then(game => {
-            this.getGameInfoDate(gameID[i].id).toPromise().then(data => {
+          await this.getGameInfo('games', gameID[i].id).toPromise().then(game => {
+            this.getGameInfo('release_dates', gameID[i].id).toPromise().then(data => {
               this.gameList.push(game[0]);
               this.dateList.push(data[0]);
 
