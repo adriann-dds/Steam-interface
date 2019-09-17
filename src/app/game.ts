@@ -19,6 +19,7 @@ export interface Game {
     storyline?: string;
     websites?: number[];
     abbreviation?: string;
+    game?: number;
 }
 
 export class Item {

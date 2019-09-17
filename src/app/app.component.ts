@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(location: Location, router: Router) {
     router.events.subscribe(data => {
       switch (location.path().slice(0, 5)) {
-        case "/game":
+        case "/home":
           this.title = "Home";
           break;
 

@@ -22,10 +22,20 @@ export class ApiService {
 
   //connect to API server
 
-  getGame() : Observable<Game[]> {
-    console.log('Getting games -> singular API');
+  getPopularGames() : Observable<Game[]> {
+    console.log('Getting popular games');
 
     return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=6&order=popularity:desc',
+    { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
+
+  getComingGames() : Observable<Game[]> {
+    console.log('Getting coming games');
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=1568724790&expand=game',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key

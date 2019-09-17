@@ -16,21 +16,21 @@ export class GameComponent implements OnInit {
 
   dates: Game[] = [];
   platforms: Game[] = [];
-  showSpinner: boolean = true;
+  //showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(){
-    this.getGame()
+    //this.getGame()
   }
 
   //get game data from API
 
   getGame() {
-    this.apiService.getGame().subscribe(async game_data => {
+    this.apiService.getPopularGames().subscribe(async game_data => {
       console.log(game_data, "Request");
       this.games = game_data;
-      this.showSpinner = false;
+      // this.showSpinner = false;
 
 
       for (let i = 0; i < this.games.length; i++) {

@@ -30,6 +30,7 @@ import { CartComponent } from './cart/cart.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DetailsComponent } from './details/details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DetailsComponent } from './details/details.component';
     FooterComponent,
     LoadingSpinnerComponent,
     CartComponent,
-    DetailsComponent
+    DetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

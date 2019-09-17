@@ -5,6 +5,7 @@ import { BrowseComponent } from './browse/browse.component';
 import { CallbackComponent } from './callback/callback.component';
 import { CartComponent } from './cart/cart.component';
 import { DetailsComponent } from './details/details.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'details',
     component: DetailsComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   }
 ];
 
