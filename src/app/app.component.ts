@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 
@@ -14,7 +14,7 @@ export class AppComponent {
     router.events.subscribe(data => {
       switch (location.path().slice(0, 5)) {
         case "/game":
-          this.title = "Top 10";
+          this.title = "Home";
           break;
 
         case "/brow":
@@ -26,11 +26,11 @@ export class AppComponent {
           break;
 
         case "/deta":
-          this.title = "Game Details";
+          this.title = "";
           break;
 
         default:
-        this.title = "Top 10!";
+        this.title = "Home!";
         break;
       }
     });

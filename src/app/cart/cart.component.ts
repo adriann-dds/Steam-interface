@@ -12,10 +12,10 @@ import { ApiService } from '../api.service';
   providedIn: 'root'
 })
 export class CartComponent implements OnInit {
-  private items: Item[];
+	public id: number;
+	private items: Item[];
 	public localGame: Game;
 	public localData: Game;
-	public id: number;
 	public tableEnabled: boolean = false;
 
   constructor(
@@ -79,12 +79,12 @@ export class CartComponent implements OnInit {
 	//get info from API
 
 	async findGame(id: number) {
-		await this.apiService.getGameInfoGame(id).toPromise().then(async data => {
+		await this.apiService.getGameInfo('games', id).toPromise().then(async data => {
       this.localGame = data;
 
 			// console.log(this.localGame.release_dates);
 
-			await this.apiService.getGameInfoDate(id).toPromise().then(data => {
+			await this.apiService.getGameInfo('release_dates', id).toPromise().then(data => {
 	      this.localData = data;
 	    })
     })

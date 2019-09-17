@@ -25,7 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { CartComponent } from './cart/cart.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';

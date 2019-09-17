@@ -34,21 +34,25 @@ export class GameComponent implements OnInit {
 
 
       for (let i = 0; i < this.games.length; i++) {
-        await this.apiService.getGameInfoDate(this.games[i].release_dates[0]).toPromise().then(data => {
-          this.dates.push(data[0]);
+        if (this.games[i].release_dates) {
+          await this.apiService.getGameInfo('release_dates', this.games[i].release_dates[0]).toPromise().then(data => {
+            this.dates.push(data[0]);
 
-          if (this.dates[i]) {
-            this.games[i].y = this.dates[i].y;
-          }
-        });
+            if (this.dates[i]) {
+              this.games[i].y = this.dates[i].y;
+            }
+          });
+        }
 
-        await this.apiService.getGameInfoPlatform(this.games[i].platforms[0]).toPromise().then(data => {
-          this.platforms.push(data[0]);
+        if (this.games[i].platforms) {
+          await this.apiService.getGameInfo('platforms', this.games[i].platforms[0]).toPromise().then(data => {
+            this.platforms.push(data[0]);
 
-          if (this.platforms[i]) {
-            this.games[i].abbreviation = this.platforms[i].abbreviation;
-          }
-        });
+            if (this.platforms[i]) {
+              this.games[i].abbreviation = this.platforms[i].abbreviation;
+            }
+          });
+        }
       }
     });
   }
