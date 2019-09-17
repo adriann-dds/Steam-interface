@@ -15,8 +15,8 @@ export class BrowseComponent implements OnInit {
   games: Game[] = [];
   dates: Game[] = [];
   gamesMaster: Game[] = [];
-  searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
+  searchTerm: FormControl = new FormControl;
 
   constructor(
     private apiService: ApiService

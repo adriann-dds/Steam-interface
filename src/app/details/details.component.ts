@@ -14,14 +14,14 @@ import { Game } from '../game';
   providedIn: 'root'
 })
 export class DetailsComponent implements OnInit {
-  public showSpinner: boolean = true;
+  public id: number;
   public localGame: Game;
   public localDate: Game;
-  public localWebsite: Game;
   public localVideo: Game;
+  public localWebsite: Game;
   public localPlatform: Game[] = [];
+  public showSpinner: boolean = true;
   public localScreenshots: Game[] = [];
-  public id: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,

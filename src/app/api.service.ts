@@ -25,7 +25,7 @@ export class ApiService {
   getGame() : Observable<Game[]> {
     console.log('Getting games -> singular API');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=10&order=rating:asc',
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=6&order=popularity:desc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key

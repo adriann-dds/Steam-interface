@@ -10,7 +10,7 @@ app-loading-spinner {
   position: fixed;
   box-shadow: unset;
   background: transparent;
-  margin: -7em 0 1em 16px;
+  margin: -6.9em 0 1em 16px;
 }
 
 .header mat-card-content {
@@ -24,8 +24,8 @@ app-loading-spinner {
 }
 
 .header mat-card-content button {
-  margin: 0 32px 0 auto;
   padding: 0 1em 0 1em;
+  margin: 0 32px 0 auto;
 }
 
 .header mat-card-content button a {
@@ -70,21 +70,29 @@ mat-grid-list mat-card-content {
   width: 100%;
 }
 
+mat-grid-list mat-grid-tile:first-child {
+  width: 52% !important;
+}
+
+mat-grid-list mat-grid-tile:last-child {
+  left: 52% !important;
+  width: 49% !important;
+}
+
 iframe {
+  top: 0;
+  left: 0;
   border: 0;
   width: 100%;
   height: 22em;
-
   height: 100%;
-  left: 0;
   position: absolute;
-  top: 0;
 }
 
 .videoContent {
   overflow: hidden;
-  padding-top: 56.25%;
   position: relative;
+  padding-top: 56.25%;
 }
 
 mat-grid-list {
@@ -96,8 +104,8 @@ mat-grid-list div:first-child {
 }
 
 mat-grid-list div {
-  width: 13.5em;
-  height: 13.5em;
+  width: 14em;
+  height: 14em;
   margin-right: 2em;
   display: inline-block;
 }
@@ -121,8 +129,8 @@ mat-card p {
 }
 
 mat-card mat-card-content {
-  margin-left: 0 !important;
   margin-bottom: 4em;
+  margin-left: 0 !important;
 }
 
 mat-card h1 {
