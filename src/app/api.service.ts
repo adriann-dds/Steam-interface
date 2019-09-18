@@ -17,6 +17,7 @@ export class ApiService {
 
   gameList: Game[] = [];
   dateList: Game[] = [];
+  currentDate: number = Math.trunc(Date.now() / 1000);
 
   constructor (private httpClient: HttpClient){ }
 
@@ -35,7 +36,7 @@ export class ApiService {
   getComingGames() : Observable<Game[]> {
     console.log('Getting coming games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=1568724790&expand=game',
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=' + this.currentDate + '&expand=game',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
@@ -45,7 +46,7 @@ export class ApiService {
   getRecentGames() : Observable<Game[]> {
     console.log('Getting recent games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=1567123200&expand=game',
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:desc&filter[date][lt]=' + this.currentDate + '&expand=game',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key

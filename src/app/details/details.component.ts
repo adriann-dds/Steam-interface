@@ -15,6 +15,7 @@ import { Game } from '../game';
 })
 export class DetailsComponent implements OnInit {
   public id: number;
+  public length: number;
   public localGame: Game;
   public localDate: Game;
   public localVideo: Game;
@@ -73,7 +74,13 @@ export class DetailsComponent implements OnInit {
     }
 
     if (this.localGame.screenshots) {
-      for (var i = 0; i < this.localGame.screenshots.length; i++) {
+      if (this.localGame.screenshots.length > 6) {
+        length = 6;
+      } else {
+        length = this.localGame.screenshots.length;
+      }
+
+      for (var i = 0; i < length; i++) {
         await this.apiService.getGameInfo('screenshots', this.localGame.screenshots[i]).toPromise().then(async data => {
           this.localScreenshots.push(data[0]);
         })

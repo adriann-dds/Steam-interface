@@ -13,12 +13,17 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class HomeComponent implements OnInit {
   popularGames: Game[] = [];
-  comingGames: Game[] = [];
   popularDates: Game[] = [];
+  popularPlatforms: Game[] = [];
+
+  comingGames: Game[] = [];
   comingDates: Game[] = [];
+  comingPlatforms: Game[] = [];
+
   recentGames: Game[] = [];
   recentDates: Game[] = [];
-  platforms: Game[] = [];
+  recentPlatforms: Game[] = [];
+
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) { }
@@ -51,10 +56,10 @@ export class HomeComponent implements OnInit {
 
         if (this.popularGames[i].platforms) {
           await this.apiService.getGameInfo('platforms', this.popularGames[i].platforms[0]).toPromise().then(data => {
-            this.platforms.push(data[0]);
+            this.popularPlatforms.push(data[0]);
 
-            if (this.platforms[i]) {
-              this.popularGames[i].abbreviation = this.platforms[i].abbreviation;
+            if (this.popularPlatforms[i]) {
+              this.popularGames[i].abbreviation = this.popularPlatforms[i].abbreviation;
             }
           });
         }
@@ -76,6 +81,16 @@ export class HomeComponent implements OnInit {
             this.comingGames[i].y = this.comingDates[i].y;
           }
         });
+
+        if (this.comingGames[i].platforms) {
+          await this.apiService.getGameInfo('platforms', this.comingGames[i].platforms[0]).toPromise().then(data => {
+            this.comingPlatforms.push(data[0]);
+
+            if (this.comingPlatforms[i]) {
+              this.comingGames[i].abbreviation = this.comingPlatforms[i].abbreviation;
+            }
+          });
+        }
       }
     });
   }
@@ -94,6 +109,16 @@ export class HomeComponent implements OnInit {
             this.recentGames[i].y = this.recentDates[i].y;
           }
         });
+
+        if (this.recentGames[i].platforms) {
+          await this.apiService.getGameInfo('platforms', this.recentGames[i].platforms[0]).toPromise().then(data => {
+            this.recentPlatforms.push(data[0]);
+
+            if (this.recentPlatforms[i]) {
+              this.recentGames[i].abbreviation = this.recentPlatforms[i].abbreviation;
+            }
+          });
+        }
       }
     });
   }
