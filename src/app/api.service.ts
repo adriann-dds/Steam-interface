@@ -42,6 +42,16 @@ export class ApiService {
     }});
   }
 
+  getRecentGames() : Observable<Game[]> {
+    console.log('Getting recent games');
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=1567123200&expand=game',
+    { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
+
   //master search method
 
   searchGamesList(searchEntry: string) {

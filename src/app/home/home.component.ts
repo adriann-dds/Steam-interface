@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   comingGames: Game[] = [];
   popularDates: Game[] = [];
   comingDates: Game[] = [];
+  recentGames: Game[] = [];
+  recentDates: Game[] = [];
   platforms: Game[] = [];
   showSpinner: boolean = true;
 
@@ -23,8 +25,8 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(){
     await this.getPopularGame();
-    // this.dates = [];
     await this.getComingGame();
+    await this.getRecentGame();
   }
 
   //get game data from API
@@ -72,6 +74,24 @@ export class HomeComponent implements OnInit {
 
           if (this.comingDates[i]) {
             this.comingGames[i].y = this.comingDates[i].y;
+          }
+        });
+      }
+    });
+  }
+
+  getRecentGame() {
+    this.apiService.getRecentGames().subscribe(async game_data => {
+      console.log(game_data, "Request recent");
+      this.recentDates = game_data;
+      this.showSpinner = false;
+
+      for (let i = 0; i < this.recentDates.length; i++) {
+        await this.apiService.getGameInfo('games', this.recentDates[i].game).toPromise().then(data => {
+          this.recentGames.push(data[0]);
+
+          if (this.recentDates[i]) {
+            this.recentGames[i].y = this.recentDates[i].y;
           }
         });
       }
