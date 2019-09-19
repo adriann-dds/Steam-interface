@@ -53,6 +53,16 @@ export class ApiService {
     }});
   }
 
+  getAnticipatedGames() : Observable<Game[]> {
+    console.log('Getting anticipated games');
+
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&filter[rating][gt]=90',
+    { headers: {
+      "Accept":"application/json",
+      "user-key":this.user_key
+    }});
+  }
+
   //master search method
 
   searchGamesList(searchEntry: string) {

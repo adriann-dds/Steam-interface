@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
   recentDates: Game[] = [];
   recentPlatforms: Game[] = [];
 
+  anticipatedGames: Game[] = [];
+  anticipatedDates: Game[] = [];
+  anticipatedPlatforms: Game[] = [];
+
   showSpinner: boolean = true;
 
   constructor(private apiService: ApiService) { }
@@ -32,6 +36,7 @@ export class HomeComponent implements OnInit {
     await this.getPopularGame();
     await this.getComingGame();
     await this.getRecentGame();
+    await this.getAnticipatedGame();
   }
 
   //get game data from API
@@ -116,6 +121,37 @@ export class HomeComponent implements OnInit {
 
             if (this.recentPlatforms[i]) {
               this.recentGames[i].abbreviation = this.recentPlatforms[i].abbreviation;
+            }
+          });
+        }
+      }
+    });
+  }
+
+  getAnticipatedGame() {
+    this.apiService.getAnticipatedGames().subscribe(async game_data => {
+      console.log(game_data, "Request popular");
+      this.anticipatedGames = game_data;
+      this.showSpinner = false;
+
+
+      for (let i = 0; i < this.anticipatedGames.length; i++) {
+        if (this.anticipatedGames[i].release_dates) {
+          await this.apiService.getGameInfo('release_dates', this.anticipatedGames[i].release_dates[0]).toPromise().then(data => {
+            this.anticipatedDates.push(data[0]);
+
+            if (this.anticipatedDates[i]) {
+              this.anticipatedGames[i].y = this.anticipatedDates[i].y;
+            }
+          });
+        }
+
+        if (this.anticipatedGames[i].platforms) {
+          await this.apiService.getGameInfo('platforms', this.anticipatedGames[i].platforms[0]).toPromise().then(data => {
+            this.anticipatedPlatforms.push(data[0]);
+
+            if (this.anticipatedPlatforms[i]) {
+              this.anticipatedGames[i].abbreviation = this.anticipatedPlatforms[i].abbreviation;
             }
           });
         }
