@@ -10,7 +10,7 @@ app-loading-spinner {
 div {
   z-index: 1;
   display: block;
-  width: 150.5em;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -127,13 +127,13 @@ mat-card mat-grid-tile:last-child span {
 
 @media (max-width: 132.6em) {
   div {
-    width: 88.6em;
+    width: 100%;
   }
 }
 
 @media (max-width: 100em) {
   div {
-    width: 60em;
+    width: 60em; /* to do the same as above for the rest of the viewports1 */
   }
 }
 

@@ -26,7 +26,7 @@ export class ApiService {
   getPopularGames() : Observable<Game[]> {
     console.log('Getting popular games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=6&order=popularity:desc',
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&order=popularity:desc',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
@@ -36,7 +36,7 @@ export class ApiService {
   getComingGames() : Observable<Game[]> {
     console.log('Getting coming games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:asc&filter[date][gt]=' + this.currentDate + '&expand=game',
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=5&order=date:asc&filter[date][gt]=' + this.currentDate + '&expand=game',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
@@ -46,7 +46,7 @@ export class ApiService {
   getRecentGames() : Observable<Game[]> {
     console.log('Getting recent games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=6&order=date:desc&filter[date][lt]=' + this.currentDate + '&expand=game',
+    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=5&order=date:desc&filter[date][lt]=' + this.currentDate + '&expand=game',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
