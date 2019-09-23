@@ -2,15 +2,19 @@
   margin-bottom: 4em;
 }
 
+.favoriteContainer {
+  width: 150em;
+}
+
 app-loading-spinner {
   display: block;
-  padding: 20% 50%;
+  padding: 20% 0;
 }
 
 div {
   z-index: 1;
-  display: block;
   width: 100%;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
@@ -128,6 +132,10 @@ mat-card mat-grid-tile:last-child span {
 @media (max-width: 132.6em) {
   div {
     width: 100%;
+  }
+
+  .favoriteContainer {
+    width: 88.6em;
   }
 }
 

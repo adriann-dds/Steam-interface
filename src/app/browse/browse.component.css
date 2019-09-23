@@ -6,10 +6,21 @@
   margin: -8em 0 0 -1em;
 }
 
+.container {
+  width: 150em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 mat-form-field {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white !important;
 }
 
 mat-label {
@@ -54,7 +65,7 @@ div button:hover {
 div button:focus {
   border-width: 2px;
   background: unset;
-  border-color: rgb(105, 240, 174);
+  border-color: white;
 }
 
 mat-icon {
@@ -76,6 +87,10 @@ mat-icon {
 @media (max-width: 132.6em) {
   div div {
     width: 77.5em !important;
+  }
+
+  .container {
+    width: 88.6em;
   }
 }
 

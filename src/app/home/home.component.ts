@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
     this.apiService.getPopularGames().subscribe(async game_data => {
       console.log(game_data, "Request popular");
       this.popularGames = game_data;
-      this.showSpinner = false;
 
 
       for (let i = 0; i < this.popularGames.length; i++) {
@@ -76,7 +75,7 @@ export class HomeComponent implements OnInit {
     this.apiService.getComingGames().subscribe(async game_data => {
       console.log(game_data, "Request coming");
       this.comingDates = game_data;
-      this.showSpinner = false;
+
 
       for (let i = 0; i < this.comingDates.length; i++) {
         await this.apiService.getGameInfo('games', this.comingDates[i].game).toPromise().then(data => {
@@ -104,7 +103,6 @@ export class HomeComponent implements OnInit {
     this.apiService.getRecentGames().subscribe(async game_data => {
       console.log(game_data, "Request recent");
       this.recentDates = game_data;
-      this.showSpinner = false;
 
       for (let i = 0; i < this.recentDates.length; i++) {
         await this.apiService.getGameInfo('games', this.recentDates[i].game).toPromise().then(data => {
@@ -130,10 +128,9 @@ export class HomeComponent implements OnInit {
 
   getAnticipatedGame() {
     this.apiService.getAnticipatedGames().subscribe(async game_data => {
-      console.log(game_data, "Request popular");
+      console.log(game_data, "Request anticipated");
       this.anticipatedGames = game_data;
       this.showSpinner = false;
-
 
       for (let i = 0; i < this.anticipatedGames.length; i++) {
         if (this.anticipatedGames[i].release_dates) {

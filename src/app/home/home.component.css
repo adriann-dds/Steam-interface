@@ -1,6 +1,18 @@
+app-loading-spinner {
+  display: block;
+  padding: 20% 0;
+}
+
 .container {
   width: 150em;
-  display: block;
+}
+
+.columnContainer {
+  width: 88.6em;
+}
+
+.container,
+.columnContainer {
   margin-left: auto;
   margin-right: auto;
 }
@@ -20,8 +32,8 @@ mat-grid-tile {
   padding-top: 135% !important;
 }
 
-::ng-deep .mat-grid-tile > .mat-figure {
-  display: block !important; /* or whichever you need */
+::ng-deep .columnContainer .mat-grid-tile > .mat-figure {
+  display: block !important;
 }
 
 @media (max-width: 132.6em) {

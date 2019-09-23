@@ -12,8 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ApiService {
   apiURL: string = '/api';
-  user_key: string = 'd0fb97d526bdb53aff6805eb806f795f'; // 420f6b4e0db93ed2d24248bba461132d a2a89757830b0a81529d99471b62201a
-  // 823ce2ad9697f981568837ab540b9b5b 50d97a766c459f52dcfba937c7fc7137
+  user_key: string = '823ce2ad9697f981568837ab540b9b5b';
 
   gameList: Game[] = [];
   dateList: Game[] = [];
@@ -56,7 +55,7 @@ export class ApiService {
   getAnticipatedGames() : Observable<Game[]> {
     console.log('Getting anticipated games');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&filter[rating][gt]=90',
+    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&order=date:asc&filter[first_release_date][gt]=' + this.currentDate + '&filter[rating][gt]=60',
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key

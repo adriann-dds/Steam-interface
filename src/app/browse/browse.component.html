@@ -1,6 +1,6 @@
 <div class="searchBox">
   <div>
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field appearance="outline">
       <mat-label>Enter a game name&hellip;</mat-label>
       <input [formControl]='searchTerm' matInput placeholder="e.g. Grand Theft Auto">
       <mat-icon matSuffix>search</mat-icon>
@@ -17,6 +17,6 @@
   </div>
 </div>
 
-<div *ngIf='tableEnabled'>
+<div class="container" *ngIf='tableEnabled'>
   <app-game [GamesInput]='games'></app-game>
 </div>
