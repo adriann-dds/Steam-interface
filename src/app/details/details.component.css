@@ -36,6 +36,7 @@ app-loading-spinner {
 
 .header mat-chip-list {
   display: flex;
+  margin-right: 0.5em;
 }
 
 .header mat-chip-list mat-chip {
@@ -75,7 +76,7 @@ mat-grid-list mat-grid-tile:first-child {
 }
 
 mat-grid-list mat-grid-tile:last-child {
-  left: 52% !important;
+  left: 53% !important;
   width: 49% !important;
 }
 
@@ -122,6 +123,10 @@ mat-grid-list mat-grid-tile:last-child mat-card-content {
 mat-card {
   margin-bottom: 8em;
   padding: 3em 2.5em 3em 2.5em;
+}
+
+mat-card:not(:last-child) {
+  margin-bottom: 4em;
 }
 
 mat-card p {

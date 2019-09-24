@@ -15,25 +15,23 @@ export class BrowseComponent implements OnInit {
   games: Game[] = [];
   dates: Game[] = [];
   gamesMaster: Game[] = [];
+  showSpinner: boolean = true;
   tableEnabled: boolean = false;
   searchTerm: FormControl = new FormControl;
 
-  constructor(
-    private apiService: ApiService
-  ) {
+  constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
     .subscribe(searchTerm => this.searchGame(searchTerm))
   }
 
   //get game data from API
 
-  async ngOnInit(){
-    await this.apiService.getPopularGames().toPromise().then(data => {
-      this.games = data;
-      this.gamesMaster = data;
-    });
+  async ngOnInit(){ }
 
-    this.tableEnabled = true;
+  //reset input when clicking X
+
+  resetField() {
+    this.searchTerm.reset();
   }
 
   //search entry
@@ -51,6 +49,7 @@ export class BrowseComponent implements OnInit {
       this.games = this.gamesMaster;
     }
 
+    this.showSpinner = false;
     this.tableEnabled = true;
   }
 

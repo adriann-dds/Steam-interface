@@ -7,16 +7,63 @@
   <div class="columnContainer">
     <mat-grid-list cols="3" rowHeight="0.2:1">
       <mat-grid-tile>
-        <h1>Coming Soon</h1>
-        <app-game [GamesInput]='comingGames'></app-game>
+        <h2>Coming Soon</h2>
+
+        <mat-card *ngFor="let game of comingGames">
+          <mat-card-header>
+            <mat-card-title>
+              <p>{{game.name | slice:0:26}}</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <span>
+                <p>{{(game.human)?(game.human):('N/A')}}</p>
+              </span>
+              <span *ngIf="game.abbreviation">
+                {{game.abbreviation}}
+              </span>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </mat-grid-tile>
+
       <mat-grid-tile>
-        <h1>Recently Released</h1>
-        <app-game [GamesInput]='recentGames'></app-game>
+        <h2>Recently Released</h2>
+
+        <mat-card *ngFor="let game of recentGames">
+          <mat-card-header>
+            <mat-card-title>
+              <p>{{game.name | slice:0:35}}</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <span>
+                <p>{{(game.human)?(game.human):('N/A')}}</p>
+              </span>
+              <span *ngIf="game.abbreviation">
+                {{game.abbreviation}}
+              </span>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </mat-grid-tile>
+
       <mat-grid-tile>
-        <h1>Most Anticipated</h1>
-        <app-game [GamesInput]='anticipatedGames'></app-game>
+        <h2>Most Anticipated</h2>
+
+        <mat-card *ngFor="let game of anticipatedGames">
+          <mat-card-header>
+            <mat-card-title>
+              <p>{{game.name | slice:0:26}}</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <span>
+                <p>{{(game.human)?(game.human):('N/A')}}</p>
+              </span>
+              <span *ngIf="game.abbreviation">
+                {{game.abbreviation}}
+              </span>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
           this.comingGames.push(data[0]);
 
           if (this.comingDates[i]) {
-            this.comingGames[i].y = this.comingDates[i].y;
+            this.comingGames[i].human = this.comingDates[i].human;
           }
         });
 
@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
           this.recentGames.push(data[0]);
 
           if (this.recentDates[i]) {
-            this.recentGames[i].y = this.recentDates[i].y;
+            this.recentGames[i].human = this.recentDates[i].human;
           }
         });
 
@@ -120,6 +120,8 @@ export class HomeComponent implements OnInit {
             if (this.recentPlatforms[i]) {
               this.recentGames[i].abbreviation = this.recentPlatforms[i].abbreviation;
             }
+
+            this.showSpinner = false;
           });
         }
       }
@@ -130,7 +132,6 @@ export class HomeComponent implements OnInit {
     this.apiService.getAnticipatedGames().subscribe(async game_data => {
       console.log(game_data, "Request anticipated");
       this.anticipatedGames = game_data;
-      this.showSpinner = false;
 
       for (let i = 0; i < this.anticipatedGames.length; i++) {
         if (this.anticipatedGames[i].release_dates) {
@@ -138,7 +139,7 @@ export class HomeComponent implements OnInit {
             this.anticipatedDates.push(data[0]);
 
             if (this.anticipatedDates[i]) {
-              this.anticipatedGames[i].y = this.anticipatedDates[i].y;
+              this.anticipatedGames[i].human = this.anticipatedDates[i].human;
             }
           });
         }

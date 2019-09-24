@@ -23,8 +23,25 @@ mat-form-field {
   color: white !important;
 }
 
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
 mat-label {
   top: 1.75em !important;
+}
+
+.container h1 {
+  font-size: 2em;
+  text-align: center;
+  font-weight: normal;
+  color: rgba(255, 255, 255);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-loading-spinner {
+  display: block;
+  padding: 20% 50%;
 }
 
 div div {

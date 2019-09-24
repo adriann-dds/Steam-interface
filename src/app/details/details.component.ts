@@ -68,7 +68,9 @@ export class DetailsComponent implements OnInit {
     if (this.localGame.platforms) {
       for (var i = 0; i < this.localGame.platforms.length; i++) {
         await this.apiService.getGameInfo('platforms', this.localGame.platforms[i]).toPromise().then(data => {
-          this.localPlatform.push(data[0]);
+          if (data[0].abbreviation) {
+            this.localPlatform.push(data[0]);
+          }
         })
       }
     }
