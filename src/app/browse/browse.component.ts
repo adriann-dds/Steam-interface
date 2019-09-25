@@ -15,16 +15,23 @@ export class BrowseComponent implements OnInit {
   games: Game[] = [];
   dates: Game[] = [];
   gamesMaster: Game[] = [];
-  showSpinner: boolean = true;
+  showSpinner: boolean = false;
   tableEnabled: boolean = false;
   searchTerm: FormControl = new FormControl;
 
   constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
-    .subscribe(searchTerm => this.searchGame(searchTerm))
-  }
+    .subscribe(async searchTerm => {
+      console.log("This should be the start!");
+      this.showSpinner = true;
 
-  //get game data from API
+      await this.searchGame(searchTerm);
+      console.log(this.showSpinner);
+
+      this.showSpinner = false;
+      console.log("This should be the end!");
+    })
+  }
 
   async ngOnInit(){ }
 
@@ -43,14 +50,17 @@ export class BrowseComponent implements OnInit {
     if(filterBy.length > 0) {
       await this.apiService.searchGamesList(filterBy).toPromise().then(data => {
         this.games = data;
+        console.log(this.games);
+        console.log("This should be first!");
       });
-      this.showSpinner = false;
     }
     else {
       this.games = this.gamesMaster;
     }
 
-
+    console.log("This should be second!");
+    // this.showSpinner = false;
+    console.log(this.games);
     this.tableEnabled = true;
   }
 

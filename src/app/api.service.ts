@@ -67,25 +67,27 @@ export class ApiService {
   searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
 
-    this.searchGameByID(searchEntry).subscribe(async data => {
+    this.searchGameByID(searchEntry).toPromise().then(async data => {
       gameID = data;
 
       if (gameID.length > 1) {
         for (let i = 0; i < gameID.length; i++) {
-          await this.getGameInfo('games', gameID[i].id).toPromise().then(game => {
-            this.getGameInfo('release_dates', gameID[i].id).toPromise().then(data => {
-              this.gameList.push(game[0]);
-              this.dateList.push(data[0]);
+          await this.getGameInfo('games', gameID[i].id).toPromise().then(async game => {
+            await this.getGameInfo('release_dates', gameID[i].id).toPromise().then(async data => {
+              await this.gameList.push(game[0]);
+              await this.dateList.push(data[0]);
 
               if (this.dateList[i]) {
                 this.gameList[i].y = this.dateList[i].y;
               }
             });
           })
+          console.log("This should be before 0!");
         }
       }
     })
 
+    console.log("This should be 0!");
     return of(this.gameList);
   }
 
@@ -104,7 +106,7 @@ export class ApiService {
   //get all info about a game
 
   getGameInfo(endpoint: string, gameID: number) {
-    console.log('Getting game data by search ID');
+    console.log('Getting game data by endpoint and search ID');
 
     return this.httpClient.get(this.apiURL + '/' + endpoint + '/' + gameID + '?fields=*',
       {headers: {

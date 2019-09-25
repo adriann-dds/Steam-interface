@@ -18,8 +18,9 @@
   </div>
 </div>
 
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+{{showSpinner}}
 <div class="container" *ngIf='tableEnabled'>
-  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
   <app-game [GamesInput]='games' *ngIf="searchTerm.value"></app-game>
 </div>
 
