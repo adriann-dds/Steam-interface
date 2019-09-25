@@ -44,12 +44,13 @@ export class BrowseComponent implements OnInit {
       await this.apiService.searchGamesList(filterBy).toPromise().then(data => {
         this.games = data;
       });
+      this.showSpinner = false;
     }
     else {
       this.games = this.gamesMaster;
     }
 
-    this.showSpinner = false;
+
     this.tableEnabled = true;
   }
 

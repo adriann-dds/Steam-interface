@@ -96,6 +96,8 @@ export class HomeComponent implements OnInit {
           });
         }
       }
+
+      this.showSpinner = false;
     });
   }
 
@@ -120,8 +122,6 @@ export class HomeComponent implements OnInit {
             if (this.recentPlatforms[i]) {
               this.recentGames[i].abbreviation = this.recentPlatforms[i].abbreviation;
             }
-
-            this.showSpinner = false;
           });
         }
       }
