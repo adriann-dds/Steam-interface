@@ -13,23 +13,19 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class BrowseComponent implements OnInit {
   games: Game[] = [];
-  dates: Game[] = [];
-  gamesMaster: Game[] = [];
   showSpinner: boolean = false;
   tableEnabled: boolean = false;
+  dataNotFound: boolean = false;
   searchTerm: FormControl = new FormControl;
 
   constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
     .subscribe(async searchTerm => {
-      console.log("This should be the start!");
       this.showSpinner = true;
 
       await this.searchGame(searchTerm);
-      console.log(this.showSpinner);
 
       this.showSpinner = false;
-      console.log("This should be the end!");
     })
   }
 
@@ -39,6 +35,8 @@ export class BrowseComponent implements OnInit {
 
   resetField() {
     this.searchTerm.reset();
+    this.showSpinner = false;
+    this.dataNotFound = false;
   }
 
   //search entry
@@ -47,20 +45,16 @@ export class BrowseComponent implements OnInit {
     this.tableEnabled = false;
     this.games.length = 0;
 
-    if(filterBy.length > 0) {
-      await this.apiService.searchGamesList(filterBy).toPromise().then(data => {
+    if(filterBy) {
+      await this.apiService.searchGamesList(filterBy).then(data => {
         this.games = data;
-        console.log(this.games);
-        console.log("This should be first!");
       });
     }
-    else {
-      this.games = this.gamesMaster;
+
+    if (!this.games.length) {
+      this.dataNotFound = true;
     }
 
-    console.log("This should be second!");
-    // this.showSpinner = false;
-    console.log(this.games);
     this.tableEnabled = true;
   }
 

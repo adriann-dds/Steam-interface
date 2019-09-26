@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
+import { GamelistComponent } from './gamelist/gamelist.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent } from './home/home.component';
     LoadingSpinnerComponent,
     CartComponent,
     DetailsComponent,
-    HomeComponent
+    HomeComponent,
+    GamelistComponent
   ],
   imports: [
     BrowserModule,

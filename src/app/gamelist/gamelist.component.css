@@ -1,0 +1,33 @@
+mat-card {
+  width: 25.4em;
+  display: block;
+  border-radius: 0;
+  margin-bottom: 1em;
+  border: 1px solid rgb(60, 60, 60);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(230, 230, 230);
+}
+
+a:active {
+  color: darkgrey;
+}
+
+span p {
+  display: inline-block;
+}
+
+p,
+mat-card-subtitle {
+  margin: 0;
+}
+
+mat-card mat-card-subtitle span:first-child {
+  margin-right: 0.5em;
+}

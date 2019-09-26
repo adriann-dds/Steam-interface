@@ -9,61 +9,19 @@
       <mat-grid-tile>
         <h2>Coming Soon</h2>
 
-        <mat-card *ngFor="let game of comingGames">
-          <mat-card-header>
-            <mat-card-title>
-              <p>{{game.name | slice:0:26}}</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <span>
-                <p>{{(game.human)?(game.human):('N/A')}}</p>
-              </span>
-              <span *ngIf="game.abbreviation">
-                {{game.abbreviation}}
-              </span>
-            </mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+        <app-gamelist [GamesInput]='comingGames'></app-gamelist>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <h2>Recently Released</h2>
 
-        <mat-card *ngFor="let game of recentGames">
-          <mat-card-header>
-            <mat-card-title>
-              <p>{{game.name | slice:0:35}}</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <span>
-                <p>{{(game.human)?(game.human):('N/A')}}</p>
-              </span>
-              <span *ngIf="game.abbreviation">
-                {{game.abbreviation}}
-              </span>
-            </mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+        <app-gamelist [GamesInput]='recentGames'></app-gamelist>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <h2>Most Anticipated</h2>
 
-        <mat-card *ngFor="let game of anticipatedGames">
-          <mat-card-header>
-            <mat-card-title>
-              <p>{{game.name | slice:0:26}}</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <span>
-                <p>{{(game.human)?(game.human):('N/A')}}</p>
-              </span>
-              <span *ngIf="game.abbreviation">
-                {{game.abbreviation}}
-              </span>
-            </mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+        <app-gamelist [GamesInput]='anticipatedGames'></app-gamelist>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

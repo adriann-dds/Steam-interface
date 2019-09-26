@@ -43,31 +43,31 @@ export class DetailsComponent implements OnInit {
   //get info from API
 
 	async find(id: number) {
-		await this.apiService.getGameInfo('games', id).toPromise().then(async data => {
+		await this.apiService.getGamesData('games/' + id, '').toPromise().then(async data => {
       this.localGame = data[0];
     })
 
     if (this.localGame.release_dates) {
-      await this.apiService.getGameInfo('release_dates', this.localGame.release_dates[0]).toPromise().then(async data => {
+      await this.apiService.getGamesData('release_dates/' + this.localGame.release_dates[0], '').toPromise().then(async data => {
         this.localDate = data[0];
       })
     }
 
     if (this.localGame.websites) {
-      await this.apiService.getGameInfo('websites', this.localGame.websites[0]).toPromise().then(async data => {
+      await this.apiService.getGamesData('websites/' + this.localGame.websites[0], '').toPromise().then(async data => {
         this.localWebsite = data[0];
       })
     }
 
     if (this.localGame.videos) {
-      await this.apiService.getGameInfo('game_videos', this.localGame.videos[0]).toPromise().then(async data => {
+      await this.apiService.getGamesData('game_videos/' + this.localGame.videos[0], '').toPromise().then(async data => {
         this.localVideo = data[0];
       })
     }
 
     if (this.localGame.platforms) {
       for (var i = 0; i < this.localGame.platforms.length; i++) {
-        await this.apiService.getGameInfo('platforms', this.localGame.platforms[i]).toPromise().then(data => {
+        await this.apiService.getGamesData('platforms/' + this.localGame.platforms[i], '').toPromise().then(data => {
           if (data[0].abbreviation) {
             this.localPlatform.push(data[0]);
           }
@@ -83,7 +83,7 @@ export class DetailsComponent implements OnInit {
       }
 
       for (var i = 0; i < length; i++) {
-        await this.apiService.getGameInfo('screenshots', this.localGame.screenshots[i]).toPromise().then(async data => {
+        await this.apiService.getGamesData('screenshots/' + this.localGame.screenshots[i], '').toPromise().then(async data => {
           this.localScreenshots.push(data[0]);
         })
       }

@@ -2,7 +2,9 @@
 
 <mat-card class="header" *ngIf="!showSpinner">
   <mat-card-content>
-    <span>{{(localGame.name)?(localGame.name):('No Name')}}</span>
+    <span>{{(localGame.name)?(localGame.name):('No Name')}} |</span>
+    <span *ngFor="let platform of localPlatform">{{platform.abbreviation}},</span>
+    <span>{{(localDate)?(localDate.y):('N/A')}}</span>
 
     <mat-chip-list>
       <mat-chip *ngIf="localGame.total_rating" color="accent" selected>
@@ -18,9 +20,6 @@
         N/A
       </mat-chip>
     </mat-chip-list>
-
-    <span *ngFor="let platform of localPlatform">{{platform.abbreviation}},</span>
-    <span>{{(localDate)?(localDate.y):('N/A')}}</span>
 
     <button mat-raised-button color="warn" *ngIf="localWebsite">
       <a href="{{localWebsite.url}}" target="_blank">Game Page</a>

@@ -1,10 +1,8 @@
-import { Injectable, Inject, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { HttpModule, Http } from '@angular/http';
 import { Game } from './game';
-import { Observable, of ,forkJoin} from 'rxjs';
-import { map } from 'rxjs/operators';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,103 +14,49 @@ export class ApiService {
 
   gameList: Game[] = [];
   dateList: Game[] = [];
-  currentDate: number = Math.trunc(Date.now() / 1000);
 
   constructor (private httpClient: HttpClient){ }
 
   //connect to API server
 
-  getPopularGames() : Observable<Game[]> {
-    console.log('Getting popular games');
+  getGamesData(endpoint: string, gamesType: string) : Observable<Game[]> {
+    console.log('Getting games data.');
 
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&order=popularity:desc',
+    return this.httpClient.get<Game[]>(this.apiURL + '/' + endpoint + '/?fields=*' + gamesType,
     { headers: {
       "Accept":"application/json",
       "user-key":this.user_key
     }});
   }
 
-  getComingGames() : Observable<Game[]> {
-    console.log('Getting coming games');
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=5&order=date:asc&filter[date][gt]=' + this.currentDate + '&expand=game',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
-
-  getRecentGames() : Observable<Game[]> {
-    console.log('Getting recent games');
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/release_dates/?fields=*&limit=5&order=date:desc&filter[date][lt]=' + this.currentDate + '&expand=game',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
-
-  getAnticipatedGames() : Observable<Game[]> {
-    console.log('Getting anticipated games');
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?fields=*&limit=5&order=date:asc&filter[first_release_date][gt]=' + this.currentDate + '&filter[rating][gt]=60',
-    { headers: {
-      "Accept":"application/json",
-      "user-key":this.user_key
-    }});
-  }
-
-  //master search method
-
-  searchGamesList(searchEntry: string) {
+  async searchGamesList(searchEntry: string) {
     let gameID: Game[] = [];
 
-    this.searchGameByID(searchEntry).toPromise().then(async data => {
+    await this.getGamesData('games/?search=' + searchEntry, '&limit=10').toPromise().then(async data => {
       gameID = data;
 
       if (gameID.length > 1) {
         for (let i = 0; i < gameID.length; i++) {
-          await this.getGameInfo('games', gameID[i].id).toPromise().then(async game => {
-            await this.getGameInfo('release_dates', gameID[i].id).toPromise().then(async data => {
-              await this.gameList.push(game[0]);
-              await this.dateList.push(data[0]);
+          await this.getGamesData('games/' + gameID[i].id, '').toPromise().then(async game => {
+            this.gameList.push(game[0]);
 
-              if (this.dateList[i]) {
-                this.gameList[i].y = this.dateList[i].y;
-              }
-            });
+            if (this.gameList[i].release_dates) {
+              await this.getGamesData('release_dates/' + this.gameList[i].release_dates[0], '').toPromise().then(async data => {
+                this.dateList.push(data[0]);
+
+                if (this.dateList[i]) {
+                  this.gameList[i].y = this.dateList[i].y;
+                }
+              });
+            } else {
+              this.dateList.push(null);
+            }
+
           })
-          console.log("This should be before 0!");
         }
       }
     })
 
-    console.log("This should be 0!");
-    return of(this.gameList);
-  }
-
-  //search game by search entry
-
-  searchGameByID(searchEntry: string) : Observable<Game[]> {
-    console.log('Getting games by search entry');
-
-    return this.httpClient.get<Game[]>(this.apiURL + '/games/?search=' + searchEntry + '?fields=*&limit=10',
-      {headers: {
-        "Accept": "application/json",
-        "user-key": this.user_key
-    }})
-  }
-
-  //get all info about a game
-
-  getGameInfo(endpoint: string, gameID: number) {
-    console.log('Getting game data by endpoint and search ID');
-
-    return this.httpClient.get(this.apiURL + '/' + endpoint + '/' + gameID + '?fields=*',
-      {headers: {
-        "Accept":"application/json",
-        "user-key":this.user_key,
-        "X-Requested-With":"origin"
-    }})
+    return this.gameList;
   }
 }

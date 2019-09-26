@@ -19,11 +19,15 @@
 </div>
 
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
-{{showSpinner}}
+
 <div class="container" *ngIf='tableEnabled'>
   <app-game [GamesInput]='games' *ngIf="searchTerm.value"></app-game>
 </div>
 
 <div class="container" *ngIf='!searchTerm.value'>
   <h1>Please enter a game name in the field above.</h1>
+</div>
+
+<div class="container" *ngIf='dataNotFound'>
+  <h1>No games matching your search were found!</h1>
 </div>

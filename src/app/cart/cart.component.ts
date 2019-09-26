@@ -14,8 +14,8 @@ import { ApiService } from '../api.service';
 export class CartComponent implements OnInit {
 	public id: number;
 	private items: Item[];
-	public localGame: Game;
-	public localData: Game;
+	public localGame: Game[];
+	public localData: Game[];
 	public tableEnabled: boolean = false;
 
   constructor(
@@ -79,12 +79,10 @@ export class CartComponent implements OnInit {
 	//get info from API
 
 	async findGame(id: number) {
-		await this.apiService.getGameInfo('games', id).toPromise().then(async data => {
+		await this.apiService.getGamesData('games/' + id, '').toPromise().then(async data => {
       this.localGame = data;
 
-			// console.log(this.localGame.release_dates);
-
-			await this.apiService.getGameInfo('release_dates', id).toPromise().then(data => {
+			await this.apiService.getGamesData('release_dates/' + id, '').toPromise().then(data => {
 	      this.localData = data;
 	    })
     })
