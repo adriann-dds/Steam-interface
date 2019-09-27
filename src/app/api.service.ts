@@ -10,7 +10,7 @@ import { Observable} from 'rxjs';
 
 export class ApiService {
   apiURL: string = '/api';
-  user_key: string = '823ce2ad9697f981568837ab540b9b5b';
+  user_key: string = 'a2a89757830b0a81529d99471b62201a';
 
   gameList: Game[] = [];
   dateList: Game[] = [];
@@ -20,7 +20,7 @@ export class ApiService {
   //connect to API server
 
   getGamesData(endpoint: string, gamesType: string) : Observable<Game[]> {
-    console.log('Getting games data.');
+    // console.log('Getting games data.');
 
     return this.httpClient.get<Game[]>(this.apiURL + '/' + endpoint + '/?fields=*' + gamesType,
     { headers: {
