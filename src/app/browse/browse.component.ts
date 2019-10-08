@@ -13,27 +13,30 @@ import { Http, Headers, Response } from '@angular/http';
 })
 export class BrowseComponent implements OnInit {
   games: Game[] = [];
-  dates: Game[] = [];
-  gamesMaster: Game[] = [];
+  showSpinner: boolean = false;
   tableEnabled: boolean = false;
+  dataNotFound: boolean = false;
   searchTerm: FormControl = new FormControl;
 
-  constructor(
-    private apiService: ApiService
-  ) {
+  constructor(private apiService: ApiService) {
     this.searchTerm.valueChanges
-    .subscribe(searchTerm => this.searchGame(searchTerm))
+    .subscribe(async searchTerm => {
+      this.showSpinner = true;
+
+      await this.searchGame(searchTerm);
+
+      this.showSpinner = false;
+    })
   }
 
-  //get game data from API
+  async ngOnInit(){ }
 
-  async ngOnInit(){
-    await this.apiService.getPopularGames().toPromise().then(data => {
-      this.games = data;
-      this.gamesMaster = data;
-    });
+  //reset input when clicking X
 
-    this.tableEnabled = true;
+  resetField() {
+    this.searchTerm.reset();
+    this.showSpinner = false;
+    this.dataNotFound = false;
   }
 
   //search entry
@@ -42,13 +45,14 @@ export class BrowseComponent implements OnInit {
     this.tableEnabled = false;
     this.games.length = 0;
 
-    if(filterBy.length > 0) {
-      await this.apiService.searchGamesList(filterBy).toPromise().then(data => {
+    if(filterBy) {
+      await this.apiService.searchGamesList(filterBy).then(data => {
         this.games = data;
       });
     }
-    else {
-      this.games = this.gamesMaster;
+
+    if (!this.games.length) {
+      this.dataNotFound = true;
     }
 
     this.tableEnabled = true;

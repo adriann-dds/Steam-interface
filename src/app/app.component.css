@@ -2,11 +2,6 @@
   margin-bottom: 13em;
 }
 
-app-loading-spinner {
-  display: block;
-  padding: 33% 50%;
-}
-
 mat-toolbar {
   top: 0;
   z-index: 1;
@@ -15,22 +10,6 @@ mat-toolbar {
   position: fixed;
   margin-bottom: 2em;
   padding: 3em 0 2em 0.5em;
-}
-
-a {
-  font-size: 1em;
-  display: block;
-  text-align: center;
-  margin: 1em auto 1em auto;
-}
-
-div button:hover {
-  color: black;
-  background-color: red;
-}
-
-div button:active {
-  background-color: rgb(200, 0, 0);
 }
 
 @media (max-width: 66.4em) {

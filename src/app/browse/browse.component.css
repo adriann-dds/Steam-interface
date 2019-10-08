@@ -6,14 +6,42 @@
   margin: -8em 0 0 -1em;
 }
 
+.container {
+  width: 150em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 mat-form-field {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
 mat-label {
   top: 1.75em !important;
+}
+
+.container h1 {
+  font-size: 2em;
+  text-align: center;
+  font-weight: normal;
+  color: rgba(255, 255, 255);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-loading-spinner {
+  display: block;
+  padding: 20% 50%;
 }
 
 div div {
@@ -54,7 +82,7 @@ div button:hover {
 div button:focus {
   border-width: 2px;
   background: unset;
-  border-color: rgb(105, 240, 174);
+  border-color: white;
 }
 
 mat-icon {
@@ -77,13 +105,14 @@ mat-icon {
   div div {
     width: 77.5em !important;
   }
+
+  .container {
+    width: 88.6em;
+  }
 }
 
 @media (max-width: 100em) {
   div div {
     width: 48.5em !important;
   }
-}
-
-@media (max-width: 60em) {
 }

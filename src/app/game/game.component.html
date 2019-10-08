@@ -1,11 +1,11 @@
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 
-<div class="container" *ngIf="!showSpinner">
-  <div *ngFor="let game of games; let i = index">
+<div *ngIf="!showSpinner">
+  <div *ngFor="let game of games">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <p>{{(game.name)?(game.name):('No Name')}}</p>
+          <p>{{game.name | slice:0:26}}</p>
         </mat-card-title>
         <mat-card-subtitle>
           <span *ngIf="game.abbreviation">
@@ -41,7 +41,6 @@
               </mat-chip-list>
             </span>
           </mat-grid-tile>
-
           <mat-grid-tile>
             <span>
               <button mat-raised-button color="primary">

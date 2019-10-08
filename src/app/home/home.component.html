@@ -4,9 +4,25 @@
   <h1>Popular Games</h1>
   <app-game [GamesInput]='popularGames'></app-game>
 
-  <h1>Coming Soon</h1>
-  <app-game [GamesInput]='comingGames'></app-game>
+  <div class="columnContainer">
+    <mat-grid-list cols="3" rowHeight="0.2:1">
+      <mat-grid-tile>
+        <h2>Coming Soon</h2>
 
-  <h1>Recently Released</h1>
-  <app-game [GamesInput]='recentGames'></app-game>
+        <app-gamelist [GamesInput]='comingGames'></app-gamelist>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <h2>Recently Released</h2>
+
+        <app-gamelist [GamesInput]='recentGames'></app-gamelist>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <h2>Most Anticipated</h2>
+
+        <app-gamelist [GamesInput]='anticipatedGames'></app-gamelist>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>

@@ -1,14 +1,48 @@
+app-loading-spinner {
+  display: block;
+  padding: 20% 0;
+}
+
 .container {
   width: 150em;
-  display: block;
+}
+
+.columnContainer {
+  width: 88.6em;
+}
+
+.container,
+.columnContainer {
   margin-left: auto;
   margin-right: auto;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h1,
+h2 {
+  font-weight: normal;
   color: rgba(255, 255, 255);
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-grid-list {
+  padding-bottom: 40% !important;
+}
+
+mat-grid-tile {
+  width: 29em !important;
+  padding-top: 50% !important;
+}
+
+::ng-deep .columnContainer .mat-grid-tile > .mat-figure {
+  display: block !important;
 }
 
 @media (max-width: 132.6em) {

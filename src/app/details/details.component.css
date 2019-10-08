@@ -36,6 +36,7 @@ app-loading-spinner {
 
 .header mat-chip-list {
   display: flex;
+  margin-right: 0.5em;
 }
 
 .header mat-chip-list mat-chip {
@@ -75,7 +76,7 @@ mat-grid-list mat-grid-tile:first-child {
 }
 
 mat-grid-list mat-grid-tile:last-child {
-  left: 52% !important;
+  left: 53% !important;
   width: 49% !important;
 }
 
@@ -124,8 +125,8 @@ mat-card {
   padding: 3em 2.5em 3em 2.5em;
 }
 
-mat-card p {
-  margin: 0;
+mat-card:not(:last-child) {
+  margin-bottom: 4em;
 }
 
 mat-card mat-card-content {
@@ -143,12 +144,6 @@ mat-card .summary span {
   opacity: 0.8;
   font-size: 1.5em;
   line-height: 1.5em;
-}
-
-mat-card .gamePage a {
-  color: white;
-  font-size: 3em;
-  text-decoration: none;
 }
 
 mat-card mat-card-content a:hover {

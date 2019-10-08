@@ -1,9 +1,10 @@
 <div class="searchBox">
   <div>
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field appearance="outline">
       <mat-label>Enter a game name&hellip;</mat-label>
       <input [formControl]='searchTerm' matInput placeholder="e.g. Grand Theft Auto">
-      <mat-icon matSuffix>search</mat-icon>
+      <mat-icon matSuffix *ngIf="!searchTerm.value">search</mat-icon>
+      <mat-icon matSuffix *ngIf="searchTerm.value"><a (click)="resetField()">close</a></mat-icon>
     </mat-form-field>
   </div>
 
@@ -17,6 +18,16 @@
   </div>
 </div>
 
-<div *ngIf='tableEnabled'>
-  <app-game [GamesInput]='games'></app-game>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+
+<div class="container" *ngIf='tableEnabled'>
+  <app-game [GamesInput]='games' *ngIf="searchTerm.value"></app-game>
+</div>
+
+<div class="container" *ngIf='!searchTerm.value'>
+  <h1>Please enter a game name in the field above.</h1>
+</div>
+
+<div class="container" *ngIf='dataNotFound'>
+  <h1>No games matching your search were found!</h1>
 </div>

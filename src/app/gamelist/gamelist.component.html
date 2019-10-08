@@ -1,0 +1,17 @@
+<mat-card *ngFor="let game of games">
+  <mat-card-header>
+    <mat-card-title>
+      <a [routerLink]="['/details', { id:game.id }]">
+        <p>{{game.name | slice:0:26}}</p>
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span>
+        <p>{{(game.human)?(game.human):('N/A')}}</p>
+      </span>
+      <span *ngIf="game.abbreviation">
+        {{game.abbreviation}}
+      </span>
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
