@@ -129,10 +129,6 @@ mat-card:not(:last-child) {
   margin-bottom: 4em;
 }
 
-mat-card p {
-  margin: 0;
-}
-
 mat-card mat-card-content {
   margin-bottom: 4em;
   margin-left: 0 !important;
@@ -148,12 +144,6 @@ mat-card .summary span {
   opacity: 0.8;
   font-size: 1.5em;
   line-height: 1.5em;
-}
-
-mat-card .gamePage a {
-  color: white;
-  font-size: 3em;
-  text-decoration: none;
 }
 
 mat-card mat-card-content a:hover {

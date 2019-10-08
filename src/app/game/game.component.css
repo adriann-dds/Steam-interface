@@ -141,7 +141,7 @@ mat-card mat-grid-tile:last-child span {
 
 @media (max-width: 100em) {
   div {
-    width: 60em; /* to do the same as above for the rest of the viewports1 */
+    width: 60em; /* to do the same as above for the rest of the viewports */
   }
 }
 

@@ -20,7 +20,6 @@ export class ApiService {
   //connect to API server
 
   getGamesData(endpoint: string, gamesType: string) : Observable<Game[]> {
-    // console.log('Getting games data.');
 
     return this.httpClient.get<Game[]>(this.apiURL + '/' + endpoint + '/?fields=*' + gamesType,
     { headers: {
